@@ -12,3 +12,5 @@
 
 - install dependencies with by running `./install.sh` in the root folder
 - from `./glaring-api` run `rake start` to start dev server and react client
+
+## PULL REQUESTS require approval from ALL PARTIES
