@@ -6,8 +6,6 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "cypress": "^4.7.0",
-    "jest": "^26.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -36,6 +34,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
+    "cypress": "^4.7.0",
     "storybook": "^5.3.19"
   }
 }
