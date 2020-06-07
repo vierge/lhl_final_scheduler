@@ -1,0 +1,1 @@
+cd glaring-api && rake start
