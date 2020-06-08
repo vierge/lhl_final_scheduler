@@ -1,0 +1,21 @@
+.page {
+  display: grid;
+  grid-template-columns: 20vw auto;
+}
+
+.sidebar {
+  position: fixed;
+  width: 17vw;
+  height: 500vw;
+  background-color: darkblue;
+}
+
+.main {
+  grid-column-start: 2;
+}
+
+.sidebar__menu {
+  color: white;
+
+  float: center;
+}
