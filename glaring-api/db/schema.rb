@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
     t.bigint "user_id"
     t.bigint "event_id"
     t.boolean "creator", default: false
+    t.boolean "going"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["event_id"], name: "index_reservations_on_event_id"
@@ -63,4 +64,9 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "events", "groups"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
+  add_foreign_key "reservations", "events"
+  add_foreign_key "reservations", "users"
 end

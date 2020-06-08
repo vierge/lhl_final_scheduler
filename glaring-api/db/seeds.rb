@@ -32,3 +32,13 @@ User.create(name: "password", password: "cringelife", email: "user@gmail.com", p
 # events
 
 Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: nil, photo: nil, end_time: nil, group_id: 1)
+
+# memberships and reservations
+
+Membership.create(user_id: 1, group_id: 2)
+Membership.create(user_id: 8, group_id: 2, admin: true)
+Membership.create(user_id: 5, group_id: 2)
+
+Reservation.create(user_id: 1, event_id: 1, going: true, creator: true)
+Reservation.create(user_id: 5, event_id: 1, going: true)
+Reservation.create(user_id: 8, event_id: 1, going: false)
