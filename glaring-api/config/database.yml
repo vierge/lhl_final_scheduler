@@ -1,0 +1,13 @@
+# Postgresql
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: glaring_dev
+  pool: 5
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: glaring_test
+  pool: 5
