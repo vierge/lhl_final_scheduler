@@ -1,6 +1,5 @@
 class ApiController < ApplicationController
   def index
-  
-   render json: User.all.to_json
+   render json: { users: User.all, groups: Group.all, events: Event.all }
   end
 end
