@@ -9,7 +9,7 @@ class GroupsController < ApplicationController
 
   def show
     if params[:id]
-      @group = Group.where(:group_id == params[:id])
+      @group = Group.where(id: params[:id])
       render json: @group.to_json
     else
       @groups = Group.all
