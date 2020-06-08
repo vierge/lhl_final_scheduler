@@ -31,4 +31,4 @@ User.create(name: "password", password: "cringelife", email: "user@gmail.com", p
 
 # events
 
-Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: nil, photo: nil)
+Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: nil, photo: nil, end_time: nil, group_id: 1)

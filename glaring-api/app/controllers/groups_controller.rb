@@ -10,10 +10,11 @@ class GroupsController < ApplicationController
   def show
     if params[:id]
       @group = Group.where(:group_id == params[:id])
-      render json: @group
+      render json: @group.to_json
     else
       @groups = Group.all
-      render json: @groups
+      render json: @groups.to_json
+    end
   end
 
   def update

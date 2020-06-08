@@ -1,20 +1,17 @@
 class EventsController < ApplicationController
-  helper GroupEventsHelper
+  include GroupEventsHelper
 
   def index
-    render json: Event.all()
+    @events = grab_events_for_group(params[:group_id])
+    render json: @events.to_json
   end
 
   def create
   end
 
   def show
-    if params[:group_id]
-      @events = GroupEventsHelper.grab(params[:group_id])
-    else
-      @event = Event.find_by(params[:id])
-    end
-    render json: @events || @event
+    @event = Event.find_by(params[:id])
+    render json: @event.to_json
   end
 
   def update

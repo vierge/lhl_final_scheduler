@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
-  def get
-    put "welcome to the Glaring API. do you need help?"
+  def index
+  
+   render json: User.all.to_json
   end
 end
