@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
-  include GroupEventsHelper
+  # include GroupEventsHelper
 
   def index
     # GET
-    @events = grab_events_for_group(params[:group_id])
+    @events = Event.where(group_id: group).order(start_time: 'desc')
     render json: @events.to_json
   end
 
@@ -22,9 +22,9 @@ class EventsController < ApplicationController
 
   def show
     # GET
-    @event = Event.find_by(params[:id])
-    @reservations = Reservation.where(group_id: params[:id])
-    render json: { event: @event.to_json, reservations: @reservations.to_json }
+    @event = Event.find_by(id: params[:id])
+    @reservations = Reservation.where(event_id: params[:id])
+    render json: { event: @event, reservations: @reservations }
   end
 
   def update

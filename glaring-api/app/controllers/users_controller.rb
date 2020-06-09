@@ -19,11 +19,22 @@ class UsersController < ApplicationController
 
   def show
     # GET
-    @user = User.find_by(name: params[:id])
+    @user = User.find_by(id: params[:id])
     render json: @user.to_json 
   end
 
   def update
+    case request.method_symbol
+    when :put
+      #PUT
+      newMembership = Membership.create(
+        user_id: params[:user_id],
+        group_id: params[:group_id]
+      )
+      render json: newMembership.to_json
+    when :patch
+      #PATCH
+    end
   end
 
   def destroy

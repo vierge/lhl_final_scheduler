@@ -15,7 +15,8 @@ class GroupsController < ApplicationController
 
   def show
       @group = Group.where(id: params[:id])
-      render json: @group.to_json
+      @memberships = Membership.where(group_id: params[:id])
+      render json: { group: @group, memberships: @memberships }
   end
 
   def update
