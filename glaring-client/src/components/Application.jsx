@@ -17,7 +17,7 @@ useEffect(() => {
         console.log("AAA", response)
         setGroups(()=> response.data);
       });
-  }, [state])
+  })
    
   return <Sidebar />;
 }
