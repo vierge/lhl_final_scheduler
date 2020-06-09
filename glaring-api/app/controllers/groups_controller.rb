@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     newMembership = Reservation.create(
       user_id: params[:user_id]
       group_id: newGroup[:id]
+      admin: true
     )
     render json: { group: newGroup, membership: newMembership }
   end

@@ -16,8 +16,14 @@ class EventsController < ApplicationController
       start_time: params[:start_time],
       end_time: params[:end_time],
       photo: params[:photo] 
+      group_id: params[:group_id]
     )
-    render json: newEvent.to_json
+    newReservation = Reservation.create(
+      user_id: params[:user_id]
+      event_id: newEvent[:id]
+      creator: true
+    )
+    render json: { event: newEvent, reservation: newReservation }
   end
 
   def show
