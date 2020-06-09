@@ -17,7 +17,6 @@ export default function useAppData() {
     const { events, memberships, reservations } = await axios.get(
       `/api/groups/${group_id}/events`
     );
-    console.log(state.groups[group_id - 1]);
     // console.log(events.data);
     const group = state.groups[group_id - 1];
     setState((prev) => ({
