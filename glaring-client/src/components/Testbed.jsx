@@ -2,7 +2,7 @@
 import { css, jsx } from "@emotion/core";
 
 export default function Testbed(props) {
-  const { groups, users } = props;
+  const { groups, users, setGroupData } = props;
 
   const groupList = groups.map((element) => {
     const { name } = element;
@@ -23,6 +23,13 @@ export default function Testbed(props) {
         color: black;
       `}
     >
+      <button
+        onClick={(event) => {
+          setGroupData(state.groups[2].id);
+        }}
+      >
+        Click me to set the current group!
+      </button>
       <div>
         <h1>GROUPS HERE</h1>
         {groupList}

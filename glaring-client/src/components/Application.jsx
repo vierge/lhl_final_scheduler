@@ -6,16 +6,17 @@ import Testbed from "./Testbed.jsx";
 import Sidebar from "./Sidebar/Index";
 
 export default function Application() {
-  const { state } = useAppData();
+  const { state, setGroupData } = useAppData();
 
   return (
     <body>
       <Sidebar />
-      {/* <Testbed
+      <Testbed
         data-cy="db-response"
         users={state.users}
         groups={state.groups}
-      /> */}
+        setGroupData
+      />
     </body>
   );
 }

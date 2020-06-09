@@ -12,7 +12,20 @@ export default function useAppData() {
     reservations: [],
   });
 
-  const setGroup = (group) => setState((prev) => ({ ...prev, current: group }));
+  async function setGroupData(group_id) {
+    const { events, memberships, reservations } = await axios.get(
+      `/api/groups/${group_id}/events`
+    );
+    const group = state.groups[group_id];
+    setState((prev) => ({
+      ...prev,
+      current: group,
+      group_events: events,
+      memberships,
+      reservations,
+    }));
+    return setGroup(group);
+  }
 
   useEffect(() => {
     Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
@@ -28,5 +41,5 @@ export default function useAppData() {
     );
   }, []);
 
-  return { state, setGroup };
+  return { state, setGroupData };
 }
