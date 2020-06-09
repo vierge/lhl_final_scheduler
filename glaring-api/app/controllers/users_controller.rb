@@ -27,11 +27,9 @@ class UsersController < ApplicationController
     case request.method_symbol
     when :put
       #PUT
-      newMembership = Membership.create(
-        user_id: params[:user_id],
-        group_id: params[:group_id]
-      )
-      render json: newMembership.to_json
+      membership = Membership.find_by(user_id: params[:id], group_id: params[:group_id])
+      membership.update(admin: !:admin);
+      render json: membership.to_json
     when :patch
       #PATCH
     end

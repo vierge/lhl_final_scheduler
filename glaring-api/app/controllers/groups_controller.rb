@@ -25,6 +25,16 @@ class GroupsController < ApplicationController
   end
 
   def update
+    case request.method_symbol
+    when :put
+      newMembership = Membership.create(
+        user_id: params[:user_id],
+        group_id: params[:id]
+      )
+      render json: newMembership.to_json
+    when :patch
+      #PATCH
+    end
   end
 
   def destroy
