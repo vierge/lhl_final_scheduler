@@ -28,6 +28,18 @@ class EventsController < ApplicationController
   end
 
   def update
+    case request.method_symbol
+    when :put
+      #PUT
+      newReservation = Reservation.create(
+        user_id: params[:user_id],
+        event_id: params[:event_id],
+        going: params[:going]
+      )
+      render json: newReservation.to_json
+    when :patch
+      #PATCH
+    end
   end
 
   def destroy

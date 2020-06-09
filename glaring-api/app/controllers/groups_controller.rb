@@ -10,7 +10,11 @@ class GroupsController < ApplicationController
       name: params[:name],
       description: params[:description]
     )
-    render json: newGroup.to_json
+    newMembership = Reservation.create(
+      user_id: params[:user_id]
+      group_id: newGroup[:id]
+    )
+    render json: { group: newGroup, membership: newMembership }
   end
 
   def show
