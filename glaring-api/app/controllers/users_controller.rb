@@ -36,6 +36,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    death_row = User.find_by(id: params[:id])
+    if death_row
+      death_row.delete
+      render "delete successful..."
+    else
+      raise "error: could not delete"
+    end
   end
 
   private
