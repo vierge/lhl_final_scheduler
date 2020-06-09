@@ -5,16 +5,17 @@ class GroupsController < ApplicationController
   end
 
   def create
+    #POST
+    newGroup = Group.create(
+      name: params[:name],
+      description: params[:description]
+    )
+    render json: newGroup.to_json
   end
 
   def show
-    if params[:id]
       @group = Group.where(id: params[:id])
       render json: @group.to_json
-    else
-      @groups = Group.all
-      render json: @groups.to_json
-    end
   end
 
   def update
