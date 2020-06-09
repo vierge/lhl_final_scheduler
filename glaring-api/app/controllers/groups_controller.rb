@@ -5,6 +5,12 @@ class GroupsController < ApplicationController
   end
 
   def create
+    #POST
+    newGroup = Group.create(
+      name: params[:name],
+      description: params[:description]
+    )
+    render json: newGroup.to_json
   end
 
   def show
