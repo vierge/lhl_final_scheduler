@@ -3,6 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = grab_events_for_group(params[:group_id])
+    # p @events
     render json: @events.to_json
   end
 
