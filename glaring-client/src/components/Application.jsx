@@ -11,7 +11,7 @@ const [state, setState] = useState("smoko");
   const [groups, setGroups] = useState([]);
 
 useEffect(() => {
-    axios.get(`/api/groups`)
+    axios.get(`/api/groups`)  
       .then((response) => {
 
         console.log("AAA", response)
