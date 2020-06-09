@@ -25,10 +25,10 @@ export default function Testbed(props) {
     >
       <button
         onClick={(event) => {
-          setGroupData(state.groups[2].id);
+          setGroupData(2);
         }}
       >
-        Click me to set the current group!
+        Click me to set the current group to 2!
       </button>
       <div>
         <h1>GROUPS HERE</h1>

@@ -15,7 +15,7 @@ export default function Application() {
         data-cy="db-response"
         users={state.users}
         groups={state.groups}
-        setGroupData
+        setGroupData={setGroupData}
       />
     </body>
   );
