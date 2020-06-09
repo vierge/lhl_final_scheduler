@@ -20,7 +20,5 @@ useEffect(() => {
   }, [state])
    
 
-
-
   return <Sidebar />;
 }
