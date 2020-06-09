@@ -16,4 +16,8 @@
   color: white;
   position: center;
   grid-column-start: 1;
+
+  &:hover {
+    background-color: deeppink;
+  }
 }
