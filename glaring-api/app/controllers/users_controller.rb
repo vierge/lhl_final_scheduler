@@ -5,7 +5,18 @@ class UsersController < ApplicationController
   end
   
   def create
-
+    #POST
+    newUser = params[:user]
+    puts params[:user]
+    User.create(@newUser)
+    render json: newUser.to_json
+    # We'l do the below if we need to:
+    # User.create(
+    #   name: @newUser.name 
+    #   password: @newUser.password 
+    #   email: @newUser.email
+    #   phone_number: @newUser.phone_number 
+    #   avatar: @newUser.avatar)
   end
 
   def show
