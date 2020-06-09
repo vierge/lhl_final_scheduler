@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def destroy
     death_row = User.find_by(id: params[:id])
     if death_row
-      death_row.delete
+      death_row.destroy
       render "delete successful..."
     else
       raise "error: could not delete"

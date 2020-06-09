@@ -54,6 +54,14 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    death_row = Event.find_by(id: params[:id])
+    if death_row
+      death_row.destroy
+      render "delete successful..."
+    else
+      raise "error: could not delete"
+    end
+
   end
 
 end
