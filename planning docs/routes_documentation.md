@@ -5,7 +5,7 @@ database routes, their expected request, and their response are outlined here.
 
 ---
 
-## DATABASE ALWAYS RETURNS JSON:
+## DATABASE ALWAYS RETURNS JSON. EXAMPLE:
 
   ```json
     { 
