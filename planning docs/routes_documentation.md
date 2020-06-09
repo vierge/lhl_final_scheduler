@@ -5,7 +5,8 @@ database routes, their expected request, and their response are outlined here.
 
 ---
 
-## DATABASE ALWAYS RETURNS JSON. EXAMPLE:
+
+## DATABASE ALWAYS ACCEPTS AND RETURNS JSON. EXAMPLES:
 
   ```json
     { 
@@ -26,6 +27,8 @@ database routes, their expected request, and their response are outlined here.
       ],
     }
   ```
+
+### please include `headers: { content-type: "application/json" }` in all **POST**, **PUT**, and **PATCH** requests.
 
 ## GETs
 
