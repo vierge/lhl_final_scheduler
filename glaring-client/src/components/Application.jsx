@@ -11,11 +11,11 @@ export default function Application() {
   return (
     <body>
       <Sidebar />
-      <Testbed
+      {/* <Testbed
         data-cy="db-response"
         users={state.users}
         groups={state.groups}
-      />
+      /> */}
     </body>
   );
 }
