@@ -1,22 +1,20 @@
 class UsersController < ApplicationController
+
+
   def index
     # GET
     render json: User.all()
   end
   
   def create
-    #POST
-    newUser = params[:user]
-    puts params[:user]
-    User.create(@newUser)
+    newUser = User.create(
+      name: params[:name],
+      password: params[:password],
+      email: params[:email],
+      phone_number: params[:phone_number],
+      avatar: params[:avatar]
+    )
     render json: newUser.to_json
-    # We'l do the below if we need to:
-    # User.create(
-    #   name: @newUser.name 
-    #   password: @newUser.password 
-    #   email: @newUser.email
-    #   phone_number: @newUser.phone_number 
-    #   avatar: @newUser.avatar)
   end
 
   def show
@@ -30,4 +28,16 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  # def init_user(data)
+  #   User.create do |u|
+  #     u.name = data.name
+  #     u.password = data.password
+  #     u.email = data.email
+  #     u.phone_number = data.phone_number
+  #     u.
+
+  #   end
 end
