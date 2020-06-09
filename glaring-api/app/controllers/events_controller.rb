@@ -37,11 +37,16 @@ class EventsController < ApplicationController
     case request.method_symbol
     when :put
       #PUT
-      newReservation = Reservation.create(
-        user_id: params[:user_id],
-        event_id: params[:event_id],
-        going: params[:going]
-      )
+      reservation = Reservation.find_by(user_id: params[:user_id], event_id: params[:event_id])
+      if reservation
+        newReservation = reservation.update(going: params[:going])
+      else
+        newReservation = Reservation.create(
+          user_id: params[:user_id],
+          event_id: params[:event_id],
+          going: params[:going]
+        )
+      end
       render json: newReservation.to_json
     when :patch
       #PATCH
