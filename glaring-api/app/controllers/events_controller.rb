@@ -49,7 +49,10 @@ class EventsController < ApplicationController
       end
       render json: newReservation.to_json
     when :patch
-      #PATCH
+      newEvent = request.body.read
+      event = Event.find_by(params[:id])
+      event.update(newEvent)
+      render json: newEvent.to_json
     end
   end
 

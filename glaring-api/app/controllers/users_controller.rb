@@ -32,6 +32,10 @@ class UsersController < ApplicationController
       render json: membership.to_json
     when :patch
       #PATCH
+      newUser = request.body.read
+      user = User.find_by(params[:id])
+      user.update(newUser)
+      render json: newUser.to_json
     end
   end
 

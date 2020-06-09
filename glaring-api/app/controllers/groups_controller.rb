@@ -33,7 +33,10 @@ class GroupsController < ApplicationController
       )
       render json: newMembership.to_json
     when :patch
-      #PATCH
+      newGroup = request.body.read
+      group = Group.find_by(params[:id])
+      group.update(newGroup)
+      render json: newGroup.to_json
     end
   end
 
