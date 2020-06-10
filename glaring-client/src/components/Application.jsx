@@ -6,6 +6,8 @@ import axios from "axios"
 // import Testbed from "./Testbed.jsx";
 import Sidebar from "./Sidebar/Index";
 import GroupList from "./GroupList.js";
+import Button from "./Button.js";
+
 
 
 export default function Application() {
@@ -56,8 +58,9 @@ export default function Application() {
           setGroup={setGroup}
         />
       </nav>
+    <br/>
+         <Button >CreateNewGroup</Button>
     </section>
-     
-     
+   
   );
 }
