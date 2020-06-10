@@ -12,7 +12,9 @@ export default function Application() {
   // const { state, setGroupData } = useAppData();
 
   const [state, setState] = useState("smoko");
-  const [groups, setGroups] = useState([]);
+  // const [groups, setGroups] = useState([]);
+  const [group, setGroup] = useState("Group 1");
+
 
   const groupslisting = [
     {
@@ -37,12 +39,12 @@ export default function Application() {
     },
   ];
 
-  useEffect(() => {
-    axios.get(`/api/groups`).then((response) => {
-      console.log("AAA", response);
-      setGroups(() => response.data);
-    });
-  });
+  // useEffect(() => {
+  //   axios.get(`/api/groups`).then((response) => {
+  //     console.log("AAA", response);
+  //     setGroups(() => response.data);
+  //   });
+  // });
 
   return (
      <section className="sidebar">
@@ -50,8 +52,8 @@ export default function Application() {
         Event Scheduler
         <GroupList
           groups={groupslisting}
-          group={"Group 1"}
-          setGroup={group => console.log(group)}
+          group={group}
+          setGroup={setGroup}
         />
       </nav>
     </section>
