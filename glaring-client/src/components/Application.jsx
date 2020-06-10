@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useAppData from "../hooks/useAppData";
+import axios from "axios";
+
 
 import "./Application.scss";
-import Testbed from "./Testbed.jsx";
+// import Testbed from "./Testbed.jsx";
 import Sidebar from "./Sidebar/Index";
 
 export default function Application() {
   const { state, setGroupData } = useAppData();
 
-  const [state, setState] = useState("smoko");
+  // const [state, setState] = useState("smoko");
   const [groups, setGroups] = useState([]);
 
   // const groups = [
