@@ -14,7 +14,7 @@
 - from `./glaring-api` run `rake start` to start dev server and react client
 - OR `bash start` to start
 
-## PULL REQUESTS require approval from ALL PARTIES
+## PULL REQUESTS require approval from at least one party
 
 
 https://rvm.io/rvm/install !!!!
