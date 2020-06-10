@@ -11,7 +11,6 @@ const [state, setState] = useState("smoko");
   const [groups, setGroups] = useState([]);
 
 
-
 const groups = [
   {
     id: 1,
@@ -26,7 +25,6 @@ const groups = [
     name: "Group 3",
   },
 ];
-
 
 
 useEffect(() => {
