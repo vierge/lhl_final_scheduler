@@ -10,9 +10,9 @@ class GroupsController < ApplicationController
       name: params[:name],
       description: params[:description]
     )
-    newMembership = Reservation.create(
-      user_id: params[:user_id]
-      group_id: newGroup[:id]
+    newMembership = Membership.create(
+      user_id: params[:user_id],
+      group_id: newGroup[:id],
       admin: true
     )
     render json: { group: newGroup, membership: newMembership }
@@ -33,20 +33,22 @@ class GroupsController < ApplicationController
       )
       render json: newMembership.to_json
     when :patch
-      newGroup = request.body.read
-      group = Group.find_by(params[:id])
+      newGroup = params[:group]
+      newGroup.permit!
+      group = Group.find_by(id: params[:id])
       group.update(newGroup)
-      render json: newGroup.to_json
+      render json: group.to_json
     end
   end
 
   def destroy
     death_row = Group.find_by(id: params[:id])
+    puts death_row
     if death_row
       death_row.destroy
-      render "delete successful..."
     else
       raise "error: could not delete"
     end
+    render json: { status: response.status }
   end
 end
