@@ -49,6 +49,7 @@ export default function Application() {
   // });
 
   return (
+    <main>
      <section className="sidebar">
        <nav classname = "sidebar__menu">
         Event Scheduler
@@ -58,9 +59,24 @@ export default function Application() {
           setGroup={setGroup}
         />
       </nav>
-    <br/>
-         <Button >CreateNewGroup</Button>
+      <br/>
+     <section className = "creation__card-right">
+          <section className = "creation__actions">
+                  <Button register>CreateNewGroup</Button>
+          </section>
+      </section>
+
+      <br/>
+      <br/>
+      <br/>
+
+      <section className = "creation__card-left">
+          <section className = "creation__actions">
+                  <Button register>MySchedule (Shows all events you are going to)</Button>
+          </section>
+      </section>
     </section>
-   
+
+   </main>
   );
 }
