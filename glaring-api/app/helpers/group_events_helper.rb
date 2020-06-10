@@ -3,3 +3,5 @@ module GroupEventsHelper
     return Event.where(group_id: group).order(start_time: 'desc')
   end
 end
+
+## DEPRECATED
