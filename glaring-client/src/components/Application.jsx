@@ -11,7 +11,7 @@ import GroupList from "./GroupList.js";
 export default function Application() {
   // const { state, setGroupData } = useAppData();
 
-  const [state, setState] = useState("smoko");
+  // const [state, setState] = useState("smoko");
   // const [groups, setGroups] = useState([]);
   const [group, setGroup] = useState("Group 1");
 
