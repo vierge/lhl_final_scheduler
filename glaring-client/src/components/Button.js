@@ -17,6 +17,14 @@ export default function Button(props) {
     buttonClass += " button--danger";
   }
 
+  if (props.edit) {
+    buttonClass += " button--edit";
+  }
+
+    if (props.register) {
+    buttonClass += " button--register";
+  }
+
     return (
     <button //uses props.children value as the button text
       className={buttonClass} //button element is wrapped in Button component

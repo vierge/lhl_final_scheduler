@@ -36,6 +36,18 @@
   background-color: transparent;
 }
 
+.button--edit {
+  color: $edit-color;
+  border-color: $edit-color;
+  background-color: transparent;
+}
+
+.button--register {
+  color: $register-color;
+  border-color: $register-color;
+  background-color: transparent;
+}
+
 .button--danger:hover {
   color: $white;
   background-color: $danger-color;
@@ -44,6 +56,16 @@
 .button--confirm:hover {
   color: $white;
   background-color: $confirm-color;
+}
+
+.button--edit:hover {
+  color: $white;
+  background-color: $edit-color;
+}
+
+.button--register:hover {
+  color: $white;
+  background-color: $register-color;
 }
 
 .button:last-of-type {
