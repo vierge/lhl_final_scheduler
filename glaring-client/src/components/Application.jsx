@@ -38,16 +38,6 @@ useEffect(() => {
       });
   })
    
-  return (
+  return <Sidebar/>; 
 
-  <nav Sidebar>
-  <GroupList
-    groups={groups}
-    group={"Group 1"}
-    setGroup={group => console.log(group)}
-  />
-  </nav>
-
-
-  ) 
 }
