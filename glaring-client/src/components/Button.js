@@ -1,29 +1,17 @@
 import React from 'react';
 import "./Button.scss";
-const classNames = require("classnames");
+const classnames = require("classnames");
 
-// import { action } from '@storybook/addon-actions';
-// import { Button } from '@storybook/react/demo';
 
 
 export default function Button(props) {
- let buttonClass = "button";
+  const buttonClass = classnames("button", {
+    "button--confirm": props.confirm,
+    "button--danger": props.danger,
+    "button--edit": props.edit,
+    "button--register": props.register
 
-  if (props.confirm) {
-    buttonClass += " button--confirm";
-  }
-
-  if (props.danger) {
-    buttonClass += " button--danger";
-  }
-
-  if (props.edit) {
-    buttonClass += " button--edit";
-  }
-
-    if (props.register) {
-    buttonClass += " button--register";
-  }
+  });
 
     return (
     <button //uses props.children value as the button text
@@ -36,16 +24,4 @@ export default function Button(props) {
     )
 }
 
-
-// export const Text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
-
-// export const Emoji = () => (
-//   <Button onClick={action('clicked')}>
-//     <span role="img" aria-label="so cool">
-//       😀 😎 👍 💯
-//     </span>
-//   </Button>
-// );
-
-// export const Submit = () => <Button onClick={action('clicked')}>Submit</Button>;
 
