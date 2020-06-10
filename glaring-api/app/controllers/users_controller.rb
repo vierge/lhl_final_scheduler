@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   def create
     params.permit!
-    newUser = User.create(params[:user])
+    newUser = User.create!(params[:user])
     render json: newUser.to_json
   end
 
@@ -23,14 +23,14 @@ class UsersController < ApplicationController
     when :put
       #PUT
       membership = Membership.find_by(user_id: params[:id], group_id: params[:group_id])
-      membership.toggle(:admin).save;
+      membership.toggle(:admin).save!;
       render json: membership.to_json
     when :patch
       #PATCH
       newUser = params[:user]
       newUser.permit!
       user = User.find_by(id: params[:id])
-      user.update(newUser)
+      user.update!(newUser)
       render json: newUser.to_json
     end
   end

@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def create
     # POST
-    newEvent = Event.create(
+    newEvent = Event.create!(
       name: params[:name],
       description: params[:description],
       location: params[:location],
@@ -18,7 +18,7 @@ class EventsController < ApplicationController
       photo: params[:photo],
       group_id: params[:group_id]
     )
-    newReservation = Reservation.create(
+    newReservation = Reservation.create!(
       user_id: params[:user_id],
       event_id: newEvent[:id],
       creator: true
@@ -37,19 +37,19 @@ class EventsController < ApplicationController
     case request.method_symbol
     when :put
       reservation = Reservation.find_by(event_id: params[:id], user_id: params[:user_id]);
-      if !Event.exists?(id: params[:id]) || !User.exists?(params[:user_id])
-        raise "error: invalid!"
-      elsif !reservation
+      # if !Event.exists?(id: params[:id]) || !User.exists?(params[:user_id])
+      #   raise "error: invalid!"
+      if !reservation
         reservation = Reservation.new(event_id: params[:id], user_id: params[:user_id])
       end
         reservation.update(going: params[:going])
-        reservation.save
+        reservation.save!
       render json: reservation.to_json 
     when :patch
       newEvent = params[:event]
       newEvent.permit!
       event = Event.find_by(id: params[:id])
-      event.update(newEvent)
+      event.update!(newEvent)
       render json: newEvent.to_json
     end
   end

@@ -3,4 +3,6 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :events, through: :reservations
   has_many :groups, through: :memberships
+
+  validates :name, :password, :email, presence: true
 end
