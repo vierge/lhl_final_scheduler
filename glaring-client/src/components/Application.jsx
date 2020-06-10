@@ -9,7 +9,6 @@ import GroupList from "./GroupList.js";
 import Button from "./Button.js";
 
 
-
 export default function Application() {
   // const { state, setGroupData } = useAppData();
 
@@ -76,7 +75,6 @@ export default function Application() {
           </section>
       </section>
     </section>
-
    </main>
   );
 }
