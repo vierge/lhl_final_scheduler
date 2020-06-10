@@ -40,10 +40,10 @@ class UsersController < ApplicationController
     puts death_row
     if death_row
       death_row.destroy
-      render response.body.status
     else
       raise "error: could not delete"
     end
+    render json: { status: response.status }
   end
 
   private
