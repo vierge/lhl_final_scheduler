@@ -7,13 +7,8 @@ class UsersController < ApplicationController
   end
   
   def create
-    newUser = User.create(
-      name: params[:name],
-      password: params[:password],
-      email: params[:email],
-      phone_number: params[:phone_number],
-      avatar: params[:avatar]
-    )
+    params.permit!
+    newUser = User.create(params[:user])
     render json: newUser.to_json
   end
 
@@ -42,9 +37,10 @@ class UsersController < ApplicationController
 
   def destroy
     death_row = User.find_by(id: params[:id])
+    puts death_row
     if death_row
       death_row.destroy
-      render "delete successful..."
+      render response.body.status
     else
       raise "error: could not delete"
     end
