@@ -4,7 +4,6 @@ import GroupList from "../components/GroupList.js";
 import { action } from '@storybook/addon-actions';
 
 
-
 const groups = [
   {
     id: 1,
