@@ -1,10 +1,12 @@
 import React from 'react';
 import Button from '../components/Button.js';
+
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Button',
+  title: 'Button',  
   component: Button,
+
 };
 
 // export default { title: 'Button' };
@@ -42,3 +44,13 @@ export const MySchedule = () => <Button onClick={action('clicked')} register>My 
 export const JoinGroup = () => <Button onClick={action('clicked')} register>Join Group</Button>;
 
 export const CreateNewEvent = () => <Button onClick={action('clicked')} register>Create New Event</Button>;
+
+
+
+// // export default {
+// //   title: 'GroupListItem',
+// //   component: GroupListItem,
+// // };
+
+
+//   export const GroupList = () => <GroupListItem setGroup={action('clicked')} name="Group 1"/>;
