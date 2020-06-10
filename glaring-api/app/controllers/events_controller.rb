@@ -38,7 +38,7 @@ class EventsController < ApplicationController
     when :put
       reservation = Reservation.find_by(event_id: params[:id], user_id: params[:user_id]);
       if !Event.exists?(id: params[:id]) || !User.exists?(params[:user_id])
-        raise "invalid!"
+        raise "error: invalid!"
       elsif !reservation
         reservation = Reservation.new(event_id: params[:id], user_id: params[:user_id])
       end
@@ -46,7 +46,8 @@ class EventsController < ApplicationController
         reservation.save
       render json: reservation.to_json 
     when :patch
-      newEvent = request.body.read
+      newEvent = params[:event]
+      newEvent.permit!
       event = Event.find_by(id: params[:id])
       event.update(newEvent)
       render json: newEvent.to_json
