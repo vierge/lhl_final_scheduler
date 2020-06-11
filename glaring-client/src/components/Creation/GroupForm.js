@@ -3,6 +3,8 @@ import Button from "../Button.js";
 
 export default function Form(props) {
   const [name, setName] = useState(props.name || ""); //need to keep track of information for the name by using useState
+  const [image, setImage] = useState(null);
+
 
   return (
     <main className="creation__card creation--create">
@@ -52,6 +54,10 @@ export default function Form(props) {
           />
     <br/>
     <br/>
+
+
+    <input type="file" accept="image/*" onChange={e=>{setImage(URL.createObjectURL(e.target.files[0]))}} />
+      {image && <img src = {image}/>}
 
         </form>
       </section>
