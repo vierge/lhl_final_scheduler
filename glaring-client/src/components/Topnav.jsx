@@ -11,6 +11,11 @@ const Button = (props) => (
       width: 60px;
       background-color: ${props.className};
       color: white;
+
+      &:hover {
+        background-color: white;
+        color: black;
+      }
     `}
     {...props}
   />

@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "@emotion/styled";
 import NavGroup from "./Group";
+import Options from "./Options";
 // import NavGroupList from "./GroupList"
 
-const currentUser = "Storybook";
+const currentUser = "Marshmallow";
 
 const Nav = styled.nav`
   position: fixed;
@@ -39,10 +40,11 @@ export default function Sidebar(props) {
           <h3>{currentUser}</h3>
         </Header>
         {groupList}
-        {/* <NavGroup color="deeppink" />
-        <NavGroup color="mediumslateblue" />
-        <NavGroup color="turquoise" /> */}
+        <Options />
       </Nav>
     </main>
   );
+  /* <NavGroup color="deeppink" />
+  <NavGroup color="mediumslateblue" />
+  <NavGroup color="turquoise" /> */
 }
