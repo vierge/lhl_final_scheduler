@@ -55,10 +55,11 @@ export default function Form(props) {
     <br/>
     <br/>
 
-
     <input type="file" accept="image/*" onChange={e=>{setImage(URL.createObjectURL(e.target.files[0]))}} />
       {image && <img src = {image}/>}
-
+    <br/>
+    <br/>
+    
         </form>
       </section>
       <section className="creation__card-right">
