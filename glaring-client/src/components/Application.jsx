@@ -53,7 +53,7 @@ export default function Application() {
     <main>
       <Topnav />
       <Sidebar groups={groupsListing} />
-      <GroupList groups={groupsListing} />
+      <GroupList groups={groupsListing} setGroup={setGroup} />
     </main>
   );
 }

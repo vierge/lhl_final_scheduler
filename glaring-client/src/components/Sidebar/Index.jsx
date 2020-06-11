@@ -4,7 +4,7 @@ import NavGroup from "./Group";
 import Options from "./Options";
 // import NavGroupList from "./GroupList"
 
-const currentUser = "Marshmallow";
+const currentUser = "The Champs";
 
 const Nav = styled.nav`
   position: fixed;
