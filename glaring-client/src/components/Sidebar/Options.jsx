@@ -48,10 +48,10 @@ export default function Options(props) {
       <Button color="skyblue" background="black" grid="a">
         ++ DIRECTORY ++
       </Button>
-      <Button color="forestgreen" background="black" grid="b">
+      <Button color="violet" background="black" grid="b">
         Options
       </Button>
-      <Button color="lightpurple" background="black" grid="c">
+      <Button color="white" background="black" grid="c">
         Help :O
       </Button>
     </GridContainer>
