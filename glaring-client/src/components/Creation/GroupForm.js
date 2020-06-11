@@ -12,11 +12,37 @@ export default function Form(props) {
             className="creation__create-input text--semi-bold"
             name="name"
             type="text"
-            placeholder="Enter Student Name"
+            placeholder="Enter Group Name"
             /*
           This must be a controlled component
         */
           />
+    <br/>
+    <br/>
+
+            <input
+            className="creation__create-input text--semi-bold"
+            name="name"
+            type="text"
+            placeholder="Enter Group Description"
+            /*
+          This must be a controlled component
+        */
+          />
+    <br/>
+    <br/>
+
+           <input
+            className="creation__create-input text--semi-bold"
+            name="name"
+            type="text"
+            placeholder="Enter Side Note"
+            /*
+          This must be a controlled component
+        */
+          />
+    <br/>
+    <br/>
         </form>
       </section>
       <section className="creation__card-right">
