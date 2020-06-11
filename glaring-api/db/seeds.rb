@@ -25,7 +25,7 @@ User.create(name: "Wares", password: "cringelife", email: "wares@gmail.com", pho
 User.create(name: "gay", password: "cringelife", email: "lesbian@gmail.com", phone_number: nil, avatar: nil, colour: "deeppurple")
 User.create(name: "headpats_pls", password: "cringelife", email: "catgirl.uwu@gmail.com", phone_number: nil, avatar: nil, colour: "goldenrod")
 User.create(name: "no_cops", password: "cringelife", email: "acab@gmail.com", phone_number: nil, avatar: nil, colour: "red")
-User.create(name: "videogames", password: "cringelife", email: "gamers_are_valid@gmail.com", phone_number: nil, avatar: nil, "brown")
+User.create(name: "videogames", password: "cringelife", email: "gamers_are_valid@gmail.com", phone_number: nil, avatar: nil, colour:"brown")
 User.create(name: "an_egg", password: "cringelife", email: "tbd@gmail.com", phone_number: nil, avatar: nil, colour: "eggshell")
 User.create(name: "password", password: "cringelife", email: "user@gmail.com", phone_number: nil, avatar: nil, colour: "skyblue")
 
