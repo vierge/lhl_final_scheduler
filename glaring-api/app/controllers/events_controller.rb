@@ -16,7 +16,8 @@ class EventsController < ApplicationController
       start_time: params[:start_time],
       end_time: params[:end_time],
       photo: params[:photo],
-      group_id: params[:group_id]
+      group_id: params[:group_id],
+      colour: params[:colour]
     )
     newReservation = Reservation.create!(
       user_id: params[:user_id],
