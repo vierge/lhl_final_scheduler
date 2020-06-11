@@ -24,13 +24,14 @@ const Button = (props) => (
 const Nav = (props) => (
   <nav
     css={css`
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
+      position: sticky;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
       height: 40px;
       background-color: #555;
     `}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import useAppData from "../hooks/useAppData";
 import axios from "axios";
 // import Testbed from "./Testbed.jsx";
-import GroupList from "./GroupList.js";
+import GroupList from "./GroupList";
 import Button from "./Button.js";
 import Topnav from "./Topnav";
 import Sidebar from "./Sidebar/Index";
@@ -53,6 +53,7 @@ export default function Application() {
     <main>
       <Topnav />
       <Sidebar groups={groupsListing} />
+      <GroupList groups={groupsListing} />
     </main>
   );
 }
