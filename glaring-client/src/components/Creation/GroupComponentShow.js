@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../Button.js";
-import "./styles_2.scss";
+// import "./styles_2.scss";
 
 export default function GroupComponentShow(props) {
 return (

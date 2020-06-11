@@ -1,5 +1,5 @@
-// @import '../components/styles/variables.scss';
-// @import '../components/styles/mixins.scss';
+@import '../components/styles/variables.scss';
+@import '../components/styles/mixins.scss';
 
 
 $creation-height: 11rem;
@@ -13,10 +13,10 @@ $creation-height: 11rem;
     align-items: center;
 
     &-button {
-      // @include button-inactive--opacity;
+      @include button-inactive--opacity;
 
       &:hover {
-        // @include button-active--opacity;
+        @include button-active--opacity;
       }
     }
   }
@@ -85,7 +85,7 @@ $creation-height: 11rem;
     }
 
     &--confirm {
-      // @include border-card($danger-color);
+      @include border-card($danger-color);
 
       display: flex;
       flex-direction: column;
@@ -94,7 +94,7 @@ $creation-height: 11rem;
     }
 
     &--error {
-      // @include border-card($error-color);
+      @include border-card($error-color);
 
       display: flex;
       justify-content: space-between;
@@ -111,12 +111,12 @@ $creation-height: 11rem;
     margin-top: 1rem;
 
     &-button {
-      // @include button-inactive--opacity;
+      @include button-inactive--opacity;
       margin-right: 0.5rem;
       display: none;
 
       &:hover {
-        // @include button-active--opacity;
+        @include button-active--opacity;
       }
 
       &:last-of-type {
@@ -156,11 +156,11 @@ $creation-height: 11rem;
     }
 
     &-close {
-      // @include button-inactive--opacity;
+      @include button-inactive--opacity;
 
       align-self: flex-start;
       &:hover {
-        // @include button-active--opacity;
+        @include button-active--opacity;
       }
     }
   }
