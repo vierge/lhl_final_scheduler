@@ -1,8 +1,8 @@
-// @import '../components/styles/variables.scss';
-// @import '../components/styles/mixins.scss';
-
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 $creation-height: 11rem;
+$white: white;
 
 .creation {
   &__add {
@@ -13,10 +13,10 @@ $creation-height: 11rem;
     align-items: center;
 
     &-button {
-      // @include button-inactive--opacity;
+      @include button-inactive--opacity;
 
       &:hover {
-        // @include button-active--opacity;
+        @include button-active--opacity;
       }
     }
   }

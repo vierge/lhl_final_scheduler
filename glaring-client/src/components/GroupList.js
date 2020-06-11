@@ -5,7 +5,6 @@ import GroupListItem from "./GroupListItem.js";
 const classnames = require("classnames");
 
 export default function GroupList(props) {
-  
   const groupList = props.groups.map((group) => {
     //DayList component maps over the days array to return DayListItem component as children
     return (
@@ -18,9 +17,5 @@ export default function GroupList(props) {
     );
   });
 
-  
-  return (
-    
-   <ul>{groupList}</ul>
-  );
+  return <ul className="group-list__container">{groupList}</ul>;
 }

@@ -1,13 +1,32 @@
 @import "../styles/mixins.scss";
 @import "../styles/variables.scss";
 
+ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .group-list {
+  &__container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 300px;
+    max-width: 90%;
+  }
+
   &__item {
     @include fade;
 
     color: #8395a7;
+    margin: 0 1rem;
+    width: 300px;
     height: 5rem;
-    padding-left: 2rem;
+    // padding-left: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
