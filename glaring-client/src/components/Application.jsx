@@ -1,3 +1,5 @@
+/** @jsx jsx */
+
 import React from "react";
 
 // const groupsListing = [
@@ -47,7 +49,7 @@ export default function Application() {
   return (
     <main>
       <Topnav />
-      <Sidebar groups={state.groups} />
+      <Sidebar groups={state.groups} setGroup={setGroupData} />
       {/* <GroupList groups={groupsListing} /> */}
     </main>
   );

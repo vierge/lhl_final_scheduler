@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     #POST
     newGroup = Group.create(
       name: params[:name],
-      description: params[:description]
+      description: params[:description],
       colour: params[:colour]
     )
     newMembership = Membership.create(

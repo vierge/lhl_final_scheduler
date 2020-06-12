@@ -28,9 +28,11 @@ const Header = styled.div`
 export default function Sidebar(props) {
   const { groups } = props;
 
+  console.log(groups);
+
   const groupList = groups.map((element) => {
-    const { color, name, id } = element;
-    return <NavGroup key={id} color={color} name={name} />;
+    const { colour, name, id } = element;
+    return <NavGroup key={id} colour={colour} name={name} />;
   });
 
   return (

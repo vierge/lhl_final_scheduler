@@ -38,10 +38,13 @@ const Div = (props) => (
       align-items: center;
       width: 100%;
       height: 30px;
-      background-color: ${props.color};
+      background-color: ${props.colour};
+      ${props.colour === "black" && "color: white;"}
 
       &:hover {
-        color: white;
+        ${(props.colour === "black" &&
+          "background-color: grey; color: black;") ||
+          "color: white;"}
       }
     `}
     {...props}
@@ -49,11 +52,11 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { color } = props;
+  const { colour, name } = props;
 
   return (
-    <Div color={color}>
-      <Text>++ GROUP! ++</Text>
+    <Div colour={colour}>
+      <Text>{name}</Text>
       <Button>X</Button>
     </Div>
   );
