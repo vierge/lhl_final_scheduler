@@ -24,32 +24,3 @@ export default function Application() {
     </main>
   );
 }
-
-// return (
-//   <main>
-//     <section className="sidebar">
-//       <nav classname="sidebar__menu">
-//         Event Scheduler
-//         <GroupList groups={groupslisting} group={group} setGroup={setGroup} />
-//       </nav>
-//       <br />
-//       <section className="creation__card-right">
-//         <section className="creation__actions">
-//           <Button register>CreateNewGroup</Button>
-//         </section>
-//       </section>
-
-//       <br />
-//       <br />
-//       <br />
-
-//       <section className="creation__card-left">
-//         <section className="creation__actions">
-//           <Button register>
-//             MySchedule (Shows all events you are going to)
-//           </Button>
-//         </section>
-//       </section>
-//     </section>
-//   </main>
-// );
