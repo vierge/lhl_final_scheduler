@@ -55,15 +55,6 @@ export default function NavGroup(props) {
   const { color, id, cancel, name, setCurrentGroup } = props;
 
 
-  // const cancel = function() {
-  // console.log("CLICKCANCEL", JSON.stringify(id));
-
-  // return axios.delete(`api/groups/${id}`).then((res) =>  
-
-  //  {console.log(JSON.stringify(res))});
-
-  // };
-
   return (
     <Div color={color}>
       {/* <Text>++ GROUP! ++</Text> */}
