@@ -1,8 +1,16 @@
 import React from 'react';
 import "./Index.scss"
+import Button from "../Button"
 
 export default function Event() {
 
+  function accepted() {
+    console.log("Accepted invite")
+  }
+
+  function decline() {
+    console.log("Declined invite");
+  }
 
 
   return (
@@ -17,7 +25,10 @@ export default function Event() {
       </div>
       <div className="event__attend">
         <div className="event__attend--list">123456789</div>
-        <div className="event__attend--reso">Y/N</div>
+        <div className="event__attend--reso">
+          <Button confirm onClick={accepted}>Going</Button>
+          <Button danger onClick={decline}>Not Going</Button>
+        </div>
       </div>
     </main>
     <aside className="event__TIME"><p>TI</p><p>ME</p></aside>
