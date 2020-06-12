@@ -13,9 +13,9 @@ export default function useAppData() {
   });
 
   async function setGroupData(group_id) {
-    // console.log(state.groups);
-    const events = await axios.get(`/api/groups/${group_id}/events`);
-    // console.log(events.data);
+    console.log(`group to get: ${group_id}`);
+    const events = await axios.get(`/api/groups/${group_id - 1}/events`);
+    console.log(events);
     const group = state.groups[group_id - 1];
     setState((prev) => ({
       ...prev,
@@ -27,7 +27,20 @@ export default function useAppData() {
     console.log(state);
   }
 
+  async function addGroupData(group) {
+    try {
+      const newGroup = await axios.post(`/api/groups`, {
+        headers: { "Content-Type": "application/json" },
+        body: { group },
+      });
+      setGroupData(newGroup.data.id);
+    } catch (err) {
+      alert(err);
+    }
+  }
+
   useEffect(() => {
+    // INIT DATA ON LANDING
     Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
       (all) => {
         console.log(all);

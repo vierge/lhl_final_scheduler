@@ -38,13 +38,7 @@ const Header = (props) => (
 );
 
 const AddGroup = (props) => (
-  <NavGroup
-    css={css`
-      colour: deeppink;
-    `}
-    name="addgroup"
-    button="+"
-  />
+  <NavGroup name="addgroup" button="+" colour="deeppink" {...props} />
 );
 
 export default function Sidebar(props) {
@@ -72,7 +66,8 @@ export default function Sidebar(props) {
           <h3>{currentUser}</h3>
         </Header>
         {groupList}
-        <NavGroup onClick={/*(event) => addGroup() */} />
+        {/* add onClick prop below for group add */}
+        <AddGroup />
         <Options />
       </Nav>
     </main>
