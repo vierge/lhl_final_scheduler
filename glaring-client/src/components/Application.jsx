@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import useAppData from "../hooks/useAppData.js";
 // import axios from "axios";
 // import Testbed from "./Testbed.jsx";
-import GroupList from "./GroupList";
+import GroupList from "./GroupList.js";
 // import Button from "./Button.js";
 import Topnav from "./Topnav";
 import Sidebar from "./Sidebar/Index";
@@ -11,11 +11,12 @@ import { css, jsx } from "@emotion/core";
 export default function Application() {
   const { state, setGroupData } = useAppData();
 
+   const { currentGroup, setCurrentGroup } = useState([2]);
+
   // const [state, setState] = useState("smoko");
   // const [groups, setGroups] = useState([]);
   // const [group, setGroup] = useState("Group 1");
 
-console.log("STATE", state);
 
   // const groupsListing = [
   //   {
@@ -55,8 +56,8 @@ console.log("STATE", state);
   return (
     <main>
       <Topnav />
-        <GroupList groups={state.groups} setGroup={setGroupData} />
-        <Sidebar groups={state.groups} setGroup={setGroupData} />
+        <GroupList groups={state.groups} />
+        <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} />
 
       {/* <Sidebar groups={groupsListing} />
       <GroupList groups={groupsListing} /> */}

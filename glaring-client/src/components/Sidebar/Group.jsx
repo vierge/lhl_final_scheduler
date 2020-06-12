@@ -49,11 +49,12 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { color, name } = props;
+  const { color, name, setCurrentGroup } = props;
 
   return (
     <Div color={color}>
-      <Text>++ GROUP! ++</Text>
+      {/* <Text>++ GROUP! ++</Text> */}
+      <Button onclick={setCurrentGroup} >++ GROUP! ++</Button>
       {/* <Text> {name} </Text> */}
       <Button>X</Button>
     </Div>

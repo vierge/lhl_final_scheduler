@@ -12,7 +12,10 @@ export default function useAppData() {
     reservations: [],
   });
 
-  const setGroupData = (groups) => setState({ ...state, groups }); //updates the state with the new groups
+
+  console.log("STATE", state);
+
+  // const setGroupData = (groups) => setState({ ...state, groups }); //updates the state with the new groups
 
   async function setGroupData(group_id) {
     console.log(state.groups);
