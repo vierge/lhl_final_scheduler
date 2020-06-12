@@ -2,7 +2,7 @@
 import React from "react";
 import { css, jsx } from "@emotion/core";
 // import "./GroupList.scss";
-import GroupListItem from "./GroupListItem.jsx";
+import GroupListItem from "./GroupListItem.js";
 
 export default function GroupList(props) {
   const groupList = props.groups.map((group) => {
@@ -10,6 +10,7 @@ export default function GroupList(props) {
     return (
       <GroupListItem
         key={group.id}
+        id={group.id}
         name={group.name}
         selected={group.name === props.group}
         setGroup={props.setGroup}

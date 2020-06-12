@@ -30,3 +30,4 @@ export default {
   export const GroupList2 = () => <GroupList groups={groups} group={"Group 2"} setGroup={action("setGroup")} />;
 
   export const GroupList3 = () => <GroupList groups={groups} group={"Group 3"} setGroup={action("setGroup")} />;
+
