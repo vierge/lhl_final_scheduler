@@ -1,36 +1,6 @@
 /** @jsx jsx */
 
 import React from "react";
-
-// const groupsListing = [
-//   {
-//     id: 1,
-//     name: "Group 1",
-//     color: "mediumslateblue",
-//   },
-//   {
-//     id: 2,
-//     name: "Group 2",
-//     color: "green",
-//   },
-//   {
-//     id: 3,
-//     name: "Group 3",
-//     color: "palegrey",
-//   },
-//   {
-//     id: 4,
-//     name: "Group 4",
-//     color: "deeppink",
-//   },
-//   {
-//     id: 5,
-//     name: "Group 5",
-//     color: "orange",
-//   },
-// ];
-
-// import useAppData from "../hooks/useAppData";
 // import axios from "axios";
 // import Testbed from "./Testbed.jsx";
 // import GroupList from "./GroupList";
