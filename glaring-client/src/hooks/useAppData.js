@@ -12,6 +12,8 @@ export default function useAppData() {
     reservations: [],
   });
 
+  const setGroupData = (groups) => setState({ ...state, groups }); //updates the state with the new groups
+
   async function setGroupData(group_id) {
     console.log(state.groups);
     const { events, memberships, reservations } = await axios.get(
