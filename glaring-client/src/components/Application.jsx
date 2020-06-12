@@ -9,7 +9,7 @@ import Sidebar from "./Sidebar/Index";
 import { css, jsx } from "@emotion/core";
 
 export default function Application() {
-  const { state, setGroupData } = useAppData();
+  const { state, setGroupData, cancel } = useAppData();
 
   const { currentGroup, setCurrentGroup } = useState("Black Lives Matter");
 
@@ -55,10 +55,10 @@ export default function Application() {
   return (
     <main>
       <Topnav />
-      {/* <GroupList groups={state.groups} /> */}
+      <GroupList groups={state.groups}/>
 
-      <GroupList groups={state.events} />
-      <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} />
+      {/* <GroupList groups={state.events} /> */}
+      <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} cancel={cancel} />
 
     </main>
   );

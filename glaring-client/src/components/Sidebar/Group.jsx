@@ -1,10 +1,11 @@
 /**@jsx jsx */
 
 import React from "react";
-
 import { jsx, css } from "@emotion/core";
-
 import styled from "@emotion/styled";
+
+// import Button from "../components/Button";
+
 
 const Text = (props) => (
 
@@ -51,16 +52,28 @@ const Div = (props) => (
 
 export default function NavGroup(props) {
 
-  // console.log("AAA", props);
-  const { color, name, setCurrentGroup } = props;
+  const { color, id, cancel, name, setCurrentGroup } = props;
+
+
+  // const cancel = function() {
+  // console.log("CLICKCANCEL", JSON.stringify(id));
+
+  // return axios.delete(`api/groups/${id}`).then((res) =>  
+
+  //  {console.log(JSON.stringify(res))});
+
+  // };
 
   return (
     <Div color={color}>
       {/* <Text>++ GROUP! ++</Text> */}
-      <Button onclick={()=>setCurrentGroup(name)}>++ GROUP! ++</Button>
+      
+      <Button onClick={()=>setCurrentGroup(name)}>++ GROUP! ++</Button>
+
       {/* <Button onclick={()=>setCurrentGroup(name)} > {name} </Button> */}
       {/* <Text> {name} </Text> */}
-      <Button>X</Button>
+
+      <Button onClick={cancel}>X</Button>
     </Div>
   );
 }
