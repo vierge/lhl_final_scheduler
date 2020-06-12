@@ -7,6 +7,9 @@ import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 const Text = (props) => (
+
+
+
   <p
     css={css`
       display: block;
@@ -49,12 +52,14 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
+
+  console.log("AAA", props);
   const { color, name, setCurrentGroup } = props;
 
   return (
     <Div color={color}>
       {/* <Text>++ GROUP! ++</Text> */}
-      <Button onclick={setCurrentGroup} >++ GROUP! ++</Button>
+      <Button onclick={()=>setCurrentGroup(name)} >++ GROUP! ++</Button>
       {/* <Text> {name} </Text> */}
       <Button>X</Button>
     </Div>

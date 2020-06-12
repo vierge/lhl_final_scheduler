@@ -11,7 +11,7 @@ import { css, jsx } from "@emotion/core";
 export default function Application() {
   const { state, setGroupData } = useAppData();
 
-   const { currentGroup, setCurrentGroup } = useState([2]);
+   const { currentGroup, setCurrentGroup } = useState("Black Lives Matter");
 
   // const [state, setState] = useState("smoko");
   // const [groups, setGroups] = useState([]);
@@ -57,6 +57,8 @@ export default function Application() {
     <main>
       <Topnav />
         <GroupList groups={state.groups} />
+
+
         <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} />
 
       {/* <Sidebar groups={groupsListing} />
