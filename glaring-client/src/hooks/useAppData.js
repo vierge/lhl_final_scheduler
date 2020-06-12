@@ -16,7 +16,6 @@ export default function useAppData() {
  async function cancel(id) {
   let newGroups = state.groups.filter(group => group.id !== id);
 
-
   console.log("CLICKCANCEL", JSON.stringify(id));
   return axios.delete(`api/groups/${id}`).then((res) => {
 

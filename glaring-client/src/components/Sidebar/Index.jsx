@@ -32,20 +32,6 @@ export default function Sidebar(props) {
 
   console.log("PROPS", props)
 
-  // const cancel = function(id) {
-  
-  // let newGroups = groups.filter(group => group.id !== id);
-
-  // console.log("CLICKCANCEL", JSON.stringify(id));
-  // return axios.delete(`api/groups/${id}`).then((res) => {
-      
-  //   console.log(JSON.stringify(res))
-    
-  //   setCurrentGroup
-  
-  //   });
-  // };
-
   const groupList = groups.map((element) => {
     const { color, name, id } = element;
     return <NavGroup key={id} id={id} color={color} name={name} setCurrentGroup = {setCurrentGroup} cancel={() => cancel(id)} />;
