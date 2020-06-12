@@ -4,7 +4,6 @@ import GroupList from "../components/GroupList.js";
 import { action } from '@storybook/addon-actions';
 
 
-
 const groups = [
   {
     id: 1,
@@ -31,3 +30,4 @@ export default {
   export const GroupList2 = () => <GroupList groups={groups} group={"Group 2"} setGroup={action("setGroup")} />;
 
   export const GroupList3 = () => <GroupList groups={groups} group={"Group 3"} setGroup={action("setGroup")} />;
+

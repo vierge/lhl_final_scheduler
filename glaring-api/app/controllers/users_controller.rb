@@ -7,13 +7,8 @@ class UsersController < ApplicationController
   end
   
   def create
-    newUser = User.create(
-      name: params[:name],
-      password: params[:password],
-      email: params[:email],
-      phone_number: params[:phone_number],
-      avatar: params[:avatar]
-    )
+    params.permit!
+    newUser = User.create!(params[:user])
     render json: newUser.to_json
   end
 
@@ -28,25 +23,27 @@ class UsersController < ApplicationController
     when :put
       #PUT
       membership = Membership.find_by(user_id: params[:id], group_id: params[:group_id])
-      membership.update(admin: !:admin);
+      membership.toggle(:admin).save!;
       render json: membership.to_json
     when :patch
       #PATCH
-      newUser = request.body.read
-      user = User.find_by(params[:id])
-      user.update(newUser)
+      newUser = params[:user]
+      newUser.permit!
+      user = User.find_by(id: params[:id])
+      user.update!(newUser)
       render json: newUser.to_json
     end
   end
 
   def destroy
     death_row = User.find_by(id: params[:id])
+    puts death_row
     if death_row
       death_row.destroy
-      render "delete successful..."
     else
       raise "error: could not delete"
     end
+    render json: { status: response.status }
   end
 
   private
