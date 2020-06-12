@@ -6,9 +6,7 @@ import Axios from 'axios';
 export default function Event() {
 
   function accepted() {
-    
-    Axios.put(`/api/events/:id`)
-    .then(() => console.log("Accepted invite"))
+    console.log("Accepted invite")
   }
 
   function decline() {
@@ -29,8 +27,8 @@ export default function Event() {
       <div className="event__attend">
         <div className="event__attend--list">123456789</div>
         <div className="event__attend--reso">
-          <Button confirm onClick={accepted}>Going</Button>
-          <Button danger onClick={decline}>Not Going</Button>
+          <Button confirm onClick={accepted}>✓</Button>
+          <Button danger onClick={decline}>✗</Button>
         </div>
       </div>
     </main>
