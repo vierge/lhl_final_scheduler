@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "photo"
+    t.string "colour"
     t.bigint "group_id"
     t.index ["group_id"], name: "index_events_on_group_id"
   end
@@ -29,6 +30,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.string "colour"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,10 +57,11 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "colour"
     t.string "name"
     t.string "password"
     t.string "email"
-    t.decimal "phone_number"
+    t.bigint "phone_number"
     t.string "avatar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

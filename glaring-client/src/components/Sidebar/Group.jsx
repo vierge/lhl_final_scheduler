@@ -7,7 +7,6 @@ import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 const Text = (props) => (
-
   <p
     css={css`
       display: block;
@@ -19,17 +18,22 @@ const Text = (props) => (
   />
 );
 
-const Button = styled.button`
-  padding: 0;
-  background: none;
-  border: none;
-  width: 15%;
-  height: 100%;
+const Button = (props) => (
+  <button
+    css={css`
+      padding: 0;
+      background: none;
+      border: none;
+      width: 15%;
+      height: 100%;
 
-  &:hover {
-    color: red;
-  }
-`;
+      &:hover {
+        color: red;
+      }
+    `}
+    {...props}
+  />
+);
 const Div = (props) => (
   <div
     css={css`
@@ -39,10 +43,13 @@ const Div = (props) => (
       align-items: center;
       width: 100%;
       height: 30px;
-      background-color: ${props.color};
+      background-color: ${props.colour};
+      ${props.colour === "black" && "color: white;"}
 
       &:hover {
-        color: white;
+        ${(props.colour === "black" &&
+          "background-color: grey; color: black;") ||
+          "color: white;"}
       }
     `}
     {...props}
@@ -50,17 +57,12 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-
-  // console.log("AAA", props);
-  const { color, name, setCurrentGroup } = props;
+  const { colour, name, button, setGroup, id } = props;
 
   return (
-    <Div color={color}>
-      {/* <Text>++ GROUP! ++</Text> */}
-      <Button onclick={()=>setCurrentGroup(name)}>++ GROUP! ++</Button>
-      {/* <Button onclick={()=>setCurrentGroup(name)} > {name} </Button> */}
-      {/* <Text> {name} </Text> */}
-      <Button>X</Button>
+    <Div colour={colour} onClick={(event) => setGroup(id)}>
+      <Text>{name}</Text>
+      <Button>{button || "X"}</Button>
     </Div>
   );
 }
