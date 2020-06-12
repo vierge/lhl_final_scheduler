@@ -54,5 +54,5 @@ export default function useAppData() {
     );
   }, []);
 
-  return { state, setGroupData };
+  return { state, setGroupData, addGroupData };
 }

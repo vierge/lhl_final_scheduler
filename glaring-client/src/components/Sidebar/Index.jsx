@@ -60,17 +60,15 @@ export default function Sidebar(props) {
   });
 
   return (
-    <main>
-      <Nav>
-        <Header>
-          <h3>{currentUser}</h3>
-        </Header>
-        {groupList}
-        {/* add onClick prop below for group add */}
-        <AddGroup />
-        <Options />
-      </Nav>
-    </main>
+    <Nav>
+      <Header>
+        <h3>{currentUser}</h3>
+      </Header>
+      {groupList}
+      {/* add onClick prop below for group add */}
+      <AddGroup />
+      <Options />
+    </Nav>
   );
   /* <NavGroup color="deeppink" />
   <NavGroup color="mediumslateblue" />
