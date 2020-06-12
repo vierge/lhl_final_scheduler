@@ -60,8 +60,6 @@ export default function Application() {
       <GroupList groups={state.events} />
       <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} />
 
-      {/* <Sidebar groups={groupsListing} />
-      <GroupList groups={groupsListing} /> */}
     </main>
   );
 }
