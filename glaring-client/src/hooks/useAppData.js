@@ -22,12 +22,9 @@ export default function useAppData() {
     console.log(JSON.stringify(res))
    
     setState({ 
-
       ...state, 
       groups: newGroups
      });
-   
-   
     });
 };
 
@@ -40,7 +37,6 @@ export default function useAppData() {
 
     const events = await axios.get(`/api/groups/${group_id}/events`);
 
-    // console.log(events.data);
     const group = state.groups[group_id - 1];
     setState((prev) => ({
       ...prev,
