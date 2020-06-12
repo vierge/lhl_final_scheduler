@@ -1,11 +1,14 @@
 import React from 'react';
 import "./Index.scss"
 import Button from "../Button"
+import Axios from 'axios';
 
 export default function Event() {
 
   function accepted() {
-    console.log("Accepted invite")
+    
+    Axios.put(`/api/events/:id`)
+    .then(() => console.log("Accepted invite"))
   }
 
   function decline() {
