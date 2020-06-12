@@ -3,11 +3,8 @@ class EventsController < ApplicationController
 
   def index
     # GET
-    @events = Event.where(group_id: params[:group_id]).order(start_time: 'desc').includes(:reservations)
-
-    @events.each do |event|
-      puts event.reservation.user_id
-    render json: @events.to_json
+    events = Event.includes(:reservations).where(group_id: params[:group_id]).order(start_time: 'desc')
+    render json: events.to_json(include: :reservations)
   end
 
   def create
