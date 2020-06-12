@@ -18,17 +18,22 @@ const Text = (props) => (
   />
 );
 
-const Button = styled.button`
-  padding: 0;
-  background: none;
-  border: none;
-  width: 15%;
-  height: 100%;
+const Button = (props) => (
+  <button
+    css={css`
+      padding: 0;
+      background: none;
+      border: none;
+      width: 15%;
+      height: 100%;
 
-  &:hover {
-    color: red;
-  }
-`;
+      &:hover {
+        color: red;
+      }
+    `}
+    {...props}
+  />
+);
 const Div = (props) => (
   <div
     css={css`
@@ -52,10 +57,10 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { colour, name, button } = props;
+  const { colour, name, button, setGroup, key, id } = props;
 
   return (
-    <Div colour={colour}>
+    <Div colour={colour} onClick={(event) => setGroup(id)}>
       <Text>{name}</Text>
       <Button>{button || "X"}</Button>
     </Div>

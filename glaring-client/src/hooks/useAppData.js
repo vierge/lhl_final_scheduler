@@ -14,17 +14,15 @@ export default function useAppData() {
 
   async function setGroupData(group_id) {
     console.log(state.groups);
-    const { events, memberships, reservations } = await axios.get(
-      `/api/groups/${group_id}/events`
-    );
+    const events = await axios.get(`/api/groups/${group_id}/events`);
     // console.log(events.data);
     const group = state.groups[group_id - 1];
     setState((prev) => ({
       ...prev,
       current: { group: group },
       group_events: events.data,
-      memberships,
-      reservations,
+      // memberships,
+      // reservations,
     }));
     console.log(state);
   }

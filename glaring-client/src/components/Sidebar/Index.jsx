@@ -38,13 +38,21 @@ const Header = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups } = props;
+  const { groups, setGroup } = props;
 
   console.log(groups);
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
-    return <NavGroup key={id} colour={colour} name={name} />;
+    return (
+      <NavGroup
+        setGroup={setGroup}
+        key={id}
+        id={id}
+        colour={colour}
+        name={name}
+      />
+    );
   });
 
   return (
@@ -54,7 +62,12 @@ export default function Sidebar(props) {
           <h3>{currentUser}</h3>
         </Header>
         {groupList}
-        <NavGroup colour="deeppink" name="Addgroup?" button="+" />
+        <NavGroup
+          colour="deeppink"
+          name="Addgroup?"
+          button="+"
+          setGroup={null}
+        />
         <Options />
       </Nav>
     </main>
