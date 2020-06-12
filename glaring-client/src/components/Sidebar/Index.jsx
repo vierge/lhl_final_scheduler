@@ -42,7 +42,7 @@ const AddGroup = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups, setGroup } = props;
+  const { groups, setGroup, getDirectory } = props;
 
   console.log(groups);
 
@@ -67,7 +67,7 @@ export default function Sidebar(props) {
       {groupList}
       {/* add onClick prop below for group add */}
       <AddGroup />
-      <Options />
+      <Options getDirectory={getDirectory} />
     </Nav>
   );
   /* <NavGroup color="deeppink" />
