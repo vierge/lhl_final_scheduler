@@ -40,7 +40,7 @@ database routes, their expected request, and their response are outlined here.
   - `users#show @ /api/users/:id`
     - Returns a single user object
 - __EVENTS__
-  - `events#index @ /api/gropus/:group_id/events`
+  - `events#index @ /api/groups/:group_id/events`
     - Returns an array of events and array of reservations associated with  `:group_id`
   - `events#show @ /api/events/:id`
     - Returns an event + all reservations containing `:event_id`

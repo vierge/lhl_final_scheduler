@@ -10,6 +10,7 @@ export default function GroupList(props) {
     return (
       <GroupListItem
         key={group.id}
+        id={group.id}
         name={group.name}
         selected={group.name === props.group}
         setGroup={props.setGroup}
