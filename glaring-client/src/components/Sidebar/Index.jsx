@@ -4,6 +4,8 @@ import React from "react";
 import { css, jsx } from "@emotion/core";
 import NavGroup from "./Group";
 import Options from "./Options";
+// import axios from "axios";
+
 // import NavGroupList from "./GroupList"
 
 const currentUser = "Marshmallow";
@@ -38,20 +40,9 @@ const Header = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory, addGroup } = props;
-  const AddGroup = (props) => (
-    <NavGroup
-      name="addgroup"
-      button="+"
-      colour="deeppink"
-      setGroup={(event) =>
-        addGroup({ name: "charlie", user_id: 1, description: "UGH" })
-      }
-      {...props}
-    />
-  );
+  const { groups, setGroup, getDirectory, addGroup, removeGroup } = props;
 
-  console.log(groups);
+  console.log("PROPS", props);
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
@@ -62,6 +53,7 @@ export default function Sidebar(props) {
         id={id}
         colour={colour}
         name={name}
+        removeGroup={removeGroup}
       />
     );
   });
@@ -72,7 +64,6 @@ export default function Sidebar(props) {
         <h3>{currentUser}</h3>
       </Header>
       {groupList}
-      {/* add onClick prop below for group add */}
       <AddGroup />
       <Options getDirectory={getDirectory} />
     </Nav>

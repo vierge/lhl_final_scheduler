@@ -27,23 +27,26 @@ export default function useAppData() {
     );
   }, []);
 
-  async function getDirectoryData() {
-    setState((prev) => ({ ...prev, current: { view: "groups" } }));
-  }
+  console.log("STATE", state);
 
   async function setGroupData(group_id) {
-    console.log(`group to get: ${group_id}`);
-    const events = await axios.get(`/api/groups/${group_id - 1}/events`);
-    console.log(events);
+    console.log(state.groups);
+
+    const events = await axios.get(`/api/groups/${group_id}/events`);
+
     const group = state.groups[group_id - 1];
     setState((prev) => ({
       ...prev,
-      current: { group: group, view: "events" },
+      current: { group: group },
       group_events: events.data,
       // memberships,
       // reservations,
     }));
     console.log(state);
+  }
+
+  async function getDirectoryData() {
+    setState((prev) => ({ ...prev, current: { view: "groups" } }));
   }
 
   async function addGroupData(group) {
@@ -88,5 +91,26 @@ export default function useAppData() {
     }
   };
 
-  return { state, setGroupData, getDirectoryData, addGroupData, addEventData };
+  async function removeGroup(id) {
+    let newGroups = state.groups.filter((group) => group.id !== id);
+
+    console.log("CLICKCANCEL", JSON.stringify(id));
+    return axios.delete(`api/groups/${id}`).then((res) => {
+      console.log(JSON.stringify(res));
+
+      setState((prev) => ({
+        ...prev,
+        groups: newGroups,
+      }));
+    });
+  }
+
+  return {
+    state,
+    setGroupData,
+    getDirectoryData,
+    addGroupData,
+    addEventData,
+    removeGroup,
+  };
 }

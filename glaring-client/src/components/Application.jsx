@@ -1,9 +1,6 @@
 /** @jsx jsx */
 
 import React from "react";
-// import axios from "axios";
-// import Testbed from "./Testbed.jsx";
-// import Button from "./Button.js";
 
 import { css, jsx } from "@emotion/core";
 
@@ -29,13 +26,7 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  const {
-    state,
-    setGroupData,
-    addGroupData,
-    addEventData,
-    getDirectoryData,
-  } = useAppData();
+  const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
 
   console.log(state);
 
@@ -46,8 +37,9 @@ export default function Application() {
         groups={state.groups}
         setGroup={setGroupData}
         getDirectory={getDirectoryData}
-        addGroup={addGroupData}
+        removeGroup={removeGroup}
       />
+
       <Main>
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
