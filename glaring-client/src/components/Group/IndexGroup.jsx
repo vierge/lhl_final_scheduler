@@ -1,6 +1,6 @@
 import React from "react";
 import "./IndexGroup.scss";
-import ButtonGroup from "./ButtonGroup";
+import Button from "./ButtonGroup";
 
 export default function Group() {
   function joinGroup() {
@@ -24,9 +24,9 @@ export default function Group() {
           <div className="group__attend--reso">
 
               <div >
-                <ButtonGroup confirm onClick={joinGroup}>
+                <Button confirm onClick={joinGroup}>
                     Join Group
-                </ButtonGroup>
+                </Button>
                </div>
             </div>            
          </div>

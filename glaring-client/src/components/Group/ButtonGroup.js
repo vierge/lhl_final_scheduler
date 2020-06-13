@@ -5,7 +5,7 @@ import "./ButtonGroup.scss";
 
 const classnames = require("classnames");
 
-export default function ButtonGroup(props) {
+export default function Button(props) {
   const buttonClass = classnames("buttonClass", {
     "buttonClass--confirm": props.confirm,
     "buttonClass--danger": props.danger,
@@ -15,12 +15,12 @@ export default function ButtonGroup(props) {
 
   return (
     <button //uses props.children value as the button text
-      css={css`
-      margin: 0 10px;
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
-    `}
+    //   css={css`
+    //   margin: 0 0px;
+    //   height: 3rem;
+    //   width:  8rem;
+    //   border-radius: 1rem;
+    // `}
       className={buttonClass} //button element is wrapped in Button component
       onClick={props.onClick}
       disabled={props.disabled}
