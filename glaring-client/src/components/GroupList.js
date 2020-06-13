@@ -21,15 +21,10 @@ export default function GroupList(props) {
   return (
     <ul
       css={css`
-        margin: 0;
-        padding: 0;
-        position: relative;
-        left: 200px;
         display: flex;
         justify-content: space-evenly;
         flex-direction: row;
         flex-wrap: wrap;
-        width: calc(100% - 200px);
         min-width: 400px;
         background-color: slategrey;
       `}

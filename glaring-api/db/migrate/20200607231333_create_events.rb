@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
         t.timestamp :start_time
         t.timestamp :end_time
         t.string :photo
+        t.string :colour
         t.references :group, foreign_key: true
     end
   end

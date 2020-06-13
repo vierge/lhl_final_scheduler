@@ -1,65 +1,56 @@
-import React, { useState, useEffect } from "react";
-import useAppData from "../hooks/useAppData.js";
+/** @jsx jsx */
+
+import React, { useState } from "react";
+
+
 // import axios from "axios";
 // import Testbed from "./Testbed.jsx";
-import GroupList from "./GroupList.js";
 // import Button from "./Button.js";
-import Topnav from "./Topnav";
-import Sidebar from "./Sidebar/Index";
+
 import { css, jsx } from "@emotion/core";
 
+import Topnav from "./Topnav";
+import Sidebar from "./Sidebar/Index";
+import GroupList from "./GroupList";
+import EventsList from "./EventsList";
+
+import useAppData from "../hooks/useAppData";
+
+const Main = (props) => (
+  <main
+    css={css`
+      margin: 0;
+      padding: 0;
+      width: calc(100% - 200px);
+      position: relative;
+      left: 200px;
+      background-color: black;
+    `}
+    {...props}
+  />
+);
+
 export default function Application() {
-  const { state, setGroupData, cancel } = useAppData();
+   
+  const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
 
   const { currentGroup, setCurrentGroup } = useState("Black Lives Matter");
 
-  // const [state, setState] = useState("smoko");
-  // const [groups, setGroups] = useState([]);
-  // const [group, setGroup] = useState("Group 1");
-
-  const eventsListing = [
-    {
-      id: 1,
-      name: "Event 1",
-      color: "mediumslateblue",
-    },
-    {
-      id: 2,
-      name: "Event 2",
-      color: "green",
-    },
-    {
-      id: 3,
-      name: "Event 3",
-      color: "palegrey",
-    },
-    {
-      id: 4,
-      name: "Event 4",
-      color: "deeppink",
-    },
-    {
-      id: 5,
-      name: "Event 5",
-      color: "orange",
-    },
-  ];
-
-  // useEffect(() => {
-  //   axios.get(`/api/groups`).then((response) => {
-  //     console.log("AAA", response);
-  //     setGroups(() => response.data);
-  //   });
-  // });
+  console.log(state);
 
   return (
-    <main>
+    <body>
       <Topnav />
-      <GroupList groups={state.groups}/>
-
+      <Main>
+      {/* <GroupList groups={state.groups}/> */}
       {/* <GroupList groups={state.events} /> */}
-      <Sidebar groups={state.groups} setCurrentGroup={setCurrentGroup} cancel={cancel} />
+            <Sidebar groups={state.groups} setGroup={setGroupData} getDirectory={getDirectoryData} setCurrentGroup={setCurrentGroup} removeGroup={removeGroup} />
 
-    </main>
+        {state.current.view === "groups" && <GroupList groups={state.groups} />}
+        {state.current.view === "events" && (
+          <EventsList events={state.group_events} />
+        )}
+      </Main>
+    </body>
   );
 }

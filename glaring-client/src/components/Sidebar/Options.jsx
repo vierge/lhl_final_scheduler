@@ -42,10 +42,15 @@ const Button = (props) => (
 );
 
 export default function Options(props) {
-  const {} = props;
+  const { getDirectory } = props;
   return (
     <GridContainer>
-      <Button color="skyblue" background="black" grid="a">
+      <Button
+        color="skyblue"
+        background="black"
+        grid="a"
+        onClick={(event) => getDirectory()}
+      >
         ++ DIRECTORY ++
       </Button>
       <Button color="violet" background="black" grid="b">
