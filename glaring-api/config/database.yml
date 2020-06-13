@@ -6,6 +6,7 @@ development:
   database: glaring_dev
   username: development
   password: development
+
   pool: 5
 
 test:

@@ -11,7 +11,6 @@ export default function Form(props) {
       <section className="creation__card-left">
         <form autoComplete="off">
 
-
   <label for="groupName">Group Name: </label>
           <input 
             id="groupName"
