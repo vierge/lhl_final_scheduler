@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
 export default function useAppData() {
@@ -16,7 +16,6 @@ export default function useAppData() {
     // INIT DATA ON LANDING
     Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
       (all) => {
-        console.log(all);
         const [users, groups] = all;
         setState((prev) => ({
           ...prev,
@@ -27,11 +26,7 @@ export default function useAppData() {
     );
   }, []);
 
-  console.log("STATE", state);
-
   async function setGroupData(group_id) {
-    console.log(state.groups);
-
     const events = await axios.get(`/api/groups/${group_id}/events`);
 
     const group = state.groups[group_id - 1];
@@ -42,7 +37,6 @@ export default function useAppData() {
       // memberships,
       // reservations,
     }));
-    console.log(state);
   }
 
   async function getDirectoryData() {
@@ -50,10 +44,8 @@ export default function useAppData() {
   }
 
   async function addGroupData(group) {
-    console.log(group);
     const newGroup = await axios.post(`/api/groups`, group);
-    console.log("group to make:");
-    console.log(newGroup);
+
     const newGroups = [...state.groups, await newGroup.data.group];
     setState((prev) => ({
       ...prev,
@@ -64,8 +56,6 @@ export default function useAppData() {
 
   async function editGroupData(group_id, group) {
     const newGroup = await axios.patch(`/api/groups/${group_id}`, group);
-    console.log("group to make:");
-    console.log(newGroup);
     const newGroups = [...state.groups, await newGroup.data.group];
     setState((prev) => ({
       ...prev,
@@ -109,9 +99,10 @@ export default function useAppData() {
 
   async function removeEvent(event_id) {
     try {
-      state.group_events.filter((event) => event.id !== id);
       await axios.delete(`api/events/${event_id}`);
-      const newEvents = [...state.group_events, newEvent];
+      const newEvents = state.group_events.filter(
+        (event) => event.id !== event_id
+      );
       setState((prev) => ({ ...prev, group_events: newEvents }));
     } catch (err) {
       alert(err);
@@ -141,16 +132,16 @@ export default function useAppData() {
     }
   };
 
-  const userDataReducer = (action, payload) => {
-    switch (action) {
-      case "ADD":
-        return addUserData(payload);
-      case "EDIT":
-        return editUserData(payload);
-      case "DELETE":
-        return removeUser(payload);
-    }
-  };
+  // const userDataReducer = (action, payload) => {
+  //   switch (action) {
+  //     case "ADD":
+  //       return addUserData(payload);
+  //     case "EDIT":
+  //       return editUserData(payload);
+  //     case "DELETE":
+  //       return removeUser(payload);
+  //   }
+  // };
 
   return {
     state,
