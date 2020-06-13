@@ -52,7 +52,11 @@ export default function useAppData() {
     console.log("group to make:");
     console.log(newGroup);
     const newGroups = [...state.groups, await newGroup.data.group];
-    setState((prev) => ({ ...prev, groups: newGroups }));
+    setState((prev) => ({
+      ...prev,
+      groups: newGroups,
+      group_events: newGroup.data.id,
+    }));
   }
 
   async function addEventData(event) {
