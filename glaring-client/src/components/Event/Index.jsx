@@ -3,7 +3,8 @@ import "./Index.scss";
 import Button from "../Button";
 // import Axios from 'axios';
 
-export default function Event() {
+export default function Event(props) {
+  const {name, description, start_time, end_time, photo } = props;
   function accepted() {
     console.log("Accepted invite");
   }
@@ -18,12 +19,13 @@ export default function Event() {
         <div className="event__top">
           <img
             className="event__image"
-            src="https://www.sciencenews.org/wp-content/uploads/2019/07/071019_MT_poker-ai_feat.jpg"
+            src={photo}
+            alt="PARTY TIME PHOTO PHUN"
           />
           <div className="event__content">
-            <div className="event__title">EVENT TITLE</div>
+            <div className="event__title">{name}</div>
             <div className="event__description">
-              Event Descrtipion goes here
+              {description}
             </div>
           </div>
         </div>
@@ -40,8 +42,8 @@ export default function Event() {
         </div>
       </main>
       <aside className="event__TIME">
-        <p>TI</p>
-        <p>ME</p>
+        <p>{start_time}</p>
+        <p>{end_time}</p>
       </aside>
     </div>
   );

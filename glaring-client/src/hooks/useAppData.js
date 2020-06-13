@@ -28,12 +28,12 @@ export default function useAppData() {
 
   async function setGroupData(group_id) {
     const events = await axios.get(`/api/groups/${group_id}/events`);
-
+    const newEvents = events.data
     const group = state.groups[group_id - 1];
     setState((prev) => ({
       ...prev,
-      current: { group: group },
-      group_events: events.data,
+      current: { group: group, view: "events" },
+      group_events: newEvents,
       // memberships,
       // reservations,
     }));
@@ -149,6 +149,9 @@ export default function useAppData() {
     getDirectoryData,
     addGroupData,
     addEventData,
+    editGroupData,
+    editEventData,
     removeGroup,
+    removeEvent
   };
 }

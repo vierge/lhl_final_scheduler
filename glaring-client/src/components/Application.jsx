@@ -33,7 +33,10 @@ export default function Application() {
     getDirectoryData,
     addEventData,
     addGroupData,
+    editEventData,
+    editGroupData,
     removeGroup,
+    removeEvent
   } = useAppData();
 
   console.log(state);
@@ -52,10 +55,10 @@ export default function Application() {
       <Main>
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
-          <EventsList events={state.group_events} addEvent={addEventData} />
+          <EventsList events={state.group_events} addEvent={addEventData} editEvent={editEventData} delEvent={removeEvent} />
         )}
       </Main>
-      <EventForm />
+      
     </body>
   );
 }
