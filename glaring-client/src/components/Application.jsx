@@ -26,7 +26,14 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
+  const {
+    state,
+    setGroupData,
+    getDirectoryData,
+    addEventData,
+    addGroupData,
+    removeGroup,
+  } = useAppData();
 
   console.log(state);
 
@@ -36,6 +43,7 @@ export default function Application() {
       <Sidebar
         groups={state.groups}
         setGroup={setGroupData}
+        addGroup={addGroupData}
         getDirectory={getDirectoryData}
         removeGroup={removeGroup}
       />
