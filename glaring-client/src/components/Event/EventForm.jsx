@@ -1,5 +1,8 @@
+/**@jsx jsx */
 import React from "react";
+import "./EventForm.scss";
 import { useForm } from 'react-hook-form';
+import { css, jsx } from "@emotion/core";
 
 export default function EventForm() {
   const {register, handleSubmit, errors} = useForm();
@@ -10,21 +13,31 @@ export default function EventForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* event image */}
-      <label for="img">Select image:</label>
-      <input type="file" id="img" name="img" accept="image/*" />
+      <div className="mom">
+        <main className="eventform">
+          <div className="eventform__top">
+            {/* event image */}
+            {/* <label for="img">Select image:</label>
+            <input type="file" id="img" name="img" accept="image/*" /> */}
 
-      <input type="url" placeholder="Paste event image url" />
+            <input className="image" type="url" placeholder="Paste event image url" />
 
-      <input type="text" name="title" placeholder="Enter event title" ref={register} />
-      <input type="text" name="description" placeholder="Enter event description" ref={register} />
+            <div className="eventform__content">
+              <input type="text" name="title" placeholder="Enter event title" ref={register} />
+              <input type="text" name="description" placeholder="Enter event description" ref={register} />
+            </div>
+            
+            <input type="submit"/>
 
-      {/* date */}
-      <input type="date" />
-      {/* time */}
-      <input type="time" /> 
+          </div>
+        </main>
 
-      <input type="submit"/>
+        <aside>
+          <input type="date" ref={register}/>
+          <input type="time" ref={register}/> 
+        </aside>
+
+      </div>
     </form>
   )
 }
