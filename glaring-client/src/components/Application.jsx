@@ -1,9 +1,6 @@
 /** @jsx jsx */
 
 import React from "react";
-// import axios from "axios";
-// import Testbed from "./Testbed.jsx";
-// import Button from "./Button.js";
 
 import { css, jsx } from "@emotion/core";
 
@@ -29,19 +26,21 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  const { state, setGroupData, getDirectoryData } = useAppData();
+  const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
 
   console.log(state);
 
   return (
     <body>
       <Topnav />
-      <Sidebar
-        groups={state.groups}
-        setGroup={setGroupData}
-        getDirectory={getDirectoryData}
-      />
       <Main>
+        <Sidebar
+          groups={state.groups}
+          setGroup={setGroupData}
+          getDirectory={getDirectoryData}
+          removeGroup={removeGroup}
+        />
+
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
           <EventsList events={state.group_events} />

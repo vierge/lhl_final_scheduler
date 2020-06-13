@@ -4,6 +4,8 @@ import React from "react";
 import { css, jsx } from "@emotion/core";
 import NavGroup from "./Group";
 import Options from "./Options";
+// import axios from "axios";
+
 // import NavGroupList from "./GroupList"
 
 const currentUser = "Marshmallow";
@@ -42,9 +44,9 @@ const AddGroup = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory } = props;
+  const { groups, setGroup, getDirectory, removeGroup } = props;
 
-  console.log(groups);
+  console.log("PROPS", props);
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
@@ -55,6 +57,7 @@ export default function Sidebar(props) {
         id={id}
         colour={colour}
         name={name}
+        removeGroup={removeGroup}
       />
     );
   });

@@ -1,10 +1,10 @@
 /**@jsx jsx */
 
 import React from "react";
-
 import { jsx, css } from "@emotion/core";
-
 import styled from "@emotion/styled";
+
+// import Button from "../components/Button";
 
 const Text = (props) => (
   <p
@@ -57,12 +57,12 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { colour, name, button, setGroup, id } = props;
+  const { color, name, button, setGroup, id, removeGroup } = props;
 
   return (
-    <Div colour={colour} onClick={(event) => setGroup(id)}>
-      <Text>{name}</Text>
-      <Button>{button || "X"}</Button>
+    <Div color={color} onClick={(event) => setGroup(id)}>
+      <Text> {name} </Text>
+      <Button onClick={removeGroup(id)}>{button || "X"}</Button>
     </Div>
   );
 }
