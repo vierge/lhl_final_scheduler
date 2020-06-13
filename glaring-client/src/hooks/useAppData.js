@@ -50,7 +50,7 @@ export default function useAppData() {
     try {
       const newGroup = await axios.post(`/api/groups`, {
         headers: { "Content-Type": "application/json" },
-        body: { group },
+        body: group,
       });
       setGroupData(newGroup.data.id);
     } catch (err) {
@@ -58,5 +58,32 @@ export default function useAppData() {
     }
   }
 
-  return { state, setGroupData, addGroupData, getDirectoryData };
+  async function addEventData(event) {
+    try {
+      const newEvent = await axios.post(`/api/events`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: event,
+      });
+      const newEvents = [...state.group_events, newEvent];
+      setState((prev) => ({ ...prev, group_events: newEvents }));
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  // THIS IS EXPERIMENTAL:
+  const dataReducer = (action, payload) => {
+    switch (action) {
+      case "ADDGROUP":
+        return addGroupData(payload);
+      case "ADDEVENT":
+        return addEventData(payload);
+      default:
+        return false;
+    }
+  };
+
+  return { state, setGroupData, getDirectoryData, addEventData };
 }
