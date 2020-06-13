@@ -73,6 +73,8 @@ export default function useAppData() {
     }
   }
 
+  async function editGroupData(group) {}
+
   // THIS IS EXPERIMENTAL:
   const dataReducer = (action, payload) => {
     switch (action) {
