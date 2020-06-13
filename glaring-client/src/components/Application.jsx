@@ -26,24 +26,32 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
+  const {
+    state,
+    setGroupData,
+    getDirectoryData,
+    addEventData,
+    addGroupData,
+    removeGroup,
+  } = useAppData();
 
   console.log(state);
 
   return (
     <body>
       <Topnav />
-      <Main>
-        <Sidebar
-          groups={state.groups}
-          setGroup={setGroupData}
-          getDirectory={getDirectoryData}
-          removeGroup={removeGroup}
-        />
+      <Sidebar
+        groups={state.groups}
+        setGroup={setGroupData}
+        addGroup={addGroupData}
+        getDirectory={getDirectoryData}
+        removeGroup={removeGroup}
+      />
 
+      <Main>
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
-          <EventsList events={state.group_events} />
+          <EventsList events={state.group_events} addEvent={addEventData} />
         )}
       </Main>
     </body>

@@ -39,14 +39,20 @@ const Header = (props) => (
   />
 );
 
-const AddGroup = (props) => (
-  <NavGroup name="addgroup" button="+" colour="deeppink" {...props} />
-);
-
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory, removeGroup } = props;
+  const { groups, setGroup, getDirectory, addGroup, removeGroup } = props;
 
-  console.log("PROPS", props);
+  const AddGroup = (props) => (
+    <NavGroup
+      name="addgroup"
+      button="+"
+      colour="deeppink"
+      setGroup={(event) =>
+        addGroup({ name: "charlie", user_id: 1, description: "UGH" })
+      }
+      {...props}
+    />
+  );
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
@@ -68,7 +74,6 @@ export default function Sidebar(props) {
         <h3>{currentUser}</h3>
       </Header>
       {groupList}
-      {/* add onClick prop below for group add */}
       <AddGroup />
       <Options getDirectory={getDirectory} />
     </Nav>
