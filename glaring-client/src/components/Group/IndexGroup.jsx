@@ -1,8 +1,8 @@
 import React from "react";
 import "./IndexGroup.scss";
-import Button from "../Button";
+import ButtonGroup from "./ButtonGroup";
 
-export default function Event() {
+export default function Group() {
   function joinGroup() {
     console.log("Join Group");
   }
@@ -22,10 +22,11 @@ export default function Event() {
               <div className="group__description">Group Description Goes Here</div>
           </div>
           <div className="group__attend--reso">
+
               <div >
-                <Button confirm onClick={joinGroup}>
+                <ButtonGroup confirm onClick={joinGroup}>
                     Join Group
-                </Button>
+                </ButtonGroup>
                </div>
             </div>            
          </div>
