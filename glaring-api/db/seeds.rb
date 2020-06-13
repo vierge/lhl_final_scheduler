@@ -16,6 +16,10 @@ Group.create(name: 'smoko', description: "it's 46 degrees in the queensland heat
 Group.create(name: "Rachel's fine cartoons", description: "purveyors of fine animation and animated friendship", colour: "violet")
 Group.create(name: "a box", description: "cardboard feels weird on my skin", colour: "olivegreen")
 Group.create(name: "Molly's Ex Girlfriends", description: "Molly's ex girlfriends gather to drink and commiserate behind their back. Monthly support group. terfs fuck off", colour: "lightpink")
+Group.create(name: "This is the GOAT", description: "Greatness is what we on the brink of.", colour: "blue")
+Group.create(name: "Never give up on your dreams", description: "Go hard or go home.", colour: "red")
+Group.create(name: "We are Heroes", description: "Saving the day is our mission.", colour: "orange")
+
 
 # users
 
@@ -34,7 +38,7 @@ Event.create(name: "smoko", description: "go away. i have ten whole minutes for 
 Event.create(name: "basketball", description: "lets play some pickup basketabll", location: "at the local gym", start_time: nil, photo: nil, end_time: nil, group_id: 2, colour: "blue")
 Event.create(name: "video games", description: "are you a professional gamer or a decent gamer?", location: "at the local e-sports center", start_time: nil, photo: nil, end_time: nil, group_id: 3, colour: "purple")
 Event.create(name: "baseball", description: "get ready to swing for the fences", location: "at the baseball diamond", start_time: nil, photo: nil, end_time: nil, group_id: 4, colour: "yellow")
-Event.create(name: "book reading", description: "make sure to read often, really helps people gain knowledge", location: "at the library", start_time: nil, photo: nil, end_time: nil, group_id: , colour: "green")
+Event.create(name: "book reading", description: "make sure to read often, really helps people gain knowledge", location: "at the library", start_time: nil, photo: nil, end_time: nil, group_id: 1, colour: "green")
 Event.create(name: "cooking", description: "want to learn how to cook, because if you do then you are in luck", location: "at the local eatery", start_time: nil, photo: nil, end_time: nil, group_id: 2, colour: "orange")
 Event.create(name: "chess", description: "playing chess is fun", location: "at the exhibition center", start_time: nil, photo: nil, end_time: nil, group_id: 3, colour: "gold")
 Event.create(name: "painting", description: "painting is a great hobby", location: "at the community center", start_time: nil, photo: nil, end_time: nil, group_id: 5, colour: "silver")
@@ -48,7 +52,7 @@ Membership.create(user_id: 5, group_id: 2)
 Membership.create(user_id: 7, group_id: 2)
 Membership.create(user_id: 6, group_id: 1)
 Membership.create(user_id: 2, group_id: 1)
-Membership.create(user_id: 3, group_id: 3)
+Membership.create(user_id: 3, group_id: 4)
 Membership.create(user_id: 4, group_id: 3)
 
 
