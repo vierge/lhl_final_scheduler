@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'api#index'
+  
 
   scope path: '/api', controller: :api do
+    root to: 'api#index'
   
     resources :users, shallow: true do
       get '/login', to: 'sessions#create', as: :login
