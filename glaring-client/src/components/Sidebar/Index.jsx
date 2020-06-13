@@ -44,15 +44,22 @@ const AddGroup = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory, setCurrentGroup, removeGroup } = props;
+  const { groups, setGroup, getDirectory, removeGroup } = props;
 
-  console.log("PROPS", props)
+  console.log("PROPS", props);
 
   const groupList = groups.map((element) => {
-
-    const { color, name, id } = element;
-    return <NavGroup setGroup={setGroup} key={id} id={id} color={color} name={name} setCurrentGroup = {setCurrentGroup} removeGroup={() => removeGroup(id)} />;
-  
+    const { colour, name, id } = element;
+    return (
+      <NavGroup
+        setGroup={setGroup}
+        key={id}
+        id={id}
+        colour={colour}
+        name={name}
+        removeGroup={removeGroup}
+      />
+    );
   });
 
   return (

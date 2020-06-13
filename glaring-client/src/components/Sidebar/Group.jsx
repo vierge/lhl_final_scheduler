@@ -6,7 +6,6 @@ import styled from "@emotion/styled";
 
 // import Button from "../components/Button";
 
-
 const Text = (props) => (
   <p
     css={css`
@@ -58,22 +57,12 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-
-    const { color, name, button, setGroup, id, removeGroup, setCurrentGroup } = props;
-
+  const { color, name, button, setGroup, id, removeGroup } = props;
 
   return (
-    <Div color={color} onClick={(event) => setGroup(id)} >
-      {/* <Text>++ GROUP! ++</Text> */}
-      
-      <Button onClick={()=>setCurrentGroup(name)}>++ GROUP! ++</Button>
-
-      {/* <Button onclick={()=>setCurrentGroup(name)} > {name} </Button> */}
-        {/* <Text> {name} </Text>  */}
-        {/* <Button>{button || "X"}</Button> */}
-
-      <Button onClick={removeGroup} > X </Button>
-
+    <Div color={color} onClick={(event) => setGroup(id)}>
+      <Text> {name} </Text>
+      <Button onClick={removeGroup(id)}>{button || "X"}</Button>
     </Div>
   );
 }

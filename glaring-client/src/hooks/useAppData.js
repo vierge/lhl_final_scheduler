@@ -12,21 +12,19 @@ export default function useAppData() {
     reservations: [],
   });
 
+  async function removeGroup(id) {
+    let newGroups = state.groups.filter((group) => group.id !== id);
 
- async function removeGroup(id) {
-  let newGroups = state.groups.filter(group => group.id !== id);
+    console.log("CLICKCANCEL", JSON.stringify(id));
+    return axios.delete(`api/groups/${id}`).then((res) => {
+      console.log(JSON.stringify(res));
 
-  console.log("CLICKCANCEL", JSON.stringify(id));
-  return axios.delete(`api/groups/${id}`).then((res) => {
-
-    console.log(JSON.stringify(res))
-   
-    setState({ 
-      ...state, 
-      groups: newGroups
-     });
+      setState((prev) => ({
+        ...prev,
+        groups: newGroups,
+      }));
     });
-};
+  }
 
   console.log("STATE", state);
 
@@ -96,5 +94,3 @@ export default function useAppData() {
 
   return { state, setGroupData, addGroupData, getDirectoryData, removeGroup };
 }
-
-

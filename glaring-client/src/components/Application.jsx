@@ -1,11 +1,6 @@
 /** @jsx jsx */
 
-import React, { useState } from "react";
-
-
-// import axios from "axios";
-// import Testbed from "./Testbed.jsx";
-// import Button from "./Button.js";
+import React from "react";
 
 import { css, jsx } from "@emotion/core";
 
@@ -31,10 +26,7 @@ const Main = (props) => (
 );
 
 export default function Application() {
-   
   const { state, setGroupData, getDirectoryData, removeGroup } = useAppData();
-
-  const { currentGroup, setCurrentGroup } = useState("Black Lives Matter");
 
   console.log(state);
 
@@ -42,9 +34,12 @@ export default function Application() {
     <body>
       <Topnav />
       <Main>
-      {/* <GroupList groups={state.groups}/> */}
-      {/* <GroupList groups={state.events} /> */}
-            <Sidebar groups={state.groups} setGroup={setGroupData} getDirectory={getDirectoryData} setCurrentGroup={setCurrentGroup} removeGroup={removeGroup} />
+        <Sidebar
+          groups={state.groups}
+          setGroup={setGroupData}
+          getDirectory={getDirectoryData}
+          removeGroup={removeGroup}
+        />
 
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
