@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react";
 import { css, jsx } from "@emotion/core";
 
 export default function GroupListItem(props) {
@@ -14,7 +13,7 @@ export default function GroupListItem(props) {
         width: 450px;
         height: 400px;
       `}
-      onClick={() => setGroup(id)} //onClick used to handle item click event that sets the day
+      onClick={(event) => setGroup(id)} //onClick used to handle item click event that sets the day
       data-testid="group"
     >
       <h2 className>{name}</h2>
