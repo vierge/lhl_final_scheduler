@@ -57,12 +57,12 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { color, name, button, setGroup, id, removeGroup } = props;
+  const { colour, name, button, setGroup, id, removeGroup } = props;
 
   return (
-    <Div color={color} onClick={(event) => setGroup(id)}>
+    <Div colour={colour} onClick={(event) => setGroup(id)}>
       <Text> {name} </Text>
-      <Button onClick={removeGroup(id)}>{button || "X"}</Button>
+      <Button onClick={(event) => removeGroup(id)}>{button || "X"}</Button>
     </Div>
   );
 }
