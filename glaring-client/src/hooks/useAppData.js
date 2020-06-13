@@ -62,14 +62,34 @@ export default function useAppData() {
     }));
   }
 
+  async function editGroupData(group_id, group) {
+    const newGroup = await axios.patch(`/api/groups/${group_id}`, group);
+    console.log("group to make:");
+    console.log(newGroup);
+    const newGroups = [...state.groups, await newGroup.data.group];
+    setState((prev) => ({
+      ...prev,
+      groups: newGroups,
+      group_events: newGroup.data.id,
+    }));
+  }
+
+  async function removeGroup(id) {
+    try {
+      await axios.delete(`api/groups/${id}`);
+      const newGroups = state.groups.filter((group) => group.id !== id);
+      setState((prev) => ({
+        ...prev,
+        groups: newGroups,
+      }));
+    } catch (err) {
+      alert(err);
+    }
+  }
+
   async function addEventData(event) {
     try {
-      const newEvent = await axios.post(`/api/events`, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: event,
-      });
+      const newEvent = await axios.post(`/api/events`, event);
       const newEvents = [...state.group_events, newEvent];
       setState((prev) => ({ ...prev, group_events: newEvents }));
     } catch (err) {
@@ -77,33 +97,60 @@ export default function useAppData() {
     }
   }
 
-  async function editGroupData(group) {}
+  async function editEventData(event_id, event) {
+    try {
+      const newEvent = await axios.patch(`/api/events/${event_id}`, event);
+      const newEvents = [...state.group_events, newEvent];
+      setState((prev) => ({ ...prev, group_events: newEvents }));
+    } catch (err) {
+      alert(err);
+    }
+  }
+
+  async function removeEvent(event_id) {
+    try {
+      state.group_events.filter((event) => event.id !== id);
+      await axios.delete(`api/events/${event_id}`);
+      const newEvents = [...state.group_events, newEvent];
+      setState((prev) => ({ ...prev, group_events: newEvents }));
+    } catch (err) {
+      alert(err);
+    }
+  }
 
   // THIS IS EXPERIMENTAL:
-  const dataReducer = (action, payload) => {
+  const groupDataReducer = (action, payload) => {
     switch (action) {
-      case "ADDGROUP":
+      case "ADD":
         return addGroupData(payload);
-      case "ADDEVENT":
-        return addEventData(payload);
-      default:
-        return false;
+      case "EDIT":
+        return editGroupData(payload);
+      case "DELETE":
+        return removeGroup(payload);
     }
   };
 
-  async function removeGroup(id) {
-    let newGroups = state.groups.filter((group) => group.id !== id);
+  const eventDataReducer = (action, payload) => {
+    switch (action) {
+      case "ADD":
+        return addEventData(payload);
+      case "EDIT":
+        return editEventData(payload);
+      case "DELETE":
+        return removeEvent(payload);
+    }
+  };
 
-    console.log("CLICKCANCEL", JSON.stringify(id));
-    return axios.delete(`api/groups/${id}`).then((res) => {
-      console.log(JSON.stringify(res));
-
-      setState((prev) => ({
-        ...prev,
-        groups: newGroups,
-      }));
-    });
-  }
+  const userDataReducer = (action, payload) => {
+    switch (action) {
+      case "ADD":
+        return addUserData(payload);
+      case "EDIT":
+        return editUserData(payload);
+      case "DELETE":
+        return removeUser(payload);
+    }
+  };
 
   return {
     state,
