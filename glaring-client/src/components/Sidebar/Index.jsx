@@ -37,12 +37,19 @@ const Header = (props) => (
   />
 );
 
-const AddGroup = (props) => (
-  <NavGroup name="addgroup" button="+" colour="deeppink" {...props} />
-);
-
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory } = props;
+  const { groups, setGroup, getDirectory, addGroup } = props;
+  const AddGroup = (props) => (
+    <NavGroup
+      name="addgroup"
+      button="+"
+      colour="deeppink"
+      setGroup={(event) =>
+        addGroup({ name: "charlie", user_id: 1, description: "UGH" })
+      }
+      {...props}
+    />
+  );
 
   console.log(groups);
 

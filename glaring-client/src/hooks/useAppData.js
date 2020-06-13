@@ -47,15 +47,12 @@ export default function useAppData() {
   }
 
   async function addGroupData(group) {
-    try {
-      const newGroup = await axios.post(`/api/groups`, {
-        headers: { "Content-Type": "application/json" },
-        body: group,
-      });
-      setGroupData(newGroup.data.id);
-    } catch (err) {
-      alert(err);
-    }
+    console.log(group);
+    const newGroup = await axios.post(`/api/groups`, group);
+    console.log("group to make:");
+    console.log(newGroup);
+    const newGroups = [...state.groups, await newGroup.data.group];
+    setState((prev) => ({ ...prev, groups: newGroups }));
   }
 
   async function addEventData(event) {
@@ -87,5 +84,5 @@ export default function useAppData() {
     }
   };
 
-  return { state, setGroupData, getDirectoryData, addEventData };
+  return { state, setGroupData, getDirectoryData, addGroupData, addEventData };
 }

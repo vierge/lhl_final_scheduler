@@ -29,7 +29,13 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  const { state, setGroupData, getDirectoryData } = useAppData();
+  const {
+    state,
+    setGroupData,
+    addGroupData,
+    addEventData,
+    getDirectoryData,
+  } = useAppData();
 
   console.log(state);
 
@@ -40,11 +46,12 @@ export default function Application() {
         groups={state.groups}
         setGroup={setGroupData}
         getDirectory={getDirectoryData}
+        addGroup={addGroupData}
       />
       <Main>
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "events" && (
-          <EventsList events={state.group_events} />
+          <EventsList events={state.group_events} addEvent={addEventData} />
         )}
       </Main>
     </body>
