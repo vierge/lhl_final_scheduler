@@ -3,7 +3,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: glaring_dev
+  database: glaring_dev 
   pool: 5
 
 test:
