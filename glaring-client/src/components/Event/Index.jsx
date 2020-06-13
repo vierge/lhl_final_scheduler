@@ -14,7 +14,7 @@ export default function Event() {
 
   return (
     <div className="mom">
-      <main className="event">
+<main className="event">
         <div className="event__top">
           <img
             className="event__image"
@@ -26,8 +26,8 @@ export default function Event() {
               Event Descrtipion goes here
             </div>
           </div>
-        </div>
-        <div className="event__attend">
+               </div>
+      <div className="event__attend">
           <div className="event__attend--list">123456789</div>
           <div className="event__attend--reso">
             <Button confirm onClick={accepted}>
@@ -36,9 +36,9 @@ export default function Event() {
             <Button danger onClick={decline}>
               ✗
             </Button>
-          </div>
-        </div>
-      </main>
+              </div>
+       </div>
+</main>
       <aside className="event__TIME">
         <p>TI</p>
         <p>ME</p>
