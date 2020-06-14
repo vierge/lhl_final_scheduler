@@ -11,6 +11,7 @@ import EventsList from "./EventsList";
 
 import useAppData from "../hooks/useAppData";
 import EventForm from "./Event/EventForm";
+import GroupForm from "./Creation/GroupForm";
 
 const Main = (props) => (
   <main
@@ -58,6 +59,8 @@ export default function Application() {
           <EventsList events={state.group_events} addEvent={addEventData} editEvent={editEventData} delEvent={removeEvent} />
         )}
       </Main>
+      
+      <GroupForm />
       
     </body>
   );

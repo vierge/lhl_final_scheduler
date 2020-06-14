@@ -4,8 +4,8 @@ development:
   adapter: postgresql
   encoding: unicode
   database: glaring_dev
-  username: development
-  password: development
+  # username: development
+  # password: development
 
   pool: 5
 
@@ -13,7 +13,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: glaring_test
-  username: development
-  password: development
+  # username: development
+  # password: development
   
   pool: 5

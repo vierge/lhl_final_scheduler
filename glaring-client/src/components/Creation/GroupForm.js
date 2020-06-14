@@ -13,8 +13,9 @@ export default function GroupForm(props) {
   const [display, setDisplay] = useState("display: flex;");
   const {register, handleSubmit, errors } = useForm();
    async function onSubmit (data) {
-    await addGroup(data);
-    setDisplay("display: none;")
+    // await addGroup(data);
+    // setDisplay("display: none;")
+    console.log(data)
   }
 
     function submitGroupForm() {
@@ -35,6 +36,7 @@ export default function GroupForm(props) {
             name="name"
             type="text"
             placeholder="Enter Group Name"
+            ref={register}
             /*
           This must be a controlled component
         */
@@ -48,9 +50,10 @@ export default function GroupForm(props) {
             <input
             id="groupDescription"
             className="creation__create-input text--semi-bold"
-            name="name"
+            name="description"
             type="text"
             placeholder="Enter Group Description"
+            ref={register}
             /*
           This must be a controlled component
         */
@@ -61,16 +64,17 @@ export default function GroupForm(props) {
     <br/>
     <br/>
 
-    <input type="file" accept="image/*" onChange={e=>{setImage(URL.createObjectURL(e.target.files[0]))}} />
+    <input type="url" name="photo" placeholder="Group image url" ref={register} />
       {image && <img src = {image}/>}
     <br/>
     <br/>
     
         <div className="groupform__attend--reso">
               <div >
+              <input type="submit"/>
                 <Button confirm onClick={submitGroupForm}>Submit</Button>
                </div>
-            </div>     
+        </div>     
 
   </form>
   );
