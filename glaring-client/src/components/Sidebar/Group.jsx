@@ -68,9 +68,9 @@ export default function NavGroup(props) {
       onClick={(event) => callDatabase(action[0], action[1])}
     >
       <Text> {name} </Text>
-      {/* <Button onClick={(event) => callDatabase("DELGROUP", id)}>
+      <Button onClick={(event) => callDatabase("DELGROUP", id)}>
         {button || "X"}
-      </Button> */}
+      </Button>
     </Div>
   );
 }
