@@ -4,11 +4,12 @@ import "./EventForm.scss";
 import { useForm } from 'react-hook-form';
 import { css, jsx } from "@emotion/core";
 
-export default function EventForm() {
-  const {register, handleSubmit, errors} = useForm();
+export default function EventForm(props) {
+  const { addEvent } = props;
+  const {register, handleSubmit, errors } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data)
+  async function onSubmit (data) {
+    return await addEvent(data);
   }
 
   return (
@@ -21,11 +22,11 @@ export default function EventForm() {
             
 
             <div className="eventform__image">
-              <input type="url" name = "image" placeholder="Paste event image url" ref={register} />
+              <input type="url" name = "photo" placeholder="Paste event image url" ref={register} />
             </div>
 
             <div className="eventform__content">
-              <input type="text" name="title" placeholder="Enter event title" ref={register} />
+              <input type="text" name="name" placeholder="Enter event title" ref={register} />
               <input type="text" name="description" placeholder="Enter event description" ref={register} />
             </div>
 
@@ -39,9 +40,9 @@ export default function EventForm() {
           
 
         <aside className="eventform__time">
-          <input type="date" name="date" ref={register} />
+          <input type="date" name="start_date" ref={register} />
           <br/>
-          <input type="time" name="time" ref={register} /> 
+          {/* <input type="time" name="time" ref={register} />  */}
         </aside>
 
     </form>

@@ -2,6 +2,7 @@
 import React from "react";
 import { css, jsx } from "@emotion/core";
 import Event from "./Event/Index";
+import EventForm from "./Event/EventForm"
 
 export default function EventsList(props) {
   const { events, addEvent, editEvent, delEvent } = props;
@@ -18,7 +19,6 @@ export default function EventsList(props) {
       start_time={start_time}
       end_time={end_time}
       photo={photo}
-      addEvent={addEvent}
       editEvent={editEvent}
       delEvent={delEvent}
     />;
@@ -28,11 +28,12 @@ export default function EventsList(props) {
     <ul
       css={css`
         list-style: none;
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         background-color: violet;
       `}
     >
+      <EventForm addEvent={addEvent}/>
       {eventsList}
     </ul>
   );
