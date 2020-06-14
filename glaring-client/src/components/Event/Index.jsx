@@ -7,10 +7,6 @@ import useVisMode from  "../../hooks/useVisMode"
 // import Axios from 'axios';
 
 
-
-
-
-
 export default function Event(props) {
   const { name, description, start_time, end_time, photo, init, addEvent } = props;
 

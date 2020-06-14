@@ -16,11 +16,7 @@ export default function EventForm(props) {
   return (
     <form css={css`${display}`}className="eventform" onSubmit={handleSubmit(onSubmit)}>
      
-          <div className="eventform__top">
-            {/* event image */}
-            {/* <label for="img">Select image:</label>
-            <input type="file" id="img" name="img" accept="image/*" /> */}
-            
+          <div className="eventform__top">  
 
             <div className="eventform__image">
               <input type="url" name = "photo" placeholder="Paste event image url" ref={register} />
@@ -41,7 +37,7 @@ export default function EventForm(props) {
           
 
         <aside className="eventform__time">
-          <input type="date" name="start_date" ref={register} />
+          <input type="datetime-local" name="start_date" ref={register} />
           <br/>
           {/* <input type="time" name="time" ref={register} />  */}
         </aside>
