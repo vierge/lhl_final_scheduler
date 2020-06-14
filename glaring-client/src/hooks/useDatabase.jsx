@@ -16,6 +16,7 @@ function useDatabase(initialState) {
       }
       case "SETGROUP": {
         // SET CURRENT GROUP
+        console.log(action.item);
         const group = action.item.group;
         const events = action.item.events;
         return {
@@ -24,8 +25,9 @@ function useDatabase(initialState) {
             ...state.user,
             ...state.event,
             group: group,
+            view: "events",
           },
-          events: events,
+          group_events: events,
           // memberships,
           // reservations,
         };
@@ -34,7 +36,8 @@ function useDatabase(initialState) {
 
       case "ADDGROUP": {
         // ADD A NEW GROUP TO DB
-        const currentGroup = action.item.group;
+        console.log(action.item);
+        const currentGroup = action.item.data.group.id;
         return {
           ...state,
           current: {
@@ -43,7 +46,8 @@ function useDatabase(initialState) {
             ...state.view,
             group: currentGroup,
           },
-          group_events: action.item.events,
+          groups: [...state.groups, action.item.data.group],
+          group_events: [],
         };
       }
       case "EDITGROUP": {
@@ -117,9 +121,13 @@ function useDatabase(initialState) {
         break;
       // SET CURRENT GROUP
       case "SETGROUP": {
-        const group_id = payload.group_id;
-        const events = await axios.get(`/api/groups/${group_id}/events`).data;
-        return dispatch({ type: "SETGROUP", item: events });
+        const group_id = payload;
+        const events = await axios.get(`/api/groups/${group_id}/events`);
+        console.log(events.data);
+        return dispatch({
+          type: "SETGROUP",
+          item: { events: events.data, group: group_id },
+        });
       }
       // GROUP ACTIONS:
 

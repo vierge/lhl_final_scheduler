@@ -3,6 +3,7 @@
 import React from "react";
 import { jsx, css } from "@emotion/core";
 import styled from "@emotion/styled";
+import { useDataState, useDataDispatch } from "../../hooks/useDatabase";
 
 // import Button from "../components/Button";
 
@@ -57,12 +58,19 @@ const Div = (props) => (
 );
 
 export default function NavGroup(props) {
-  const { colour, name, button, setGroup, id, removeGroup } = props;
+  const { colour, name, button, action, id } = props;
+
+  const callDatabase = useDataDispatch();
 
   return (
-    <Div colour={colour} onClick={(event) => setGroup(id)}>
+    <Div
+      colour={colour}
+      onClick={(event) => callDatabase(action[0], action[1])}
+    >
       <Text> {name} </Text>
-      <Button onClick={(event) => removeGroup(id)}>{button || "X"}</Button>
+      {/* <Button onClick={(event) => callDatabase("DELGROUP", id)}>
+        {button || "X"}
+      </Button> */}
     </Div>
   );
 }

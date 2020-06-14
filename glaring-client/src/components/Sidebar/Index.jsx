@@ -4,6 +4,7 @@ import React from "react";
 import { css, jsx } from "@emotion/core";
 import NavGroup from "./Group";
 import Options from "./Options";
+import { useDataDispatch } from "../../hooks/useDatabase";
 // import axios from "axios";
 
 // import NavGroupList from "./GroupList"
@@ -40,16 +41,16 @@ const Header = (props) => (
 );
 
 export default function Sidebar(props) {
-  const { groups, setGroup, getDirectory, addGroup, removeGroup } = props;
+  const { groups } = props;
+
+  const { callDatabase } = useDataDispatch();
 
   const AddGroup = (props) => (
     <NavGroup
       name="addgroup"
       button="+"
       colour="deeppink"
-      setGroup={(event) =>
-        addGroup({ name: "charlie", user_id: 1, description: "UGH" })
-      }
+      action={["ADDGROUP", { name: "m", description: "o", user_id: 1 }]}
       {...props}
     />
   );
@@ -58,12 +59,11 @@ export default function Sidebar(props) {
     const { colour, name, id } = element;
     return (
       <NavGroup
-        setGroup={setGroup}
         key={id}
         id={id}
         colour={colour}
         name={name}
-        removeGroup={removeGroup}
+        action={["SETGROUP", id]}
       />
     );
   });
@@ -75,7 +75,7 @@ export default function Sidebar(props) {
       </Header>
       {groupList}
       <AddGroup />
-      <Options getDirectory={getDirectory} />
+      <Options />
     </Nav>
   );
   /* <NavGroup color="deeppink" />

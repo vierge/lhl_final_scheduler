@@ -50,30 +50,23 @@ export default function Application() {
 
   return (
     <body>
-      <DatabaseProvider>
-        <Topnav />
-        <Sidebar
-          groups={state.groups}
-          // setGroup={setGroupData}
-          // addGroup={addGroupData}
-          // getDirectory={getDirectoryData}
-          // removeGroup={removeGroup}
-        />
+      {/* <DatabaseProvider> */}
+      <Topnav />
+      <Sidebar
+        groups={state.groups}
+        // setGroup={setGroupData}
+        // addGroup={addGroupData}
+        // getDirectory={getDirectoryData}
+        // removeGroup={removeGroup}
+      />
 
-        <Main>
-          {state.current.view === "groups" && (
-            <GroupList groups={state.groups} />
-          )}
-          {state.current.view === "events" && (
-            <EventsList
-              events={state.group_events}
-              // addEvent={addEventData}
-              // editEvent={editEventData}
-              // delEvent={removeEvent}
-            />
-          )}
-        </Main>
-      </DatabaseProvider>
+      <Main>
+        {state.current.view === "groups" && <GroupList groups={state.groups} />}
+        {state.current.view === "events" && (
+          <EventsList events={state.group_events} />
+        )}
+      </Main>
+      {/* </DatabaseProvider> */}
     </body>
   );
 }

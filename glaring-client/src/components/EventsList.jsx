@@ -2,27 +2,35 @@
 import React from "react";
 import { css, jsx } from "@emotion/core";
 import Event from "./Event/Index";
-import EventForm from "./Event/EventForm"
+import EventForm from "./Event/EventForm";
 
 export default function EventsList(props) {
-  const { events, addEvent, editEvent, delEvent } = props;
-
+  const { events } = props;
+  console.log(events);
   const eventsList = events.map((element) => {
-    const { id, name, description, location, start_time, end_time, photo } = element;
-    console.log("this is firing")
-    return <Event
-      key={id}
-      id={id}
-      name={name}
-      description={description}
-      location={location}
-      start_time={start_time}
-      end_time={end_time}
-      photo={photo}
-      editEvent={editEvent}
-      delEvent={delEvent}
-      init="SHOW"
-    />;
+    const {
+      id,
+      name,
+      description,
+      location,
+      start_time,
+      end_time,
+      photo,
+    } = element;
+    console.log("this is firing");
+    return (
+      <Event
+        key={id}
+        id={id}
+        name={name}
+        description={description}
+        location={location}
+        start_time={start_time}
+        end_time={end_time}
+        photo={photo}
+        init="SHOW"
+      />
+    );
   });
 
   return (
@@ -36,7 +44,7 @@ export default function EventsList(props) {
     >
       <h1>ITS A GROUP</h1>
       <button>CREATE NEW</button>
-      <Event init={'CREATE'} addEvent={addEvent}/>
+      <Event init={"CREATE"} />
       {eventsList}
     </ul>
   );
