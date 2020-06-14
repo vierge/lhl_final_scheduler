@@ -27,7 +27,10 @@ export default function useAppData() {
     Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
       (all) => {
         const [users, groups] = all;
-        useState(state, { type: "INIT", item: { users, groups } });
+        setState(state, {
+          type: "INIT",
+          item: { users: users.data, groups: groups.data },
+        });
       }
     );
   }, []);

@@ -1,39 +1,20 @@
-import { useEffect, createContext, useReducer, useContext } from "react";
+import React, { useEffect, createContext, useReducer, useContext } from "react";
 import axios from "axios";
 
-const initialState = {
-  current: {
-    user: {
-      id: 1,
-      name: "dummy",
-      password: "i.am.insecure",
-      email: "person@website.thing",
-    },
-    group: [],
-    event: [],
-    view: "",
-  },
-
-  users: [],
-  groups: [],
-  group_events: [],
-  memberships: [],
-  reservations: [],
-};
-
-function useDatabase() {
+function useDatabase(initialState) {
   const stateReducer = (state, action) => {
     switch (action.type) {
       // INTERFACE ACTIONS:
 
-      case "INIT":
+      case "INIT": {
         // INITIALIZE THE STATE
         return {
           ...state,
           users: action.item.users,
           groups: action.item.groups,
         };
-      case "SETGROUP":
+      }
+      case "SETGROUP": {
         // SET CURRENT GROUP
         const group = action.item.group;
         const events = action.item.events;
@@ -48,10 +29,10 @@ function useDatabase() {
           // memberships,
           // reservations,
         };
-
+      }
       // GROUP ACTIONS:
 
-      case "ADDGROUP":
+      case "ADDGROUP": {
         // ADD A NEW GROUP TO DB
         const currentGroup = action.item.group;
         return {
@@ -64,17 +45,20 @@ function useDatabase() {
           },
           group_events: action.item.events,
         };
-      case "EDITGROUP":
+      }
+      case "EDITGROUP": {
         return {
           ...state,
           groups: action.item.groups,
           group_events: action.item.id,
         };
+      }
       case "DELGROUP": {
+        const event_id = action.item;
         const groups = state.groups.filter((group) => group.id !== event_id);
         return {
           ...state,
-          groups: action.item.groups,
+          groups: groups,
         };
       }
       // EVENT ACTIONS
@@ -88,13 +72,15 @@ function useDatabase() {
       }
       // EDIT AN EVENT
       case "EDITEVENT": {
+        const newEvent = action.item.event;
         return {
           ...state,
-          group_events: [newEvents, ...state.group_events],
+          group_events: [newEvent, ...state.group_events],
         };
       }
       // DELETE AN EVENT
       case "DELEVENT": {
+        const event_id = action.item;
         const events = state.group_events.filter(
           (event) => event.id !== event_id
         );
@@ -115,21 +101,26 @@ function useDatabase() {
 
   const callDatabase = async (action, payload) => {
     switch (action) {
-      case "INIT": {
-        Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
-          (all) => {
-            const [users, groups] = all;
-            return dispatch({ type: "INIT", item: { users, groups } });
-          }
-        );
-      }
+      case "INIT":
+        {
+          Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
+            (all) => {
+              console.log(all);
+              const [users, groups] = all;
+              return dispatch({
+                type: "INIT",
+                item: { users: users.data, groups: groups.data },
+              });
+            }
+          );
+        }
+        break;
       // SET CURRENT GROUP
       case "SETGROUP": {
-        group_id = payload.group_id;
-        const events = await axios.get(`/api/groups/${group_id}/events`)[data];
+        const group_id = payload.group_id;
+        const events = await axios.get(`/api/groups/${group_id}/events`).data;
         return dispatch({ type: "SETGROUP", item: events });
       }
-
       // GROUP ACTIONS:
 
       case "ADDGROUP": {
@@ -139,6 +130,7 @@ function useDatabase() {
           item: await axios.post(`/api/groups`, group),
         });
       }
+
       // ADD A NEW GROUP TO DB
 
       case "EDITGROUP": {
@@ -151,9 +143,10 @@ function useDatabase() {
 
       case "DELGROUP": {
         const group_id = payload;
+        await axios.delete(`/api/groups/${group_id}`);
         return dispatch({
           type: "DELGROUP",
-          item: await axios.delete(`/api/groups/${group_id}`),
+          item: group_id,
         });
       }
       // EVENT ACTIONS
@@ -187,7 +180,27 @@ const StateContext = createContext();
 const DataContext = createContext();
 
 function DatabaseProvider({ children }) {
-  const { state, callDatabase } = useDatabase();
+  const initialState = {
+    current: {
+      user: {
+        id: 1,
+        name: "dummy",
+        password: "i.am.insecure",
+        email: "person@website.thing",
+      },
+      group: [],
+      event: [],
+      view: "",
+    },
+
+    users: [],
+    groups: [],
+    group_events: [],
+    memberships: [],
+    reservations: [],
+  };
+
+  const { state, callDatabase } = useDatabase(initialState);
 
   return (
     <StateContext.Provider value={state}>
