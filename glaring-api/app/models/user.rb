@@ -1,7 +1,5 @@
 class User < ApplicationRecord
 
-  # email, password = "dhh", "secret"
-
   has_secure_password
 
   has_many :reservations, dependent: :destroy
