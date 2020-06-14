@@ -71,7 +71,7 @@ function useDatabase(initialState) {
       case "ADDEVENT": {
         return {
           ...state,
-          group_events: [action.item.event, ...state.group_events],
+          group_events: [action.item.data.event, ...state.group_events],
         };
       }
       // EDIT AN EVENT
@@ -162,20 +162,27 @@ function useDatabase(initialState) {
         });
       }
 
-      case "GETDIRECTORY": {
-        return dispatch("GETDIRECTORY");
-      }
       // EVENT ACTIONS
 
       //ADD AN EVENT
-      // case "ADDEVENT": {
-      // }
+      case "ADDEVENT": {
+        const event = payload;
+        event["user_id"] = state.current.user.id;
+        const group_id = state.current.group.id;
+        return dispatch({
+          type: "ADDEVENT",
+          item: await axios.post(`/api/groups/${group_id}/events`, event),
+        });
+      }
       // // EDIT AN EVENT
       // case "EDITEVENT": {
       // }
       // // DELETE AN EVENT
       // case "DELEVENT": {
       // }
+      case "GETDIRECTORY": {
+        return dispatch("GETDIRECTORY");
+      }
       default: {
         alert("INVALID INPUT");
       }
