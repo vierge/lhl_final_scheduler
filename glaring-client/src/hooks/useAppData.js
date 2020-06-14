@@ -25,11 +25,43 @@ export default function useAppData() {
   const reducer = (state, action) => {
     switch (action.type) {
       case "INIT":
+        // INITIALIZE THE STATE
         return {
           ...state,
-          users: action.data.users,
-          groups: action.data.groups,
+          users: action.item.users,
+          groups: action.item.groups,
         };
+      case "SETGROUP":
+        // SET CURRENT GROUP
+        const group  = action.item.group
+        const events = action.item.events
+        return {
+          ...state, current: {
+            ...state.user, ...state.event, group: group },
+          events: events
+          // memberships,
+          // reservations,
+        }
+      case "ADDGROUP":
+        // ADD A NEW GROUP TO DB
+        const currentGroup = action.item.group
+        return {
+          ...state,
+          current: { ...state.user, ...state.event, ...state.view, group: currentGroup },
+          group_events: action.item.events
+        }
+      case "EDITGROUP":
+        return {
+          ...state,
+          groups: action.item.groups,
+          group_events: action.item.id
+        }
+      case "REMOVEGROUP": {
+        return {
+          
+        }
+      }
+    }
     }
   };
 
