@@ -1,27 +1,27 @@
-import { useState, useEffect, createContext, useReducer } from "react";
+import { useEffect, createContext, useReducer, useContext } from "react";
 import axios from "axios";
 
-export default function useAppData() {
-  const initialState = {
-    current: {
-      user: {
-        id: 1,
-        name: "dummy",
-        password: "i.am.insecure",
-        email: "person@website.thing",
-      },
-      group: [],
-      event: [],
-      view: "",
+const initialState = {
+  current: {
+    user: {
+      id: 1,
+      name: "dummy",
+      password: "i.am.insecure",
+      email: "person@website.thing",
     },
+    group: [],
+    event: [],
+    view: "",
+  },
 
-    users: [],
-    groups: [],
-    group_events: [],
-    memberships: [],
-    reservations: [],
-  };
+  users: [],
+  groups: [],
+  group_events: [],
+  memberships: [],
+  reservations: [],
+};
 
+function useDatabase() {
   const stateReducer = (state, action) => {
     switch (action.type) {
       // INTERFACE ACTIONS:
@@ -176,8 +176,42 @@ export default function useAppData() {
   useEffect(() => {
     callDatabase("INIT");
   }, []);
+
   return {
     state,
     callDatabase,
   };
 }
+
+const StateContext = createContext();
+const DataContext = createContext();
+
+function DatabaseProvider({ children }) {
+  const { state, callDatabase } = useDatabase();
+
+  return (
+    <StateContext.Provider value={state}>
+      <DataContext.Provider value={callDatabase}>
+        {children}
+      </DataContext.Provider>
+    </StateContext.Provider>
+  );
+}
+
+function useDataState() {
+  const context = useContext(StateContext);
+  if (context === undefined) {
+    throw new Error("useStateContext must be used within a DatabaseProvider");
+  }
+  return context;
+}
+
+function useDataDispatch() {
+  const context = useContext(DataContext);
+  if (context === undefined) {
+    throw new Error("useDataContext must be used within a DatabaseProvider");
+  }
+  return context;
+}
+
+export { DatabaseProvider, useDataState, useDataDispatch };
