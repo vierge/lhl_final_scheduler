@@ -2,6 +2,7 @@
 
 import React from "react";
 import { css, jsx } from "@emotion/core";
+import { useDataDispatch } from "../../hooks/useDatabase";
 
 const GridContainer = (props) => (
   <div
@@ -42,14 +43,15 @@ const Button = (props) => (
 );
 
 export default function Options(props) {
-  const { getDirectory } = props;
+  const callDatabase = useDataDispatch();
+
   return (
     <GridContainer>
       <Button
         color="skyblue"
         background="black"
         grid="a"
-        onClick={(event) => getDirectory()}
+        onClick={(event) => callDatabase("GETDIRECTORY")}
       >
         ++ DIRECTORY ++
       </Button>

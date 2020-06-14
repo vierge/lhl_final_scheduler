@@ -1,25 +1,27 @@
 /**@jsx jsx */
 import React from "react";
-import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/core";
 
-const Button = (props) => (
-  <button
-    css={css`
-      border: none;
-      height: 100%;
-      width: 60px;
-      background-color: ${props.className};
-      color: white;
+const Button = (props) => {
+  const { colour } = props;
+  return (
+    <button
+      css={css`
+        border: none;
+        height: 100%;
+        width: 60px;
+        background-color: ${colour};
+        color: white;
 
-      &:hover {
-        background-color: white;
-        color: black;
-      }
-    `}
-    {...props}
-  />
-);
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+      `}
+      {...props}
+    />
+  );
+};
 
 const Nav = (props) => (
   <nav
@@ -42,10 +44,14 @@ const Nav = (props) => (
 export default function Topnav(props) {
   return (
     <Nav>
-      <h1>GLARING... mew</h1>
-      <div css={{ height: "100%" }}>
-        <Button css={{ backgroundColor: "blue" }}>Content</Button>
-        <Button css={{ backgroundColor: "violet" }}>More</Button>
+      <h1>GLARING (def. noun: a group of cats)</h1>
+      <div
+        css={css`
+          height: "100%";
+        `}
+      >
+        <Button colour="blue">Content</Button>
+        <Button colour="violet">More</Button>
       </div>
     </Nav>
   );

@@ -24,9 +24,7 @@ export default function ShowEvent(props) {
           />
           <div className="event__content">
             <div className="event__title">{name}</div>
-            <div className="event__description">
-              {description}
-            </div>
+            <div className="event__description">{description}</div>
           </div>
         </div>
         <div className="event__attend">
