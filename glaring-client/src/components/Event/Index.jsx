@@ -10,6 +10,7 @@ import useVisMode from  "../../hooks/useVisMode"
 export default function Event(props) {
   const { name, description, start_time, end_time, photo, init, addEvent } = props;
 
+
   const { mode, transition, back } = useVisMode(init); 
   
   return(<>
@@ -17,3 +18,4 @@ export default function Event(props) {
       {mode === 'SHOW' && <ShowEvent name={name} description={description} start_time={start_time} end_time={end_time} photo={photo} />}
   </>)
 }
+
