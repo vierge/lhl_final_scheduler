@@ -62,7 +62,6 @@ const GroupForm = (props) => {
     >{name}</button>
   }
 
-
   return (<div 
       id="IM HERE!!!!!!! LOOK AT ME" 
       css={css`z-index: 1000; height: 300px; width: 200px; background-color: gray; position: relative; top: 0px; left: 0px;`}>
