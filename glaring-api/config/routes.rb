@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-
   scope path: '/api', controller: :api do
     root to: 'api#index'
   
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
       get '/login', to: 'sessions#new', as: :login
       post '/login' => 'sessions#create'
       get '/logout', to: 'sessions#destroy', as: :logout
+      # post '/logout', to: 'sessions#destroy', as: :logout
+
 
       get '/signup', to: 'users#new', as: :signup
       post '/users' => 'users#create', as: :users

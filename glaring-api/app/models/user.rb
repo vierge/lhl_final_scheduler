@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  email, password = "dhh", "secret"
+  # email, password = "dhh", "secret"
 
   has_secure_password
 
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   validates :name, :password, :email, presence: true
 
   def create
-    if user = User..authenticate_with_credentials(email, password)
+    if user = User.authenticate_with_credentials(email, password)
       if user.authenticate(password)
         user
       else
