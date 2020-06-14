@@ -1,19 +1,20 @@
 /**@jsx jsx */
-import React from "react";
+import React, { useState } from "react";
 import "./EventForm.scss";
 import { useForm } from 'react-hook-form';
 import { css, jsx } from "@emotion/core";
 
 export default function EventForm(props) {
-  const { addEvent } = props;
+  const { addEvent, mode } = props;
   const {register, handleSubmit, errors } = useForm();
-
+  const [display, setDisplay] = useState("display: flex;");
   async function onSubmit (data) {
-    return await addEvent(data);
+    await addEvent(data);
+    setDisplay("display: none;")
   }
 
   return (
-    <form className="eventform" onSubmit={handleSubmit(onSubmit)}>
+    <form css={css`${display}`}className="eventform" onSubmit={handleSubmit(onSubmit)}>
      
           <div className="eventform__top">
             {/* event image */}

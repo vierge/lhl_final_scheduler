@@ -21,6 +21,7 @@ export default function EventsList(props) {
       photo={photo}
       editEvent={editEvent}
       delEvent={delEvent}
+      init="SHOW"
     />;
   });
 
@@ -33,7 +34,9 @@ export default function EventsList(props) {
         background-color: violet;
       `}
     >
-      <EventForm addEvent={addEvent}/>
+      <h1>ITS A GROUP</h1>
+      <button>CREATE NEW</button>
+      <Event init={'CREATE'} addEvent={addEvent}/>
       {eventsList}
     </ul>
   );
