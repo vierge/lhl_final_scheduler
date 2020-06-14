@@ -1,17 +1,34 @@
 import React, { useState } from "react";
-import Button from "../Button.js";
+// import Button from "../Button.js";
+import "./GroupForm.scss";
+import { useForm } from 'react-hook-form';
+import { css, jsx } from "@emotion/core";
+import Button from "./ButtonGroupForm";
 
-export default function Form(props) {
+
+export default function GroupForm(props) {
   const [name, setName] = useState(props.name || ""); //need to keep track of information for the name by using useState
   const [image, setImage] = useState(null);
+  const { addGroup, mode } = props;
+  const [display, setDisplay] = useState("display: flex;");
+  const {register, handleSubmit, errors } = useForm();
+   async function onSubmit (data) {
+    await addGroup(data);
+    setDisplay("display: none;")
+  }
+
+    function submitGroupForm() {
+    console.log("Submit Group Form AAAAAAAAAAA");
+  }
 
 
   return (
-    <main className="creation__card creation--create">
-      <section className="creation__card-left">
-        <form autoComplete="off">
 
-  <label for="groupName">Group Name: </label>
+   <form css={css`${display}`}className="groupform" onSubmit={handleSubmit(onSubmit)}>
+ 
+       <div className="groupform__top">       
+        <div className="groupform__content">
+        <label for="groupName">Group Name: </label>
           <input 
             id="groupName"
             className="creation__create-input text--semi-bold"
@@ -22,11 +39,12 @@ export default function Form(props) {
           This must be a controlled component
         */
           />
-    <br/>
-    <br/>
+        </div>
+      </div> 
 
+        <br/>
+        <br/>
      <label for="groupDescription">Group Description: </label>
-
             <input
             id="groupDescription"
             className="creation__create-input text--semi-bold"
@@ -39,18 +57,7 @@ export default function Form(props) {
           />
     <br/>
     <br/>
-     <label for="sideNote">Side Note: </label>
 
-           <input
-            id="sideNote"
-            className="creation__create-input text--semi-bold"
-            name="name"
-            type="text"
-            placeholder="Enter Side Note"
-            /*
-          This must be a controlled component
-        */
-          />
     <br/>
     <br/>
 
@@ -59,13 +66,12 @@ export default function Form(props) {
     <br/>
     <br/>
     
-        </form>
-      </section>
-      <section className="creation__card-right">
-        <section className="creation__actions">
-          <Button confirm>Submit</Button>
-        </section>
-      </section>
-    </main>
+        <div className="groupform__attend--reso">
+              <div >
+                <Button confirm onClick={submitGroupForm}>Submit</Button>
+               </div>
+            </div>     
+
+  </form>
   );
 }
