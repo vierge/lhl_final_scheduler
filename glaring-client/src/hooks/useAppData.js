@@ -1,8 +1,8 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useReducer } from "react";
 import axios from "axios";
 
 export default function useAppData() {
-  const initialState = {
+  const [state, setState] = useState({
     current: {
       user: {
         id: 1,
@@ -20,61 +20,14 @@ export default function useAppData() {
     group_events: [],
     memberships: [],
     reservations: [],
-  };
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case "INIT":
-        // INITIALIZE THE STATE
-        return {
-          ...state,
-          users: action.item.users,
-          groups: action.item.groups,
-        };
-      case "SETGROUP":
-        // SET CURRENT GROUP
-        const group  = action.item.group
-        const events = action.item.events
-        return {
-          ...state, current: {
-            ...state.user, ...state.event, group: group },
-          events: events
-          // memberships,
-          // reservations,
-        }
-      case "ADDGROUP":
-        // ADD A NEW GROUP TO DB
-        const currentGroup = action.item.group
-        return {
-          ...state,
-          current: { ...state.user, ...state.event, ...state.view, group: currentGroup },
-          group_events: action.item.events
-        }
-      case "EDITGROUP":
-        return {
-          ...state,
-          groups: action.item.groups,
-          group_events: action.item.id
-        }
-      case "REMOVEGROUP": {
-        return {
-          
-        }
-      }
-    }
-    }
-  };
+  });
 
   useEffect(() => {
     // INIT DATA ON LANDING
     Promise.all([axios.get("/api/users"), axios.get("/api/groups")]).then(
       (all) => {
         const [users, groups] = all;
-        setState((prev) => ({
-          ...prev,
-          users: users.data,
-          groups: groups.data,
-        }));
+        useState(state, { type: "INIT", item: { users, groups } });
       }
     );
   }, []);
@@ -170,50 +123,14 @@ export default function useAppData() {
       alert(err);
     }
   }
-
-  // THIS IS EXPERIMENTAL:
-  const groupDataReducer = (action, payload) => {
-    switch (action) {
-      case "ADD":
-        return addGroupData(payload);
-      case "EDIT":
-        return editGroupData(payload);
-      case "DELETE":
-        return removeGroup(payload);
-    }
-  };
-
-  const eventDataReducer = (action, payload) => {
-    switch (action) {
-      case "ADD":
-        return addEventData(payload);
-      case "EDIT":
-        return editEventData(payload);
-      case "DELETE":
-        return removeEvent(payload);
-    }
-  };
-
-  // const userDataReducer = (action, payload) => {
-  //   switch (action) {
-  //     case "ADD":
-  //       return addUserData(payload);
-  //     case "EDIT":
-  //       return editUserData(payload);
-  //     case "DELETE":
-  //       return removeUser(payload);
-  //   }
-  // };
-
   return {
     state,
     setGroupData,
-    getDirectoryData,
     addGroupData,
-    addEventData,
     editGroupData,
-    editEventData,
     removeGroup,
+    addEventData,
+    editEventData,
     removeEvent,
   };
 }
