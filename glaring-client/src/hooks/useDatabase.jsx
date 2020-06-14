@@ -93,6 +93,10 @@ function useDatabase(initialState) {
           group_events: events,
         };
       }
+
+      case "GETDIRECTORY": {
+        return { ...state, current: { user: state.user, view: "groups" } };
+      }
       default: {
         alert("INVALID INPUT");
       }
@@ -156,6 +160,10 @@ function useDatabase(initialState) {
           type: "DELGROUP",
           item: group_id,
         });
+      }
+
+      case "GETDIRECTORY": {
+        return dispatch("GETDIRECTORY");
       }
       // EVENT ACTIONS
 
