@@ -49,11 +49,11 @@ export default function GroupForm (props) {
       top: 0px; 
       left: 0px;`}>
       
-      <form name="New Group" onSubmit={handleSubmit(onSubmit)}>
-        <input type="text"/>
-        <input type="text"/>
-        <input type="text"/>
-      </form>
+      <form name="New Group" onSubmit={(event) => handleSubmit(onSubmit)}>
+        <input type="text" name="name" placeholder="Enter group name" ref={register} />
+        <input type="text" name="description" placeholder="Describe your group!" ref={register} />
+        <input type="url" name="photo" placeholder="URL of Group photo" ref={register} />
+      
 
 
       <div css={css`position: absolute;
@@ -62,9 +62,10 @@ export default function GroupForm (props) {
        width: 100%`}>
 
         <GroupFormButton color="teal" name="CANCEL" />
-        <GroupFormButton color="black" name="SUBMIT" />
+        <GroupFormButton color="black" name="SUBMIT" onClick={(event) => handleSubmit(onSubmit)} />
 
       </div>
+      </form>
   </div>
   )
 
