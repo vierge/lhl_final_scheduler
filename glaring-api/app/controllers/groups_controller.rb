@@ -5,21 +5,51 @@ class GroupsController < ApplicationController
   end
 
   def create
+    #POST
+    newGroup = Group.create(
+      name: params[:name],
+      description: params[:description],
+      colour: params[:colour]
+    )
+    newMembership = Membership.create(
+      user_id: params[:user_id],
+      group_id: newGroup[:id],
+      admin: true
+    )
+    render json: { group: newGroup, membership: newMembership }
   end
 
   def show
-    if params[:id]
       @group = Group.where(id: params[:id])
-      render json: @group.to_json
-    else
-      @groups = Group.all
-      render json: @groups.to_json
-    end
+      @memberships = Membership.where(group_id: params[:id])
+      render json: { group: @group, memberships: @memberships }
   end
 
   def update
+    case request.method_symbol
+    when :put
+      newMembership = Membership.create(
+        user_id: params[:user_id],
+        group_id: params[:id]
+      )
+      render json: newMembership.to_json
+    when :patch
+      newGroup = params[:group]
+      newGroup.permit!
+      group = Group.find_by(id: params[:id])
+      group.update(newGroup)
+      render json: group.to_json
+    end
   end
 
   def destroy
+    death_row = Group.find_by(id: params[:id])
+    puts death_row
+    if death_row
+      death_row.destroy
+    else
+      raise "error: could not delete"
+    end
+    render json: { status: response.status }
   end
 end
