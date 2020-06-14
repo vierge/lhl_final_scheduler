@@ -1,0 +1,63 @@
+@import "../../styles/variables.scss";
+
+.buttonClassForm {
+  border-radius: 1rem;
+  border: 0;
+  font-size: 1.5rem;
+  height: 3rem;
+  line-height: 1.2rem;
+  margin-top: 3rem;
+  margin-right: 1rem;
+  width: 80%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: $white;
+  color: $white;
+  background-color: transparent;
+}
+
+.buttonClassForm:hover {
+  // @include button-active;
+
+  color: $black;
+  background-color: $white;
+  border: 2px solid transparent;
+}
+
+.buttonClassForm--danger {
+  color: $danger-color;
+  border-color: $danger-color;
+  background-color: transparent;
+}
+
+.buttonClassForm--confirm {
+  color: $confirm-color;
+  border-color: $confirm-color;
+  background-color: transparent;
+}
+
+.buttonClassForm--danger:hover {
+  color: $white;
+  background-color: $danger-color;
+}
+
+.buttonClassForm--confirm:hover {
+  color: $green;
+  background-color: $confirm-color;
+}
+
+.buttonClassForm:last-of-type {
+  margin-right: 0;
+}
+
+.buttonClassForm:focus {
+  outline: none;
+}
+
+.buttonClassForm:disabled {
+  border-style: solid;
+  border-color: $white;
+  color: $white;
+  background-color: transparent;
+  opacity: 0.7;
+}
