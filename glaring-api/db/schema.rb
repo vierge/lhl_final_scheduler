@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_231916) do
   create_table "users", force: :cascade do |t|
     t.string "colour"
     t.string "name"
-    t.string "password"
+    t.string "password_digest"
     t.string "email"
     t.bigint "phone_number"
     t.string "avatar"
