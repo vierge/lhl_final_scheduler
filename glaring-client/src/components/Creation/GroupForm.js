@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Button from "../Button.js";
+// import Button from "../Button.js";
 import "./GroupForm.scss";
 import { useForm } from 'react-hook-form';
 import { css, jsx } from "@emotion/core";
+import Button from "./ButtonGroupForm";
 
 
 export default function GroupForm(props) {
@@ -16,11 +17,16 @@ export default function GroupForm(props) {
     setDisplay("display: none;")
   }
 
+    function submitGroupForm() {
+    console.log("Submit Group Form AAAAAAAAAAA");
+  }
+
+
   return (
 
    <form css={css`${display}`}className="groupform" onSubmit={handleSubmit(onSubmit)}>
  
-       <div className="eventform__top">       
+       <div className="groupform__top">       
         <div className="groupform__content">
         <label for="groupName">Group Name: </label>
           <input 
@@ -29,17 +35,6 @@ export default function GroupForm(props) {
             name="name"
             type="text"
             placeholder="Enter Group Name"
-            /*
-          This must be a controlled component
-        */
-          />
-               <label for="groupDescription">Group Description: </label>
-            <input
-            id="groupDescription"
-            className="creation__create-input text--semi-bold"
-            name="name"
-            type="text"
-            placeholder="Enter Group Description"
             /*
           This must be a controlled component
         */
@@ -71,11 +66,11 @@ export default function GroupForm(props) {
     <br/>
     <br/>
     
-      <section className="creation__card-right">
-        <section className="creation__actions">
-          <Button confirm>Submit</Button>
-        </section>
-      </section>
+        <div className="groupform__attend--reso">
+              <div >
+                <Button confirm onClick={submitGroupForm}>Submit</Button>
+               </div>
+            </div>     
 
   </form>
   );

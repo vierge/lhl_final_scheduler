@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import React from "react";
 import { css, jsx } from "@emotion/core";
-import "./buttonClassForm.scss";
+import "./ButtonGroupForm.scss";
 
 const classnames = require("classnames");
 
