@@ -39,7 +39,7 @@ export default function GroupForm (props) {
   }
 
   return (
-  <div> 
+  <div 
       css={css`
       z-index: 1000; 
       height: 300px;
