@@ -1,13 +1,9 @@
 /**@jsx jsx */
-
 import React from "react";
 import { css, jsx } from "@emotion/core";
 import NavGroup from "./Group";
 import Options from "./Options";
 import { useDataDispatch } from "../../hooks/useDatabase";
-// import axios from "axios";
-
-// import NavGroupList from "./GroupList"
 
 const currentUser = "Marshmallow";
 

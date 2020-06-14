@@ -17,7 +17,6 @@ export default function EventsList(props) {
       end_time,
       photo,
     } = element;
-    console.log("this is firing");
     return (
       <Event
         key={id}
@@ -42,8 +41,6 @@ export default function EventsList(props) {
         background-color: violet;
       `}
     >
-      <h1>ITS A GROUP</h1>
-      <button>CREATE NEW</button>
       <Event init={"CREATE"} />
       {eventsList}
     </ul>

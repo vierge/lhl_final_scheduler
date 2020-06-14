@@ -3,19 +3,13 @@
 import React from "react";
 
 import { css, jsx } from "@emotion/core";
-
 import Topnav from "./Topnav";
 import Sidebar from "./Sidebar/Index";
 import GroupList from "./GroupList";
 import EventsList from "./EventsList";
-
-import {
-  DatabaseProvider,
-  useDataState,
-  useDataDispatch,
-} from "../hooks/useDatabase";
-import useAppData from "../hooks/useAppData";
 import EventForm from "./Event/EventForm";
+
+import { useDataState } from "../hooks/useDatabase";
 
 const Main = (props) => (
   <main
@@ -32,18 +26,6 @@ const Main = (props) => (
 );
 
 export default function Application() {
-  // const {
-  //   state,
-  //   setGroupData,
-  //   getDirectoryData,
-  //   addEventData,
-  //   addGroupData,
-  //   editEventData,
-  //   editGroupData,
-  //   removeGroup,
-  //   removeEvent
-  // } = useAppData();
-
   const state = useDataState();
 
   console.log(state);
