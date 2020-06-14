@@ -2,20 +2,36 @@ import { useState, useEffect, createContext } from "react";
 import axios from "axios";
 
 export default function useAppData() {
-  const [state, setState] = useState({
-    current: { user: {
-      id: 1,
-      name: "dummy",
-      password: "i.am.insecure",
-      email: "person@website.thing" 
-    }, group: [], event: [], view: "" },
+  const initialState = {
+    current: {
+      user: {
+        id: 1,
+        name: "dummy",
+        password: "i.am.insecure",
+        email: "person@website.thing",
+      },
+      group: [],
+      event: [],
+      view: "",
+    },
 
     users: [],
     groups: [],
     group_events: [],
     memberships: [],
     reservations: [],
-  });
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "INIT":
+        return {
+          ...state,
+          users: action.data.users,
+          groups: action.data.groups,
+        };
+    }
+  };
 
   useEffect(() => {
     // INIT DATA ON LANDING
@@ -32,15 +48,16 @@ export default function useAppData() {
   }, []);
 
   async function setGroupData(group_id) {
-    console.log("setGroupData is being called")
+    console.log("setGroupData is being called");
     const events = await axios.get(`/api/groups/${group_id}/events`);
-    const newEvents = await events.data
+    const newEvents = await events.data;
     // const group = state.groups[group_id - 1];
     const newCurrent = {
       user: state.current.user,
       group: state.groups[group_id - 1],
       event: state.current.event,
-      view: "events"}
+      view: "events",
+    };
     setState((prev) => ({
       ...prev,
       current: newCurrent,
@@ -88,15 +105,17 @@ export default function useAppData() {
   }
 
   async function addEventData(event) {
-      event['user_id'] = state.current.user.id
-      return axios.post(`/api/groups/${state.current.group.id}/events`, event).then(res => {
-        const newEvents = [ res.data.event, ...state.group_events];
-        setState((prev) => ({ ...prev, group_events: newEvents }))
-      }).catch(err => {
-        alert(err, event);
+    event["user_id"] = state.current.user.id;
+    return axios
+      .post(`/api/groups/${state.current.group.id}/events`, event)
+      .then((res) => {
+        const newEvents = [res.data.event, ...state.group_events];
+        setState((prev) => ({ ...prev, group_events: newEvents }));
       })
-    }
-  
+      .catch((err) => {
+        alert(err, event);
+      });
+  }
 
   async function editEventData(event_id, event) {
     try {
@@ -163,7 +182,6 @@ export default function useAppData() {
     editGroupData,
     editEventData,
     removeGroup,
-    removeEvent
+    removeEvent,
   };
 }
-
