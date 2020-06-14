@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   
     resources :users, shallow: true do
       get '/login', to: 'sessions#create', as: :login
+      post '/login' => 'sessions#create'
       get '/logout', to: 'sessions#destroy', as: :logout
 
       get '/signup', to: 'users#new', as: :signup
