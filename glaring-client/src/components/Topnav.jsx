@@ -47,7 +47,7 @@ export default function Topnav(props) {
       <h1>GLARING (def. noun: a group of cats)</h1>
       <div
         css={css`
-          height: "100%";
+          height: 100%;
         `}
       >
         <Button colour="blue">Content</Button>

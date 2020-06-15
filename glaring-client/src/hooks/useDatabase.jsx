@@ -181,10 +181,10 @@ function useDatabase(initialState) {
       // case "DELEVENT": {
       // }
       case "GETDIRECTORY": {
-        return dispatch("GETDIRECTORY");
+        return dispatch({ type: "GETDIRECTORY" });
       }
       default: {
-        alert("INVALID INPUT");
+        return alert("INVALID INPUT");
       }
     }
   };
