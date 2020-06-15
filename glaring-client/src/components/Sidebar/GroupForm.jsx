@@ -3,6 +3,7 @@
 import React from 'react'
 import {css, jsx} from '@emotion/core'
 import { useForm } from 'react-hook-form';
+import { useDataDispatch } from '../../hooks/useDatabase'
 
 
 
@@ -32,10 +33,15 @@ export default function GroupForm (props) {
 
   const {register, handleSubmit, errors } = useForm();
 
+  const callDatabase = useDataDispatch()
+
   const { action } = props;
 
   async function onSubmit (data) {
     console.log(data);
+    await callDatabase("ADDGROUP", data);
+    console.log("WE DID IT");
+    action();
     // await addEvent(data);
     // setDisplay("display: none;
   }
@@ -55,6 +61,7 @@ export default function GroupForm (props) {
         <input type="text" name="name" placeholder="Enter group name" ref={register} />
         <input type="text" name="description" placeholder="Describe your group!" ref={register} />
         <input type="url" name="photo" placeholder="URL of Group photo" ref={register} />
+        <input type="text" name="colour" placeholder="colour picker" ref={register} />
       
 
 
@@ -63,7 +70,7 @@ export default function GroupForm (props) {
        right: 0; 
        width: 100%`}>
 
-        <GroupFormButton type="button" color="teal" name="CANCEL" onClick={() => action() } />
+        <GroupFormButton type="button" color="teal" name="CANCEL" onClick={() => action()} />
         <GroupFormButton type="submit" color="black" name="SUBMIT" />
 
       </div>
