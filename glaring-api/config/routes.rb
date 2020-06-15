@@ -5,12 +5,16 @@ Rails.application.routes.draw do
   scope path: '/api', controller: :api do
     root to: 'api#index'
     
+    get '/users', to: 'users#index'
+    get '/users/:id', to: 'users#show'
+    
     devise_for :users,
-    path: '',
+    path: '/',
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
-      registration: 'signup'
+      registration: 'signup',
+      index: '/'
     },
     controllers: {
       sessions: 'sessions',
