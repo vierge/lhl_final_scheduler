@@ -94,6 +94,14 @@ export default function GroupForm(props) {
         />
         {colour.visible && (
           <SketchPicker
+            css={css`
+              position: relative;
+              left: 100%;
+              top: -50%;
+              border: none;
+              color: white;
+              background-color: black;
+            `}
             color={colour.value}
             onChange={(color) => setColour({ ...colour, value: color.hex })}
           />
