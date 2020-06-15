@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   scope path: '/api', controller: :api do
     root to: 'api#index'
     
-    get '/users', to: 'users#index'
-    get '/users/:id', to: 'users#show'
-    
+    resources :users, shallow: true
+      
+
     devise_for :users,
     path: '/',
     path_names: {
