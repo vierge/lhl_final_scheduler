@@ -8,15 +8,15 @@ import {
   useDataState,
   useDataDispatch,
 } from "./hooks/useDatabase";
-import { AuthContext, UseAuth } from "./hooks/useAuth";
+import { AuthProvider, UseAuth } from "./hooks/useAuth";
 
 function App() {
   return (
-    <UseAuth>
+    <AuthProvider>
       <DatabaseProvider>
         <Application />
       </DatabaseProvider>
-    </UseAuth>
+    </AuthProvider>
   );
 }
 
