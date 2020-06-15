@@ -41,9 +41,9 @@ export default function GroupForm (props) {
     value: "#666"
   });
 
-  const handleChangeComplete = (color) => {
-    setColour({...colour, value: color.hex});
-  }
+  // const handleChangeComplete = (color) => {
+  //   setColour({...colour, value: color.hex});
+  // }
 
   const { action } = props;
 
