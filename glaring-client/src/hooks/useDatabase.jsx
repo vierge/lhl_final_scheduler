@@ -155,7 +155,9 @@ function useDatabase(initialState) {
 
       case "DELGROUP": {
         const group_id = payload;
-        await axios.delete(`/api/groups/${group_id}`);
+        await axios
+          .delete(`/api/groups/${group_id}`)
+          .catch((err) => alert(err));
         return dispatch({
           type: "DELGROUP",
           item: group_id,

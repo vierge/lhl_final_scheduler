@@ -60,32 +60,36 @@ export default function GroupForm(props) {
       <div
         css={css`
           z-index: 1000;
-          height: 300px;
+          height: calc(100vh - 30px);
           width: 200px;
           background-color: ${colour.value};
-          position: relative;
-          top: 0px;
-          left: 0px;
+          position: absolute;
+          top: 0;
+          left: 200px;
         `}
       >
+        <label htmlFor="name">NAME</label>
         <input
           type="text"
           name="name"
           placeholder="Enter group name"
           ref={register}
         />
+        <label htmlFor="details">DETAILS</label>
         <input
           type="text"
           name="description"
           placeholder="Describe your group!"
           ref={register}
         />
+        <label htmlFor="photo">UPLOAD PIC</label>
         <input
           type="url"
           name="photo"
           placeholder="URL of Group photo"
           ref={register}
         />
+        <label htmlFor="colour">CHOOSE A COLOUR</label>
         <input
           type="button"
           name="colour"
@@ -97,7 +101,7 @@ export default function GroupForm(props) {
             css={css`
               position: relative;
               left: 100%;
-              top: -50%;
+              top: 0;
               border: none;
               color: white;
               background-color: black;
@@ -110,7 +114,7 @@ export default function GroupForm(props) {
         <div
           css={css`
             position: absolute;
-            bottom: -30px;
+            bottom: 10vh;
             right: 0;
             width: 100%;
           `}
