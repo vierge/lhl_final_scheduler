@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     # }
 
     resources :groups, shallow: true do
-      resources :events  
+      resources :events
     end
   end
 end
