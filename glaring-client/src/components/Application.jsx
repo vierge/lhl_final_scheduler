@@ -7,9 +7,10 @@ import Topnav from "./Topnav";
 import Sidebar from "./Sidebar/Index";
 import GroupList from "./GroupList";
 import EventsList from "./EventsList";
-import EventForm from "./Event/EventForm";
+import Group from "./Group/IndexGroup"
 
 import { useDataState } from "../hooks/useDatabase";
+import GroupForm from "./Sidebar/GroupForm";
 
 const Main = (props) => (
   <main
@@ -44,6 +45,7 @@ export default function Application() {
 
       <Main>
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
+        {state.current.view === "groups" && <Group groups = {state.groups} />}
         {state.current.view === "events" && (
           <EventsList events={state.group_events} />
         )}

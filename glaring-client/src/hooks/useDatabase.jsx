@@ -37,7 +37,7 @@ function useDatabase(initialState) {
       case "ADDGROUP": {
         // ADD A NEW GROUP TO DB
         console.log(action.item);
-        const currentGroup = action.item.data.group.id;
+        const currentGroup = action.item.data.group;
         return {
           ...state,
           current: {
@@ -96,6 +96,7 @@ function useDatabase(initialState) {
 
       case "GETDIRECTORY": {
         return { ...state, current: { user: state.user, view: "groups" } };
+
       }
       default: {
         alert("INVALID INPUT");
@@ -155,7 +156,9 @@ function useDatabase(initialState) {
 
       case "DELGROUP": {
         const group_id = payload;
-        await axios.delete(`/api/groups/${group_id}`);
+        await axios
+          .delete(`/api/groups/${group_id}`)
+          .catch((err) => alert(err));
         return dispatch({
           type: "DELGROUP",
           item: group_id,
@@ -181,10 +184,10 @@ function useDatabase(initialState) {
       // case "DELEVENT": {
       // }
       case "GETDIRECTORY": {
-        return dispatch("GETDIRECTORY");
+        return dispatch({ type: "GETDIRECTORY" });
       }
       default: {
-        alert("INVALID INPUT");
+        return alert("INVALID INPUT");
       }
     }
   };

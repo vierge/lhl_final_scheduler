@@ -11,5 +11,4 @@ test:
   adapter: postgresql
   encoding: unicode
   database: glaring_test
-
   pool: 5
