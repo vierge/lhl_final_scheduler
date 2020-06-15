@@ -96,6 +96,7 @@ function useDatabase(initialState) {
 
       case "GETDIRECTORY": {
         return { ...state, current: { user: state.user, view: "groups" } };
+
       }
       default: {
         alert("INVALID INPUT");
