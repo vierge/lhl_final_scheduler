@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     root to: 'api#index'
   
     resources :users, shallow: true do
-      get '/login', to: 'sessions#new', as: :login
-      post '/login' => 'sessions#create'
-      get '/logout', to: 'sessions#destroy', as: :logout
+      post '/authenticate', to: 'auth#auth', as: :authenticate
+      post '/login' => 'auth#create', as :login
+      get '/logout', to: 'auth#destroy', as: :logout
       # post '/logout', to: 'sessions#destroy', as: :logout
 
 
