@@ -24,7 +24,7 @@ const GroupFormButton = (props) => {
         }
     `
     }
-  >{name}</button>
+  {...props} >{name}</button>
 }
 
 
@@ -32,13 +32,16 @@ export default function GroupForm (props) {
 
   const {register, handleSubmit, errors } = useForm();
 
+  const { action } = props;
+
   async function onSubmit (data) {
-    console.log(data)
+    console.log(data);
     // await addEvent(data);
-    // setDisplay("display: none;")
+    // setDisplay("display: none;
   }
 
   return (
+  <form onSubmit={handleSubmit(onSubmit)}>
   <div 
       css={css`
       z-index: 1000; 
@@ -48,8 +51,7 @@ export default function GroupForm (props) {
       position: relative; 
       top: 0px; 
       left: 0px;`}>
-      
-      <form name="New Group" onSubmit={(event) => handleSubmit(onSubmit)}>
+
         <input type="text" name="name" placeholder="Enter group name" ref={register} />
         <input type="text" name="description" placeholder="Describe your group!" ref={register} />
         <input type="url" name="photo" placeholder="URL of Group photo" ref={register} />
@@ -61,12 +63,13 @@ export default function GroupForm (props) {
        right: 0; 
        width: 100%`}>
 
-        <GroupFormButton color="teal" name="CANCEL" />
-        <GroupFormButton color="black" name="SUBMIT" onClick={(event) => handleSubmit(onSubmit)} />
+        <GroupFormButton type="button" color="teal" name="CANCEL" onClick={() => action() } />
+        <GroupFormButton type="submit" color="black" name="SUBMIT" />
 
       </div>
-      </form>
+    
   </div>
+  </form>
   )
 
 }
