@@ -1,11 +1,12 @@
-class SessionsController < Devise::SessionsController
-  respond_to: :json
-private
-  def respond_with(resource, _opts = {})
-      render json: resource
+class SessionsController < ApplicationController
+  def create
+    user = User.find_by_email(params[:email])
+    if user.valid_password?(params[:password]) 
+      render json: user.to_json
+    end
   end
 
-def respond_to_on_destroy
-    head :ok
-  end
+  # def destroy
+  # end
+
 end
