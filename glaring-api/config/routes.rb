@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  devise_for :users
   scope path: '/api', controller: :api do
     root to: 'api#index'
   

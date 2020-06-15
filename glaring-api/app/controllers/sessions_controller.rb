@@ -1,7 +1,3 @@
-class SessionsController < ApplicationController
-  def login
-  end
-
-  def logout
-  end
+class SessionsController < Devise::SessionsController
+  respond_to: :json
 end
