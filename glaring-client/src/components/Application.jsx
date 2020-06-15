@@ -7,8 +7,6 @@ import Topnav from "./Topnav";
 import Sidebar from "./Sidebar/Index";
 import GroupList from "./GroupList";
 import EventsList from "./EventsList";
-import EventForm from "./Event/EventForm";
-import GroupForm from "./Creation/GroupForm";
 
 import { useDataState } from "../hooks/useDatabase";
 

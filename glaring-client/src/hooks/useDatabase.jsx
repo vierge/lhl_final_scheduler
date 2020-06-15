@@ -37,7 +37,7 @@ function useDatabase(initialState) {
       case "ADDGROUP": {
         // ADD A NEW GROUP TO DB
         console.log(action.item);
-        const currentGroup = action.item.data.group.id;
+        const currentGroup = action.item.data.group;
         return {
           ...state,
           current: {

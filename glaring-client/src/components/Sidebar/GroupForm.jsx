@@ -48,7 +48,7 @@ export default function GroupForm(props) {
 
   async function onSubmit(data) {
     console.log(data);
-    await callDatabase("ADDGROUP", data);
+    await callDatabase("ADDGROUP", { ...data, colour: colour.value });
     console.log("WE DID IT");
     action();
     // await addEvent(data);
