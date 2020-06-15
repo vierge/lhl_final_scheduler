@@ -1,9 +1,10 @@
 /**@jsx jsx */
 
-import React from 'react'
+import React, { useState } from 'react'
 import {css, jsx} from '@emotion/core'
 import { useForm } from 'react-hook-form';
 import { useDataDispatch } from '../../hooks/useDatabase'
+import { SketchPicker } from 'react-color';
 
 
 
@@ -35,6 +36,15 @@ export default function GroupForm (props) {
 
   const callDatabase = useDataDispatch()
 
+  const [colour, setColour] = useState({
+    visible: false,
+    value: "#666"
+  });
+
+  const handleChangeComplete = (color) => {
+    setColour({...colour, value: color.hex});
+  }
+
   const { action } = props;
 
   async function onSubmit (data) {
@@ -61,7 +71,11 @@ export default function GroupForm (props) {
         <input type="text" name="name" placeholder="Enter group name" ref={register} />
         <input type="text" name="description" placeholder="Describe your group!" ref={register} />
         <input type="url" name="photo" placeholder="URL of Group photo" ref={register} />
-        <input type="text" name="colour" placeholder="colour picker" ref={register} />
+        <input type="button" name="colour" placeholder="colour picker" onClick={() => setColour({...colour, visible: true})} />
+        {/* {colour.visible && <SketchPicker color={colour.value} 
+        onClick={() => handleChangeComplete} 
+        />} */}
+
       
 
 
