@@ -9,6 +9,7 @@ import GroupList from "./GroupList";
 import EventsList from "./EventsList";
 
 import { useDataState } from "../hooks/useDatabase";
+import GroupForm from "./Sidebar/GroupForm";
 
 const Main = (props) => (
   <main
