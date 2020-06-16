@@ -143,11 +143,14 @@ function useDatabase(initialState) {
       // SET CURRENT GROUP
       case "SETGROUP": {
         const group_id = payload;
-        const events = await axios.get(`/api/groups/${group_id}/events`);
-        console.log(events.data);
+        const group_events = await axios.get(`/api/groups/${group_id}/events`);
+        console.log(group_events.data);
         return dispatch({
           type: "SETGROUP",
-          item: { events: events.data, group: group_id },
+          item: {
+            events: group_events.data.events,
+            group: group_events.data.group,
+          },
         });
       }
       // GROUP ACTIONS:

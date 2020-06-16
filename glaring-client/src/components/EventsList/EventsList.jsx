@@ -56,7 +56,7 @@ export default function EventsList(props) {
       `}
     >
       <Header name={group.name} />
-      {/* {eventsList} */}
+      {eventsList}
     </ul>
   );
 }
