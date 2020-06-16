@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { css, jsx } from "@emotion/core";
 import GroupItem from "./GroupItem";
 import Options from "./Options";
-import { useDataDispatch } from "../../hooks/useDatabase";
+import { useDataDispatch, useDataState } from "../../hooks/useDatabase";
 import { useAuth } from "../../hooks/useAuth";
 import GroupForm from "./GroupForm";
 
@@ -31,7 +31,7 @@ const Header = (props) => (
       align-items: center;
       width: 100%;
       height: 30px;
-      background-color: Black;
+      background-color: ${props.colour};
       color: white;
       border-bottom: 3px solid #333;
     `}
@@ -41,6 +41,10 @@ const Header = (props) => (
 
 export default function Sidebar(props) {
   const isAuthorized = useAuth();
+  const {
+    current: { group },
+  } = useDataState();
+  console.log(group);
 
   const [display, setDisplay] = useState(false);
 
@@ -64,7 +68,7 @@ export default function Sidebar(props) {
 
   return (
     <Nav>
-      <Header>
+      <Header colour={group.colour}>
         <h3
           css={css`
             margin-left: 15px;

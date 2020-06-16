@@ -6,13 +6,43 @@ const Header = (props) => (
   <header
     css={css`
       margin: 0;
+      padding-left: 20px;
       height: 150px;
       width: calc(100vw - 200px);
       background-color: ${props.colour};
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 40px;
+      line-height: 0.8;
+      border-bottom: 4px solid #333;
     `}
   >
-    <h1>{props.name}</h1>
-    <button></button>
+    <h1
+      css={css`
+        margin: 0;
+        width: calc(100% - 120px);
+      `}
+    >
+      {props.name}
+    </h1>
+    <button
+      css={css`
+        font-size: 60px;
+        height: 100%;
+        border-style: none;
+        border-left: 4px solid #5d53d2;
+        padding: 0;
+        width: 120px;
+        background-color: white;
+        &:hover {
+          background-color: #333;
+          color: ${props.colour};
+        }
+      `}
+    >
+      ++
+    </button>
   </header>
 );
 
@@ -50,12 +80,12 @@ export default function EventsList(props) {
     <ul
       css={css`
         list-style: none;
-        margin: 0 auto;
+        margin: 0;
         padding: 0;
         background-color: violet;
       `}
     >
-      <Header name={group.name} />
+      <Header name={group.name} colour={group.colour} />
       {eventsList}
     </ul>
   );
