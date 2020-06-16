@@ -6,7 +6,7 @@ import GroupListItem from "./GroupListItem.js";
 
 export default function GroupList(props) {
   const groupList = props.groups.map((group) => {
-    
+
     return (
       <GroupListItem
         key={group.id}
@@ -21,6 +21,8 @@ export default function GroupList(props) {
   return (
     <ul
       css={css`
+        z-index: 5;
+        position: relative;
         display: flex;
         justify-content: space-evenly;
         flex-direction: row;

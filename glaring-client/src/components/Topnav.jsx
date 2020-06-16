@@ -26,7 +26,7 @@ const Button = (props) => {
 const Nav = (props) => (
   <nav
     css={css`
-      z-index: 100;
+      z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;

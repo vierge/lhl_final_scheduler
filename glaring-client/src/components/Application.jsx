@@ -46,6 +46,9 @@ export default function Application() {
       />
 
       <Main>
+ feature/groupcont
+        {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
+
         { <Login/> }
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "groups" && <Group groups = {state.groups} />}
