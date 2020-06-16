@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   def index
     # GET
     events = Event.includes(:reservations).where(group_id: params[:group_id]).order(:start_time)
-    render json: events.to_json(include: :reservations)
+    group = Group.find_by(id: params[:group_id])
+    group_events =  { events: events.as_json(include: :reservations), group: group }
+    render json: group_events
   end
 
   def create

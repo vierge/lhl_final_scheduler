@@ -1,11 +1,25 @@
 /**@jsx jsx */
-import React from "react";
 import { css, jsx } from "@emotion/core";
 import Event from "./Event";
 
+const Header = (props) => (
+  <header
+    css={css`
+      margin: 0;
+      height: 150px;
+      width: calc(100vw - 200px);
+      background-color: ${props.colour};
+    `}
+  >
+    <h1>{props.name}</h1>
+    <button></button>
+  </header>
+);
+
 export default function EventsList(props) {
-  const { events } = props;
+  const { group, events } = props;
   console.log(events);
+
   const eventsList = events.map((element) => {
     const {
       id,
@@ -32,6 +46,7 @@ export default function EventsList(props) {
   });
 
   return (
+    // <Event init={"CREATE"} />
     <ul
       css={css`
         list-style: none;
@@ -40,8 +55,8 @@ export default function EventsList(props) {
         background-color: violet;
       `}
     >
-      <Event init={"CREATE"} />
-      {eventsList}
+      <Header name={group.name} />
+      {/* {eventsList} */}
     </ul>
   );
 }

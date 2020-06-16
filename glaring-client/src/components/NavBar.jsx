@@ -50,6 +50,7 @@ export default function NavBar(props) {
     <Nav>
       <h1
         css={css`
+          margin: 0;
           margin-left: 15px;
         `}
       >

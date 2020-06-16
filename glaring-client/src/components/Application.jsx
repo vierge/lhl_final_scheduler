@@ -18,8 +18,10 @@ const Main = (props) => (
       margin: 0;
       padding: 0;
       width: calc(100% - 200px);
+
       position: relative;
       left: 200px;
+      top: 0;
       background-color: black;
     `}
     {...props}
@@ -43,7 +45,7 @@ export default function Application() {
           <GroupsList groups={state.groups} />
         )}
         {state.current.view === "events" && (
-          <EventsList events={state.group_events} />
+          <EventsList group={state.current.group} events={state.group_events} />
         )}
       </Main>
 
