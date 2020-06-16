@@ -54,7 +54,7 @@ export default function Login() {
                    className="creation__create-input text--semi-bold"
                    name="description"
                    type="text"
-                   placeholder="Enter Group Description"
+                   placeholder="Enter Password"
                 />
            </div>
 
