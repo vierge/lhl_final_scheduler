@@ -1,10 +1,10 @@
 /**@jsx jsx */
 import React, { useState } from "react";
 import { css, jsx } from "@emotion/core";
-import NavGroup from "./Group";
+import GroupItem from "./Group";
 import Options from "./Options";
 import { useDataDispatch } from "../../hooks/useDatabase";
-import GroupForm from "./GroupForm"
+import GroupForm from "./GroupForm";
 
 const currentUser = "Marshmallow";
 
@@ -38,13 +38,12 @@ const Header = (props) => (
 );
 
 export default function Sidebar(props) {
-
-  const [ display, setDisplay ] = useState(false);
+  const [display, setDisplay] = useState(false);
 
   const { groups } = props;
 
   const AddGroup = (props) => (
-    <NavGroup
+    <GroupItem
       name="addgroup"
       button="+"
       colour="deeppink"
@@ -55,14 +54,7 @@ export default function Sidebar(props) {
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
-    return (
-      <NavGroup
-        key={id}
-        id={id}
-        colour={colour}
-        name={name}
-      />
-    );
+    return <GroupItem key={id} id={id} colour={colour} name={name} />;
   });
 
   return (
@@ -76,7 +68,7 @@ export default function Sidebar(props) {
       <Options />
     </Nav>
   );
-  /* <NavGroup color="deeppink" />
-  <NavGroup color="mediumslateblue" />
-  <NavGroup color="turquoise" /> */
+  /* <GroupItem color="deeppink" />
+  <GroupItem color="mediumslateblue" />
+  <GroupItem color="turquoise" /> */
 }

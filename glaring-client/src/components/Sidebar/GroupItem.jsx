@@ -57,7 +57,7 @@ const Div = (props) => (
   />
 );
 
-export default function NavGroup(props) {
+export default function GroupItem(props) {
   const { colour, name, button, action, id } = props;
 
   const callDatabase = useDataDispatch();
@@ -65,10 +65,10 @@ export default function NavGroup(props) {
   return (
     <Div
       colour={colour}
-      onClick={(event) => action ? action() : callDatabase("SETGROUP", id)}
+      onClick={(event) => (action ? action() : callDatabase("SETGROUP", id))}
     >
       <Text> {name} </Text>
-      <Button onClick={(event) => callDatabase("DELGROUP", id) }>
+      <Button onClick={(event) => callDatabase("DELGROUP", id)}>
         {button || "X"}
       </Button>
     </Div>
