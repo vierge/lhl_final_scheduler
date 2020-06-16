@@ -9,7 +9,7 @@ import GroupList from "./GroupList";
 import EventsList from "./EventsList";
 import Group from "./Group/IndexGroup";
 import Login from "./Login/LoginForm";
-
+import Registration from "./Registration/RegistrationForm";
 
 import { useDataState } from "../hooks/useDatabase";
 import GroupForm from "./Sidebar/GroupForm";
@@ -46,10 +46,8 @@ export default function Application() {
       />
 
       <Main>
- feature/groupcont
-        {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
-
-        { <Login/> }
+        {<Login/>}
+        {<Registration/>}
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "groups" && <Group groups = {state.groups} />}
         {state.current.view === "events" && (
