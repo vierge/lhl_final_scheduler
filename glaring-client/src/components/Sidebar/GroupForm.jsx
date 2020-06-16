@@ -48,6 +48,7 @@ export default function GroupForm(props) {
 
   async function onSubmit(data) {
     console.log(data);
+    if (data)
     await callDatabase("ADDGROUP", { ...data, colour: colour.value });
     console.log("WE DID IT");
     action();
@@ -59,7 +60,7 @@ export default function GroupForm(props) {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
         css={css`
-          z-index: 1000;
+          z-index: 9;
           height: calc(100vh - 30px);
           width: 200px;
           background-color: ${colour.value};
@@ -73,22 +74,38 @@ export default function GroupForm(props) {
           type="text"
           name="name"
           placeholder="Enter group name"
-          ref={register}
+          ref={register({
+            required: "Required"
+          })}
         />
+        {errors.name && errors.name.type === "required" && <span>Name field cannot be empty</span>}
+
         <label htmlFor="details">DETAILS</label>
         <input
           type="text"
           name="description"
           placeholder="Describe your group!"
-          ref={register}
+          ref={register({
+            required: true
+          })}
         />
+        {errors.description && errors.description.type === "required" && <span>Description field cannot be empty</span>}
+
         <label htmlFor="photo">UPLOAD PIC</label>
         <input
           type="url"
           name="photo"
           placeholder="URL of Group photo"
-          ref={register}
+          ref={register({
+            required: "Required",
+            pattern: {
+
+              message : "Group Photo Required"
+            }
+          })}
         />
+        {errors.photo && errors.photo.type === "required" && <span>You must submit a group photo link</span>}
+
         <label htmlFor="colour">CHOOSE A COLOUR</label>
         <input
           type="button"

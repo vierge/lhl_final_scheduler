@@ -15,6 +15,8 @@ export default function Group(props) {
         key={group.id}
         id={group.id}
         name={group.name}
+        description={group.description}
+        photo={group.photo}
         selected={group.name === props.group}
         setGroup={props.setGroup}
       />
@@ -24,12 +26,13 @@ export default function Group(props) {
   return (
     <ul
       css={css`
+        list-style: none;
         display: flex;
         justify-content: space-evenly;
         flex-direction: row;
         flex-wrap: wrap;
         min-width: 400px;
-        background-color: slategrey;
+        background-color: white;
       `}
     >
       {groupList}
