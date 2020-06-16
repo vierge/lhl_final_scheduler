@@ -78,7 +78,15 @@ export default function GroupForm(props) {
             required: "Required"
           })}
         />
-        {errors.name && errors.name.type === "required" && <span>Name field cannot be empty</span>}
+        {errors.name && errors.name.type === "required" && 
+        <span 
+          css={css`
+          background-color: white; 
+          color: red; font-size: 
+          30px;
+          `}
+        >Name field cannot be empty
+        </span>}
 
         <label htmlFor="details">DETAILS</label>
         <input
