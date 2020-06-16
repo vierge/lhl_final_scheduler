@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     root to: 'api#index'
     
     resources :users, shallow: true
-    resources :sessions, only: [:create, :destroy]
+    resources :sessions, only: [:create, :update, :validate]
 
     # devise_for :users,
     # path: '/',
