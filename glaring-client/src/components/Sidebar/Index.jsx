@@ -33,6 +33,7 @@ const Header = (props) => (
       height: 30px;
       background-color: Black;
       color: white;
+      border-bottom: 3px solid #333;
     `}
     {...props}
   />

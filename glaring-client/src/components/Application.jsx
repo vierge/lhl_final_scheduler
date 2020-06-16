@@ -11,7 +11,6 @@ import Login from "./Login/Index";
 import "./Application.scss";
 
 import { useDataState } from "../hooks/useDatabase";
-import GroupForm from "./Sidebar/GroupForm";
 
 const Main = (props) => (
   <main

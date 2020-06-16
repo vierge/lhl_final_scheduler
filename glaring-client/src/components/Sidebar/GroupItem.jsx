@@ -29,7 +29,7 @@ const Button = (props) => (
       border: none;
       width: 15%;
       height: 100%;
-      ${props.colour <= 0x333 && "color: white;"}
+      ${props.colour === "black" && "color: white;"}
       &:hover {
         color: red;
       }
@@ -46,9 +46,9 @@ const Div = (props) => (
       align-items: center;
       width: 100%;
       height: 36px;
-      border-bottom: 1px dotted #999;
+      border-bottom: 3px solid #333;
       background-color: ${props.colour};
-      ${props.colour === "black" && "color: white;"}
+      ${props.colour <= "black" && "color: white;"}
 
       &:hover {
         ${(props.colour === "black" &&
