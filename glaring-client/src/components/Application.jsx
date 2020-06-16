@@ -46,7 +46,7 @@ export default function Application() {
       />
 
       <Main>
-        { <Login groups={state.groups} />   }
+        { <Login/> }
         {state.current.view === "groups" && <GroupList groups={state.groups} />}
         {state.current.view === "groups" && <Group groups = {state.groups} />}
         {state.current.view === "events" && (
