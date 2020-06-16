@@ -96,7 +96,23 @@ function useDatabase(initialState) {
 
       case "GETDIRECTORY": {
         return { ...state, current: { user: state.user, view: "groups" } };
+      }
 
+      case "LOGIN": {
+        return {
+          ...state,
+          current: {
+            user: {
+              id: action.item.id,
+              name: action.item.name,
+              avatar: action.item.avatar,
+              email: action.item.email,
+              token: action.item.authentication_token,
+            },
+            view: "schedule",
+          },
+          groups: action.item.groups,
+        };
       }
       default: {
         alert("INVALID INPUT");
@@ -186,6 +202,14 @@ function useDatabase(initialState) {
       case "GETDIRECTORY": {
         return dispatch({ type: "GETDIRECTORY" });
       }
+
+      case "LOGIN": {
+        const login = await axios.post(`/api/sessions`, { token: payload });
+        return dispatch({
+          type: "LOGIN",
+          item: login.data,
+        });
+      }
       default: {
         return alert("INVALID INPUT");
       }
@@ -211,7 +235,6 @@ function DatabaseProvider({ children }) {
       user: {
         id: 1,
         name: "dummy",
-        password: "i.am.insecure",
         email: "person@website.thing",
       },
       group: [],
@@ -219,11 +242,8 @@ function DatabaseProvider({ children }) {
       view: "",
     },
 
-    users: [],
     groups: [],
     group_events: [],
-    memberships: [],
-    reservations: [],
   };
 
   const { state, callDatabase } = useDatabase(initialState);
