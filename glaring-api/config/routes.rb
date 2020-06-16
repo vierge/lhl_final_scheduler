@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
 
-  path: '/', to: 'landing#index'
-
-
+  # root to: 'landing#index'
+  
+  
   scope path: '/api', controller: :api do
     root to: 'api#index'
     

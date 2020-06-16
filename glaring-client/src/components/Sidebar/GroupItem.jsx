@@ -8,7 +8,7 @@ import { useDataState, useDataDispatch } from "../../hooks/useDatabase";
 // import Button from "../components/Button";
 
 const Text = (props) => (
-  <p
+  <h4
     css={css`
       display: block;
       margin: 0;

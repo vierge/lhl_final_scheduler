@@ -1,25 +1,49 @@
-* {box-sizing: border-box;}
-
-.page {
-  display: grid;
-  grid-template-columns: 20vw auto;
+* {
+  box-sizing: border-box;
 }
 
-.sidebar {
-  position: fixed;
-  width: 300px;
-  height: 500vw;
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: darkblue;
-}
+// base colours: #5d53d2 (violet), #282828 (dark grey)
 
-.sidebar__menu {
+// font-family: 'Muli', sans-serif;
+
+// font-family: 'MuseoModerno', cursive;
+
+// font-family: 'Quicksand', sans-serif;
+
+h1 {
+  font-family: "MuseoModerno", cursive;
   color: white;
-  position: center;
-  grid-column-start: 1;
-
-  &:hover {
-    background-color: deeppink;
-  }
 }
+
+h3 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 700;
+}
+
+h4 {
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+}
+// .page {
+//   display: grid;
+//   grid-template-columns: 20vw auto;
+// }
+
+// .sidebar {
+//   position: fixed;
+//   width: 300px;
+//   height: 500vw;
+//   padding-left: 5px;
+//   padding-right: 5px;
+//   background-color: darkblue;
+// }
+
+// .sidebar__menu {
+//   color: white;
+//   position: center;
+//   grid-column-start: 1;
+
+//   &:hover {
+//     background-color: deeppink;
+//   }
+// }
