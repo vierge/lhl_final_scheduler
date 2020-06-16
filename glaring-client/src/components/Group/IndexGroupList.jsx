@@ -26,6 +26,7 @@ export default function GroupListItem2(props) {
       <main className="group">
 
         <div className="group__top">
+
           <img className="group__image" src={photo} />
 
           <div className="group__content">
