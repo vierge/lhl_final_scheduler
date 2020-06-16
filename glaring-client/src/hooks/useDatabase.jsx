@@ -242,11 +242,8 @@ function DatabaseProvider({ children }) {
       view: "",
     },
 
-    users: [],
     groups: [],
     group_events: [],
-    memberships: [],
-    reservations: [],
   };
 
   const { state, callDatabase } = useDatabase(initialState);
