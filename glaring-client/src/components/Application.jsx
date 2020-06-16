@@ -34,28 +34,23 @@ export default function Application() {
 
   return (
     <body>
-      {/* <DatabaseProvider> */}
+      {/* {isAuth ? ( */}
+
       <NavBar />
-      <Sidebar
-        groups={state.groups}
-        // setGroup={setGroupData}
-        // addGroup={addGroupData}
-        // getDirectory={getDirectoryData}
-        // removeGroup={removeGroup}
-      />
+      <Sidebar groups={state.groups} />
 
       <Main>
-        {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
-        {/* {<Login />} */}
         {state.current.view === "groups" && (
           <GroupsList groups={state.groups} />
         )}
-        {/* {state.current.view === "groups" && <Group groups={state.groups} />} */}
         {state.current.view === "events" && (
           <EventsList events={state.group_events} />
         )}
       </Main>
-      {/* </DatabaseProvider> */}
+
+      {/* ) : (
+        <Landing />
+      )} */}
     </body>
   );
 }

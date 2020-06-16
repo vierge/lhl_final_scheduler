@@ -13,7 +13,9 @@ const Text = (props) => (
       display: block;
       margin: 0;
       width: 85%;
-      text-align: center;
+      text-align: left;
+      line-height: 0.9;
+      margin-left: 15px;
     `}
     {...props}
   />
@@ -27,7 +29,7 @@ const Button = (props) => (
       border: none;
       width: 15%;
       height: 100%;
-
+      ${props.colour <= 0x333 && "color: white;"}
       &:hover {
         color: red;
       }
@@ -40,10 +42,11 @@ const Div = (props) => (
     css={css`
       display: flex;
       flex-direction: row;
-      justify-content: right;
+      justify-content: space-between;
       align-items: center;
       width: 100%;
-      height: 30px;
+      height: 36px;
+      border-bottom: 1px dotted #999;
       background-color: ${props.colour};
       ${props.colour === "black" && "color: white;"}
 
@@ -68,7 +71,7 @@ export default function GroupItem(props) {
       onClick={(event) => (action ? action() : callDatabase("SETGROUP", id))}
     >
       <Text> {name} </Text>
-      <Button onClick={(event) => callDatabase("DELGROUP", id)}>
+      <Button colour={colour} onClick={(event) => callDatabase("DELGROUP", id)}>
         {button || "X"}
       </Button>
     </Div>

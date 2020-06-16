@@ -50,7 +50,7 @@ export default function NavBar(props) {
     <Nav>
       <h1
         css={css`
-          margin-left: 20px;
+          margin-left: 15px;
         `}
       >
         GLARING (def. noun: a group of cats)
