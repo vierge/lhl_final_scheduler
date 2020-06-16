@@ -23,7 +23,7 @@ export default function Login() {
              />
 
              <br/>
-             <br/>
+      
 
                 <label for="groupName">Name: </label>
                    <input
@@ -33,7 +33,7 @@ export default function Login() {
                      type="text"
                      placeholder="Enter Name"
                    />
-                   
+
              <br/>
              <br/>
 
