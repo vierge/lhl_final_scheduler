@@ -26,7 +26,7 @@ const Button = (props) => {
 const Nav = (props) => (
   <nav
     css={css`
-      z-index: 100;
+      z-index: 10;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -41,7 +41,7 @@ const Nav = (props) => (
   />
 );
 
-export default function Topnav(props) {
+export default function NavBar(props) {
   return (
     <Nav>
       <h1>GLARING (def. noun: a group of cats)</h1>

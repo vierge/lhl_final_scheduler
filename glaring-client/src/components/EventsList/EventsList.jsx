@@ -1,8 +1,7 @@
 /**@jsx jsx */
 import React from "react";
 import { css, jsx } from "@emotion/core";
-import Event from "./Event/Index";
-import EventForm from "./Event/EventForm";
+import Event from "./Event";
 
 export default function EventsList(props) {
   const { events } = props;

@@ -29,8 +29,11 @@ export default function EventForm(props) {
             type="url"
             name="photo"
             placeholder="Paste event image url"
-            ref={register}
+            ref={register({
+              required: true
+            })}
           />
+          {errors.photo && errors.photo.type === "required" && <span>Field cannot be empty</span>}
         </div>
 
         <div className="eventform__content">
@@ -38,14 +41,20 @@ export default function EventForm(props) {
             type="text"
             name="name"
             placeholder="Enter event title"
-            ref={register}
+            ref={register({
+              required: true
+            })}
           />
+          {errors.name && errors.name.type === "required" && <span>Field cannot be empty</span>}
           <input
             type="text"
             name="description"
             placeholder="Enter event description"
-            ref={register}
+            ref={register({
+              required: true
+            })}
           />
+          {errors.description && errors.description.type === "required" && <span>Field cannot be empty</span>}
         </div>
       </div>
 
@@ -54,7 +63,10 @@ export default function EventForm(props) {
       </div>
 
       <aside className="eventform__time">
-        <input type="datetime-local" name="start_date" ref={register} />
+        <input type="datetime-local" name="start_date" ref={register({
+          required: true
+        })} />
+        {errors.start_date && errors.start_date.type === "required" && <span>Please specficy start time</span>}
         <br />
         {/* <input type="time" name="time" ref={register} />  */}
       </aside>
