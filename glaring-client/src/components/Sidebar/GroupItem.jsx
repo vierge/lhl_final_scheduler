@@ -47,6 +47,7 @@ const Div = (props) => (
       width: 100%;
       height: 36px;
       border-bottom: 3px solid #333;
+      border-right: 3px solid #333;
       background-color: ${props.colour};
       ${props.colour <= "black" && "color: white;"}
 
