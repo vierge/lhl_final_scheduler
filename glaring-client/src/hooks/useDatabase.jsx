@@ -199,6 +199,7 @@ function useDatabase(initialState) {
       // // DELETE AN EVENT
       // case "DELEVENT": {
       // }
+
       case "GETDIRECTORY": {
         return dispatch({ type: "GETDIRECTORY" });
       }
