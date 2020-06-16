@@ -4,6 +4,7 @@ import { css, jsx } from "@emotion/core";
 import GroupItem from "./GroupItem";
 import Options from "./Options";
 import { useDataDispatch } from "../../hooks/useDatabase";
+import { useAuth } from "../../hooks/useAuth";
 import GroupForm from "./GroupForm";
 
 const currentUser = "Marshmallow";
@@ -38,6 +39,9 @@ const Header = (props) => (
 );
 
 export default function Sidebar(props) {
+
+  const isAuthorized = useAuth();
+
   const [display, setDisplay] = useState(false);
 
   const { groups } = props;
@@ -54,7 +58,10 @@ export default function Sidebar(props) {
 
   const groupList = groups.map((element) => {
     const { colour, name, id } = element;
+
     return <GroupItem key={id} id={id} colour={colour} name={name} />;
+
+
   });
 
   return (
@@ -62,7 +69,7 @@ export default function Sidebar(props) {
       <Header>
         <h3>{currentUser}</h3>
       </Header>
-      {groupList}
+      {isAuthorized && groupList}
       {display && <GroupForm action={(event) => setDisplay(!display)} />}
       <AddGroup />
       <Options />

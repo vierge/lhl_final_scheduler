@@ -9,6 +9,7 @@ import EventsList from "./EventsList/EventsList";
 import GroupsList from "./GroupsList/Index";
 import Login from "./Login/Index";
 
+
 import { useDataState } from "../hooks/useDatabase";
 import GroupForm from "./Sidebar/GroupForm";
 
@@ -44,6 +45,7 @@ export default function Application() {
       />
 
       <Main>
+
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
         {/* {<Login />} */}
         {state.current.view === "groups" && (
