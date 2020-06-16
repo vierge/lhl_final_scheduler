@@ -10,7 +10,6 @@ import EventsList from "./EventsList";
 import Group from "./Group/IndexGroup";
 import Login from "./Login/LoginForm";
 
-
 import { useDataState } from "../hooks/useDatabase";
 import GroupForm from "./Sidebar/GroupForm";
 
@@ -46,7 +45,7 @@ export default function Application() {
       />
 
       <Main>
- feature/groupcont
+
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
 
         { <Login/> }
