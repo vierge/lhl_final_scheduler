@@ -3,12 +3,12 @@
 import React from "react";
 
 import { css, jsx } from "@emotion/core";
-import Topnav from "./Topnav";
+import NavBar from "./NavBar";
 import Sidebar from "./Sidebar/Index";
-import GroupList from "./GroupList";
-import EventsList from "./EventsList";
-import Group from "./Group/IndexGroup";
-import Login from "./Login/LoginForm";
+import EventsList from "./EventsList/EventsList";
+import GroupsList from "./GroupsList/Index";
+import Login from "./Login/Index";
+
 
 import { useDataState } from "../hooks/useDatabase";
 import GroupForm from "./Sidebar/GroupForm";
@@ -35,7 +35,7 @@ export default function Application() {
   return (
     <body>
       {/* <DatabaseProvider> */}
-      <Topnav />
+      <NavBar />
       <Sidebar
         groups={state.groups}
         // setGroup={setGroupData}
@@ -47,10 +47,11 @@ export default function Application() {
       <Main>
 
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
-
-        { <Login/> }
-        {state.current.view === "groups" && <GroupList groups={state.groups} />}
-        {state.current.view === "groups" && <Group groups = {state.groups} />}
+        {/* {<Login />} */}
+        {state.current.view === "groups" && (
+          <GroupsList groups={state.groups} />
+        )}
+        {/* {state.current.view === "groups" && <Group groups={state.groups} />} */}
         {state.current.view === "events" && (
           <EventsList events={state.group_events} />
         )}

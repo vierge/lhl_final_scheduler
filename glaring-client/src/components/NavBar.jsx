@@ -41,7 +41,7 @@ const Nav = (props) => (
   />
 );
 
-export default function Topnav(props) {
+export default function NavBar(props) {
   return (
     <Nav>
       <h1>GLARING (def. noun: a group of cats)</h1>
