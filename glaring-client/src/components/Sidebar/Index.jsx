@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import React, { useState } from "react";
 import { css, jsx } from "@emotion/core";
-import GroupItem from "./Group";
+import GroupItem from "./GroupItem";
 import Options from "./Options";
 import { useDataDispatch } from "../../hooks/useDatabase";
 import GroupForm from "./GroupForm";
