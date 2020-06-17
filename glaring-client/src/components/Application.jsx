@@ -8,11 +8,11 @@ import Sidebar from "./Sidebar/Index";
 import EventsList from "./EventsList/EventsList";
 import GroupsList from "./GroupsList/Index";
 import Login from "./Login/Index";
+import "./Application.scss";
 import Registration from "./Registration/RegistrationForm";
 
 
 import { useDataState } from "../hooks/useDatabase";
-import GroupForm from "./Sidebar/GroupForm";
 
 const Main = (props) => (
   <main
@@ -20,8 +20,10 @@ const Main = (props) => (
       margin: 0;
       padding: 0;
       width: calc(100% - 200px);
+
       position: relative;
       left: 200px;
+      top: 0;
       background-color: black;
     `}
     {...props}
@@ -35,30 +37,26 @@ export default function Application() {
 
   return (
     <body>
-      {/* <DatabaseProvider> */}
+      {/* {isAuth ? ( */}
+
       <NavBar />
-      <Sidebar
-        groups={state.groups}
-        // setGroup={setGroupData}
-        // addGroup={addGroupData}
-        // getDirectory={getDirectoryData}
-        // removeGroup={removeGroup}
-      />
+      <Sidebar groups={state.groups} />
 
       <Main>
-
         {<Registration/>}
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
         {/* {<Login />} */}
         {state.current.view === "groups" && (
           <GroupsList groups={state.groups} />
         )}
-        {/* {state.current.view === "groups" && <Group groups={state.groups} />} */}
         {state.current.view === "events" && (
-          <EventsList events={state.group_events} />
+          <EventsList group={state.current.group} events={state.group_events} />
         )}
       </Main>
-      {/* </DatabaseProvider> */}
+
+      {/* ) : (
+        <Landing />
+      )} */}
     </body>
   );
 }

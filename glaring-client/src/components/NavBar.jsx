@@ -9,9 +9,12 @@ const Button = (props) => {
       css={css`
         border: none;
         height: 100%;
-        width: 60px;
+        width: 120px;
         background-color: ${colour};
         color: white;
+        font-size: 18px;
+        font-family: Quicksand, sans-serif;
+        font-weight: 700;
 
         &:hover {
           background-color: white;
@@ -35,7 +38,8 @@ const Nav = (props) => (
       left: 0;
       width: 100%;
       height: 40px;
-      background-color: #555;
+      background-color: #282828;
+      border-bottom: #5d53d2 3px solid;
     `}
     {...props}
   />
@@ -44,14 +48,20 @@ const Nav = (props) => (
 export default function NavBar(props) {
   return (
     <Nav>
-      <h1>GLARING (def. noun: a group of cats)</h1>
+      <h1
+        css={css`
+          margin: 0;
+          margin-left: 15px;
+        `}
+      >
+        GLARING (def. noun: a group of cats)
+      </h1>
       <div
         css={css`
           height: 100%;
         `}
       >
-        <Button colour="blue">Content</Button>
-        <Button colour="violet">More</Button>
+        <Button colour="#5d53d2">logout</Button>
       </div>
     </Nav>
   );

@@ -22,8 +22,9 @@ function useDatabase(initialState) {
         return {
           ...state,
           current: {
-            ...state.user,
-            ...state.event,
+            ...state.current,
+
+            event: state.event,
             group: group,
             view: "events",
           },
@@ -41,9 +42,7 @@ function useDatabase(initialState) {
         return {
           ...state,
           current: {
-            ...state.user,
-            ...state.event,
-            ...state.view,
+            ...state.current,
             group: currentGroup,
           },
           groups: [...state.groups, action.item.data.group],
@@ -95,7 +94,7 @@ function useDatabase(initialState) {
       }
 
       case "GETDIRECTORY": {
-        return { ...state, current: { user: state.user, view: "groups" } };
+        return { ...state, current: { ...state.current, view: "groups" } };
       }
 
       case "LOGIN": {
@@ -143,11 +142,14 @@ function useDatabase(initialState) {
       // SET CURRENT GROUP
       case "SETGROUP": {
         const group_id = payload;
-        const events = await axios.get(`/api/groups/${group_id}/events`);
-        console.log(events.data);
+        const group_events = await axios.get(`/api/groups/${group_id}/events`);
+        console.log(group_events.data);
         return dispatch({
           type: "SETGROUP",
-          item: { events: events.data, group: group_id },
+          item: {
+            events: group_events.data.events,
+            group: group_events.data.group,
+          },
         });
       }
       // GROUP ACTIONS:
@@ -199,6 +201,7 @@ function useDatabase(initialState) {
       // // DELETE AN EVENT
       // case "DELEVENT": {
       // }
+
       case "GETDIRECTORY": {
         return dispatch({ type: "GETDIRECTORY" });
       }
