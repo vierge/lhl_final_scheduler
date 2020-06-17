@@ -77,9 +77,7 @@ export default function ShowEvent(props) {
   );
 
   const Timing = (props) => {
-    // const { time } = props;
-
-    const time = new Date();
+    const { time } = props;
 
     return (
       <div

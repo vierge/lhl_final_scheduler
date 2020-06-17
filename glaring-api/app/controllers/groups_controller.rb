@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
 
   def index
-    render json: Group.all()
+    @directory = Group.includes(:memberships).all
+    render json: @directory.as_json(include: :memberships);
   end
 
   def create
