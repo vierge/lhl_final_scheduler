@@ -7,8 +7,6 @@ import { useDataDispatch, useDataState } from "../../hooks/useDatabase";
 import { useAuth } from "../../hooks/useAuth";
 import GroupForm from "./GroupForm";
 
-const currentUser = "Marshmallow";
-
 const Nav = (props) => (
   <nav
     css={css`
@@ -42,7 +40,7 @@ const Header = (props) => (
 export default function Sidebar(props) {
   const isAuthorized = useAuth();
   const {
-    current: { group },
+    current: { user, group },
   } = useDataState();
   console.log(group);
 
@@ -60,11 +58,11 @@ export default function Sidebar(props) {
     />
   );
 
-  const groupList = groups.map((element) => {
+  const groupList = groups !== undefined ? groups.map((element) => {
     const { colour, name, id } = element;
 
     return <GroupItem key={id} id={id} colour={colour} name={name} />;
-  });
+  }) : () => (<div><p>you have no groups... add one below!</p></div>);
 
   return (
     <Nav>
@@ -74,7 +72,7 @@ export default function Sidebar(props) {
             margin-left: 15px;
           `}
         >
-          {currentUser}
+          {user.name !== undefined && user.name}
         </h3>
       </Header>
       {isAuthorized && groupList}

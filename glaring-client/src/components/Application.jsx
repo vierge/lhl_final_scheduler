@@ -40,15 +40,15 @@ export default function Application() {
       {/* {isAuth ? ( */}
 
       <NavBar />
-      <Sidebar groups={state.groups} />
+      <Sidebar groups={state.current.user.id && state.groups} />
 
       <Main>
-        {<Registration/>}
+        {/* {<Registration/>} */}
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
-        {/* {<Login />} */}
-        {state.current.view === "groups" && (
+        {state.current.view === "login" && <Login />}
+        {/* {state.current.view === "groups" && (
           <GroupsList groups={state.groups} />
-        )}
+        )} */}
         {state.current.view === "events" && (
           <EventsList group={state.current.group} events={state.group_events} />
         )}

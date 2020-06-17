@@ -98,9 +98,14 @@ function useDatabase(initialState) {
       }
 
       case "LOGIN": {
+        console.log("LOGIN RETURN")
+        console.log(action.item);
+        console.log("LOGIN RETURN GROUPS")
+        console.log(action.item.groups);
         return {
           ...state,
           current: {
+            ...state.current,
             user: {
               id: action.item.id,
               name: action.item.name,
@@ -108,7 +113,7 @@ function useDatabase(initialState) {
               email: action.item.email,
               token: action.item.authentication_token,
             },
-            view: "schedule",
+            view: "groups",
           },
           groups: action.item.groups,
         };
@@ -207,10 +212,10 @@ function useDatabase(initialState) {
       }
 
       case "LOGIN": {
-        const login = await axios.post(`/api/sessions`, { token: payload });
+        const login = await axios.post(`/api/sessions`, payload);
         return dispatch({
           type: "LOGIN",
-          item: login.data,
+          item: login.data[0],
         });
       }
       default: {
@@ -235,14 +240,10 @@ const DataContext = createContext();
 function DatabaseProvider({ children }) {
   const initialState = {
     current: {
-      user: {
-        id: 1,
-        name: "dummy",
-        email: "person@website.thing",
-      },
+      user: [],
       group: [],
       event: [],
-      view: "",
+      view: "login",
     },
 
     groups: [],
