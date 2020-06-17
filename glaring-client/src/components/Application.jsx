@@ -9,6 +9,8 @@ import EventsList from "./EventsList/EventsList";
 import GroupsList from "./GroupsList/Index";
 import Login from "./Login/Index";
 import "./Application.scss";
+import Registration from "./Registration/RegistrationForm";
+
 
 import { useDataState } from "../hooks/useDatabase";
 
@@ -41,6 +43,9 @@ export default function Application() {
       <Sidebar groups={state.groups} />
 
       <Main>
+        {<Registration/>}
+        {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
+        {/* {<Login />} */}
         {state.current.view === "groups" && (
           <GroupsList groups={state.groups} />
         )}
