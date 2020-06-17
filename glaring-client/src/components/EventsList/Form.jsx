@@ -1,14 +1,23 @@
 /**@jsx jsx */
 import { css, jsx } from "@emotion/core";
 import { useForm } from "react-hook-form";
+import { useDataDispatch } from "../../hooks/useDatabase";
+import { useState } from "react";
 import "./Index.scss";
 
 // import Axios from 'axios';
 
 export default function EventForm(props) {
-  const { name, description, start_time, end_time, photo } = props;
+  const { name, description, start_time, end_time, photo, setForm } = props;
 
   const { handleSubmit, errors, register } = useForm();
+  const callDatabase = useDataDispatch();
+
+  async function onSubmit(data) {
+    const newEvent = await callDatabase("ADDEVENT", data);
+    console.log(newEvent);
+    setForm(false);
+  }
 
   function accepted() {
     console.log("Accepted invite");
@@ -19,7 +28,8 @@ export default function EventForm(props) {
   }
 
   const GridContainer = (props) => (
-    <div
+    <form
+      onSubmit={handleSubmit(onSubmit)}
       css={css`
         display: grid;
         height: 150px;
@@ -194,6 +204,7 @@ export default function EventForm(props) {
       {...props}
     >
       <button
+        type="submit"
         css={css`
           &:hover {
             border: 4px solid green;

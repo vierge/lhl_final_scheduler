@@ -22,8 +22,9 @@ function useDatabase(initialState) {
         return {
           ...state,
           current: {
-            ...state.user,
-            ...state.event,
+            ...state.current,
+
+            event: state.event,
             group: group,
             view: "events",
           },
@@ -41,9 +42,7 @@ function useDatabase(initialState) {
         return {
           ...state,
           current: {
-            ...state.user,
-            ...state.event,
-            ...state.view,
+            ...state.current,
             group: currentGroup,
           },
           groups: [...state.groups, action.item.data.group],
@@ -95,7 +94,7 @@ function useDatabase(initialState) {
       }
 
       case "GETDIRECTORY": {
-        return { ...state, current: { user: state.user, view: "groups" } };
+        return { ...state, current: { ...state.current, view: "groups" } };
       }
 
       case "LOGIN": {
