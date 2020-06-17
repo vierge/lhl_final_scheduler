@@ -82,7 +82,7 @@ export default function EventsList(props) {
         list-style: none;
         margin: 0;
         padding: 0;
-        background-color: violet;
+        background-color: white;
       `}
     >
       <Header name={group.name} colour={group.colour} />

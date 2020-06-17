@@ -31,7 +31,7 @@ const Header = (props) => (
       align-items: center;
       width: 100%;
       height: 30px;
-      background-color: ${props.colour};
+      background-color: ${props.colour || "paleturqoise"};
       color: white;
       border-bottom: 3px solid #333;
     `}
@@ -68,7 +68,7 @@ export default function Sidebar(props) {
 
   return (
     <Nav>
-      <Header colour={group.colour}>
+      <Header colour={groups.colour}>
         <h3
           css={css`
             margin-left: 15px;

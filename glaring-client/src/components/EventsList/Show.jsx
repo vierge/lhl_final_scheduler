@@ -53,6 +53,7 @@ export default function ShowEvent(props) {
         grid-template-areas:
           "photo name time reserve"
           "photo desc time reserve";
+        font-family: "Quicksand", sans-serif;
       `}
       {...props}
     />
@@ -62,12 +63,12 @@ export default function ShowEvent(props) {
     <div
       css={css`
         grid-area: photo;
-        border-right: 3px solid #333;
-        ${props.photo
-          ? `background-image: url(${props.photo})`
-          : "background-color: white"}
-        width: 100%;
-        height: 100%;
+        border: 3px solid #333;
+        background-color: #333;
+        background-image: url(https://www.catgifpage.com/gifs/325.gif);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
       `}
       {...props}
     />
@@ -77,43 +78,106 @@ export default function ShowEvent(props) {
     <div
       css={css`
         grid-area: name;
-        border-bottom: 3px solid #333;
+        font-size: 24px;
+        border: 3px solid #333;
+        margin: 0 10px;
+        padding-left: 7px;
+        width: calc(100% - 20px);
       `}
+      {...props}
     />
   );
 
-  const Date = (props) => (
+  const Text = (props) => (
     <div
       css={css`
-        grid-area: time;
-        border-left: 3px solid #333;
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+        border: 3px solid black;
+        margin: 10px;
+        margin-bottom: 0;
+        padding: 7px;
       `}
-    >
-      <div>Day</div>
-      <div>MonthYear</div>
-      <div>Hours</div>
-      <div>Minutes</div>
-    </div>
+      {...props}
+    />
   );
+
+  const Timing = (props) => {
+    // const { time } = props;
+
+    const time = new Date();
+
+    return (
+      <div
+        css={css`
+          padding-right: 13px;
+          grid-area: time;
+          display: grid;
+          grid-template-rows: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+          font-size: 64px;
+          color: #12006887;
+
+          & p {
+            margin: 0;
+          }
+        `}
+        {...props}
+      >
+        <div>{time.getDate()}</div>
+        <div
+          css={css`
+            font-size: 31px;
+            text-align: center;
+          `}
+        >
+          <p>
+            {time.toLocaleString("default", { month: "short" }).toUpperCase()}
+          </p>
+          <p>{time.getFullYear()}</p>
+        </div>
+        <div>{time.getHours()}</div>
+        <div>
+          :
+          {time
+            .getMinutes()
+            .toLocaleString("en-US", { minimumIntegerDigits: 2 })}
+        </div>
+      </div>
+    );
+  };
 
   const Reserve = (props) => (
     <div
       css={css`
         grid-area: reserve;
-        border-left: 3px solid #333;
+
+        & button {
+          display: block;
+          border-style: none;
+          border: none;
+          background-color: forestgreen;
+          color: white;
+          height: 50%;
+          width: 100%;
+
+          &: hover {
+            background-color: green;
+          }
+        }
       `}
+      {...props}
     />
   );
 
   return (
     <GridContainer>
-      <PhotoFrame></PhotoFrame>
-      <TitleBar></TitleBar>
-      <Date></Date>
-      <Reserve></Reserve>
+      <PhotoFrame photo={photo}></PhotoFrame>
+      <TitleBar>{name}</TitleBar>
+      <Text>{description}</Text>
+      <Timing time={start_time}></Timing>
+      <Reserve>
+        <button>GO</button>
+        <button>NO</button>
+      </Reserve>
     </GridContainer>
     // <div className="mom">
     //   <main className="event">

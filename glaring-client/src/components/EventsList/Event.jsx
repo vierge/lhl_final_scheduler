@@ -9,13 +9,13 @@ import useVisMode from "../../hooks/useVisMode";
 const Frame = (props) => (
   <div
     css={css`
+      margin-top: 18px;
       display: flex;
       justify-content: space-between;
       flex-direction: row;
       width: 100%;
       height: 150px;
       background-color: white;
-      border-bottom: 3px solid #333;
     `}
     {...props}
   />
