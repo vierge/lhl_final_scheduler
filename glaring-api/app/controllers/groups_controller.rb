@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
 
   def index
-    render json: Group.all()
+    @directory = Group.includes(:users).all
+    render json: @directory.as_json(include: :users);
   end
 
   def create
@@ -28,11 +29,15 @@ class GroupsController < ApplicationController
   def update
     case request.method_symbol
     when :put
-      newMembership = Membership.create(
-        user_id: params[:user_id],
-        group_id: params[:id]
-      )
-      render json: newMembership.to_json
+  
+        Membership.create(
+          user_id: params[:user_id],
+          group_id: params[:id]
+        )
+      
+      user_groups = User.includes(:groups).where(id: params[:user_id])
+      p user_groups.as_json(include: :groups)
+      render json: user_groups.as_json(include: :groups)
     when :patch
       newGroup = params[:group]
       newGroup.permit!

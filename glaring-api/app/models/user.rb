@@ -11,4 +11,5 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships
 
   validates :name, :password, :email, presence: true
+  validates_uniqueness_of :email
 end
