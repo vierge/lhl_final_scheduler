@@ -11,7 +11,6 @@ import Login from "./Login/Index";
 import "./Application.scss";
 import Registration from "./Registration/RegistrationForm";
 
-
 import { useDataState } from "../hooks/useDatabase";
 
 const Main = (props) => (
@@ -44,19 +43,15 @@ export default function Application() {
 
       <Main>
         {/* {<Registration/>} */}
-        {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
+
         {state.current.view === "login" && <Login />}
-        {/* {state.current.view === "groups" && (
+        {state.current.view === "directory" && (
           <GroupsList groups={state.groups} />
-        )} */}
+        )}
         {state.current.view === "events" && (
           <EventsList group={state.current.group} events={state.group_events} />
         )}
       </Main>
-
-      {/* ) : (
-        <Landing />
-      )} */}
     </body>
   );
 }
