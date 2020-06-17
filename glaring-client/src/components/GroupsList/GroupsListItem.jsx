@@ -1,11 +1,16 @@
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
+import { useDataDispatch, useDataState } from "../../hooks/useDatabase";
 import Button from "./ButtonGroup";
 
 export default function GroupsListItem(props) {
   function joinGroup() {
     console.log("Join Group");
   }
+
+  const callDatabase = useDataDispatch();
+  const state = useDataState();
+
   const { id, name, colour, description, photo } = props;
 
   return (
@@ -37,7 +42,10 @@ export default function GroupsListItem(props) {
 
           <div className="group__bottom">
             <div className="group__bottom--button">
-              <Button confirm onClick={null}>
+              <Button
+                confirm
+                onClick={(event) => callDatabase("JOINGROUP", id)}
+              >
                 Join Group
               </Button>
             </div>

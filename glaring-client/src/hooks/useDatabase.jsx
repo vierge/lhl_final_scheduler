@@ -218,9 +218,12 @@ function useDatabase(initialState) {
 
       case "JOINGROUP": {
         const user_id = state.current.user.id;
+        const newData = await axios.put(`api/groups/${payload}`, {
+          user_id: user_id,
+        });
         return dispatch({
           type: "JOINGROUP",
-          item: await axios.put(`api/groups/${payload}`, user_id),
+          item: newData.data[0],
         });
       }
 

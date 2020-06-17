@@ -22,7 +22,7 @@ const Main = (props) => (
 
       position: relative;
       left: 200px;
-      top: 0;
+      top: 40px;
       background-color: black;
     `}
     {...props}
@@ -46,7 +46,7 @@ export default function Application() {
 
         {state.current.view === "login" && <Login />}
         {state.current.view === "directory" && (
-          <GroupsList groups={state.groups} />
+          <GroupsList groups={state.directory} />
         )}
         {state.current.view === "events" && (
           <EventsList group={state.current.group} events={state.group_events} />
