@@ -134,7 +134,9 @@ export default function ShowEvent(props) {
           </p>
           <p>{time.getFullYear()}</p>
         </div>
-        <div>{time.getHours()}</div>
+        <div>
+          {time.getHours().toLocaleString("en-US", { minimumIntegerDigits: 2 })}
+        </div>
         <div>
           :
           {time
@@ -154,18 +156,44 @@ export default function ShowEvent(props) {
           display: block;
           border-style: none;
           border: none;
-          background-color: forestgreen;
+          background-color: #333;
           color: white;
           height: 50%;
           width: 100%;
-
-          &: hover {
-            background-color: green;
-          }
+          font-size: 32px;
         }
       `}
       {...props}
-    />
+    >
+      <button
+        css={css`
+          &:hover {
+            border: 4px solid green;
+            color: green;
+          }
+          &:active {
+            background-color: green;
+            color: white;
+          }
+        `}
+      >
+        GO
+      </button>
+      <button
+        css={css`
+          &:hover {
+            border: 4px solid #771f1f;
+            color: #771f1f;
+          }
+          &:active {
+            background-color: #771f1f;
+            color: white;
+          }
+        `}
+      >
+        NO
+      </button>
+    </div>
   );
 
   return (
@@ -174,10 +202,7 @@ export default function ShowEvent(props) {
       <TitleBar>{name}</TitleBar>
       <Text>{description}</Text>
       <Timing time={start_time}></Timing>
-      <Reserve>
-        <button>GO</button>
-        <button>NO</button>
-      </Reserve>
+      <Reserve></Reserve>
     </GridContainer>
     // <div className="mom">
     //   <main className="event">
