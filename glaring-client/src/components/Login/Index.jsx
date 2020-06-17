@@ -1,16 +1,25 @@
 import React from "react";
 import "./LoginForm.scss";
 import Button from "./ButtonLogin";
+import { useForm } from 'react-hook-form'
+import { useDataDispatch } from "../../hooks/useDatabase"
 
 export default function Login() {
-  function loginNow() {
-    console.log("Login Now");
+  
+
+  const callDatabase = useDataDispatch();
+
+  const { handleSubmit, register, errors } = useForm();
+
+  async function onSubmit(data) {
+    console.log(data);
+    await callDatabase('LOGIN', data);
   }
 
   return (
 
     <div className="main">
-      <main className="login">
+      <form className="login" onSubmit={handleSubmit(onSubmit)}>
 
         <div className="login__top">
              <div className="login__title">Login Here</div>
@@ -22,50 +31,41 @@ export default function Login() {
                src="https://res.cloudinary.com/teepublic/image/private/s--mKVtE5Jo--/t_Resized%20Artwork/c_fit,g_north_west,h_954,w_954/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_ffffff,e_outline:48/co_ffffff,e_outline:inner_fill:48/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1544483374/production/designs/3703099_0.jpg"
              />
 
-             <br/>
-      
-
-                <label for="groupName">Name: </label>
-                   <input
-                     id="groupName"
-                     className="creation__create-input text--semi-bold"
-                     name="name"
-                     type="text"
-                     placeholder="Enter Name"
-                   />
 
              <br/>
              <br/>
 
                 <label for="groupEmail">Email: </label>
                    <input
+                    ref={register}
                      className="creation__create-input text--semi-bold"
                      name="email"
-                     type="text"
+                     type="email"
                      placeholder="Enter Email"
                    />
 
              <br/>
              <br/>
 
-             <label for="groupDescription">Password:</label>
+             <label for="password">Password:</label>
                 <input
-                  id="groupDescription"
+                  ref={register}
+                  id="password"
                    className="creation__create-input text--semi-bold"
-                   name="description"
-                   type="text"
+                   name="password"
+                   type="password"
                    placeholder="Enter Password"
                 />
            </div>
 
            <div className="login__bottom">     
                <div className="login__bottom--button">
-                    <Button confirm onClick={loginNow}>
+                    <Button type="submit">
                       Login
                     </Button>
               </div>    
           </div>
-      </main>
+      </form>
     </div>
   )
 }

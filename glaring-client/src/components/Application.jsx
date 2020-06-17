@@ -40,12 +40,12 @@ export default function Application() {
       {/* {isAuth ? ( */}
 
       <NavBar />
-      <Sidebar groups={state.groups} />
+      <Sidebar groups={state.current.user.id && state.groups} />
 
       <Main>
-        {<Registration/>}
+        {/* {<Registration/>} */}
         {/* {state.current.view === "groups" && <GroupList groups={state.groups} />} */}
-        {/* {<Login />} */}
+        {<Login />}
         {state.current.view === "groups" && (
           <GroupsList groups={state.groups} />
         )}

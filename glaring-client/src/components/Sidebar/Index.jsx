@@ -60,7 +60,7 @@ export default function Sidebar(props) {
     />
   );
 
-  const groupList = groups.map((element) => {
+  const groupList = groups && groups.map((element) => {
     const { colour, name, id } = element;
 
     return <GroupItem key={id} id={id} colour={colour} name={name} />;
