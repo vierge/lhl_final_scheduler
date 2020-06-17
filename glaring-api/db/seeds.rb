@@ -34,14 +34,14 @@ User.create(name: "password", password: "cringelife", email: "user@gmail.com", p
 
 # events
 
-Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: 2020-06-19 21:30:00, photo: nil, end_time: nil, group_id: 1, colour: "red")
-Event.create(name: "basketball", description: "lets play some pickup basketabll", location: "at the local gym", start_time: 2020-06-20 10:00:00, photo: nil, end_time: nil, group_id: 2, colour: "blue")
-Event.create(name: "video games", description: "are you a professional gamer or a decent gamer?", location: "at the local e-sports center", start_time: 2020-06-21 16:45:00, photo: nil, end_time: nil, group_id: 3, colour: "purple")
-Event.create(name: "baseball", description: "get ready to swing for the fences", location: "at the baseball diamond", start_time: 2020-06-22 19:15:00, photo: nil, end_time: nil, group_id: 4, colour: "yellow")
-Event.create(name: "book reading", description: "make sure to read often, really helps people gain knowledge", location: "at the library", start_time: 2020-06-21 13:00:00, photo: nil, end_time: nil, group_id: 1, colour: "green")
-Event.create(name: "cooking", description: "want to learn how to cook, because if you do then you are in luck", location: "at the local eatery", start_time: 2020-06-27 12:30:00, photo: nil, end_time: nil, group_id: 2, colour: "orange")
-Event.create(name: "chess", description: "playing chess is fun", location: "at the exhibition center", start_time: 2020-06-25 17:30:00, photo: nil, end_time: nil, group_id: 3, colour: "gold")
-Event.create(name: "painting", description: "painting is a great hobby", location: "at the community center", start_time: 2020-06-26 21:30:00, photo: nil, end_time: nil, group_id: 5, colour: "silver")
+Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: '2020-06-19T21:30:00', photo: nil, end_time: nil, group_id: 1, colour: "red")
+Event.create(name: "basketball", description: "lets play some pickup basketabll", location: "at the local gym", start_time: "2020-06-20T10:00:00", photo: nil, end_time: nil, group_id: 2, colour: "blue")
+Event.create(name: "video games", description: "are you a professional gamer or a decent gamer?", location: "at the local e-sports center", start_time: "2020-06-21T16:45:00", photo: nil, end_time: nil, group_id: 3, colour: "purple")
+Event.create(name: "baseball", description: "get ready to swing for the fences", location: "at the baseball diamond", start_time: "2020-06-22T19:15:00", photo: 'https://s7d2.scene7.com/is/image/TWCNews/mlb_baseball_jpeg', end_time: nil, group_id: 4, colour: "yellow")
+Event.create(name: "book reading", description: "make sure to read often, really helps people gain knowledge", location: "at the library", start_time: "2020-06-21T13:00:00", photo: nil, end_time: nil, group_id: 1, colour: "green")
+Event.create(name: "cooking", description: "want to learn how to cook, because if you do then you are in luck", location: "at the local eatery", start_time: "2020-06-27T12:30:00", photo: nil, end_time: nil, group_id: 2, colour: "orange")
+Event.create(name: "chess", description: "playing chess is fun", location: "at the exhibition center", start_time: "2020-06-25T17:30:00", photo: nil, end_time: nil, group_id: 3, colour: "gold")
+Event.create(name: "painting", description: "painting is a great hobby", location: "at the community center", start_time: "2020-06-26T21:30:00", photo: nil, end_time: nil, group_id: 5, colour: "silver")
 
 
 # memberships and reservations

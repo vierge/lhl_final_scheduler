@@ -65,7 +65,9 @@ export default function ShowEvent(props) {
         grid-area: photo;
         border: 3px solid #333;
         background-color: #333;
-        background-image: url(https://www.catgifpage.com/gifs/325.gif);
+        justify-content: center;
+        display: flex;
+        align-items: center;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -198,7 +200,7 @@ export default function ShowEvent(props) {
 
   return (
     <GridContainer>
-      <PhotoFrame photo={photo}></PhotoFrame>
+      <PhotoFrame><img css={css`max-height: 100%; max-width: 100%;`} src={photo} /></PhotoFrame>
       <TitleBar>{name}</TitleBar>
       <Text>{description}</Text>
       <Timing time={start_time}></Timing>
