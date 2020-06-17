@@ -1,6 +1,8 @@
 /**@jsx jsx */
 import { css, jsx } from "@emotion/core";
 import Event from "./Event";
+import EventForm from "./Form";
+import { handleSubmit, errors, register } from "react-hook-form";
 
 const Header = (props) => (
   <header
@@ -86,6 +88,7 @@ export default function EventsList(props) {
       `}
     >
       <Header name={group.name} colour={group.colour} />
+      <EventForm />
       {eventsList}
     </ul>
   );

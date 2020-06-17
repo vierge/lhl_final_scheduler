@@ -1,75 +1,258 @@
 /**@jsx jsx */
-import React, { useState } from "react";
-import "./EventForm.scss";
-import { useForm } from "react-hook-form";
 import { css, jsx } from "@emotion/core";
-import { useDataDispatch } from "../../hooks/useDatabase";
+import { useForm } from "react-hook-form";
+import "./Index.scss";
+
+// import Axios from 'axios';
+
+const GridContainer = (props) => (
+  <div
+    css={css`
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-rows: 1fr 2fr 1fr 120px;
+      grid-template-columns: 1fr 3fr;
+      grid-template-areas:
+        "p n t r"
+        "p d t r";
+    `}
+    {...props}
+  />
+);
+
+const PhotoFrame = (props) => (
+  <input
+    css={css`
+      font-size: 48px;
+      grid-area: p;
+      border: 1px solid black;
+      width: 100%;
+      height: 100%;
+    `}
+    {...props}
+  />
+);
 
 export default function EventForm(props) {
-  const { mode } = props;
-  const { callDatabase } = useDataDispatch();
-  const { register, handleSubmit, errors } = useForm();
-  const [display, setDisplay] = useState("display: flex;");
-  async function onSubmit(data) {
-    await callDatabase("ADDEVENT", data);
-    setDisplay("display: none");
+  const { name, description, start_time, end_time, photo } = props;
+
+  const { handleSubmit, errors, register } = useForm();
+
+  function accepted() {
+    console.log("Accepted invite");
   }
 
-  return (
-    <form
+  function decline() {
+    console.log("Declined invite");
+  }
+
+  const GridContainer = (props) => (
+    <div
       css={css`
-        ${display}
+        display: grid;
+        height: 150px;
+        width: 100%;
+        grid-template-rows: 1fr 3fr;
+        grid-template-columns: 225px auto 170px 120px;
+        grid-template-areas:
+          "photo name time reserve"
+          "photo desc time reserve";
+        font-family: "Quicksand", sans-serif;
       `}
-      className="eventform"
-      onSubmit={handleSubmit(onSubmit)}
+      {...props}
+    />
+  );
+
+  const PhotoFrame = (props) => (
+    <input
+      css={css`
+        font-size: 48px;
+        text-align: center;
+        grid-area: photo;
+        border: 3px solid #333;
+        background-color: #333;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      `}
+      {...props}
+    />
+  );
+
+  const TitleForm = (props) => (
+    <input
+      css={css`
+        font-family: Quicksand, sans-serif;
+        grid-area: name;
+        font-size: 24px;
+        background-color: #333;
+        color: #aaa;
+        border-style: none;
+        margin: 0 10px;
+        padding-left: 7px;
+        width: calc(100% - 20px);
+
+        &:focus {
+          background-color: skyblue;
+          color: black;
+        }
+      `}
+      {...props}
+    />
+  );
+
+  const Text = (props) => (
+    <textarea
+      css={css`
+        font-family: Quicksand, sans-serif;
+        font-size: 16px;
+        background-color: #333;
+        color: #aaa;
+        margin: 10px;
+        margin-bottom: 0;
+        padding: 7px;
+        resize: none;
+
+        &:focus {
+          background-color: violet;
+          color: black;
+        }
+      `}
+      {...props}
+    />
+  );
+
+  const Timing = (props) => {
+    // const { time } = props;
+
+    const time = new Date();
+
+    return (
+      <div
+        css={css`
+          padding-right: 13px;
+          grid-area: time;
+          display: grid;
+          grid-template-rows: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+          font-size: 64px;
+          color: #12006887;
+
+          & p {
+            margin: 0;
+          }
+        `}
+        {...props}
+      >
+        <div>{time.getDate()}</div>
+        <div
+          css={css`
+            font-size: 31px;
+            text-align: center;
+          `}
+        >
+          <p>
+            {time.toLocaleString("default", { month: "short" }).toUpperCase()}
+          </p>
+          <p>{time.getFullYear()}</p>
+        </div>
+        <div>
+          {time.getHours().toLocaleString("en-US", { minimumIntegerDigits: 2 })}
+        </div>
+        <div>
+          :
+          {time
+            .getMinutes()
+            .toLocaleString("en-US", { minimumIntegerDigits: 2 })}
+        </div>
+      </div>
+    );
+  };
+
+  const Save = (props) => (
+    <div
+      css={css`
+        grid-area: reserve;
+
+        & button {
+          display: block;
+          border-style: none;
+          border: none;
+          background-color: #333;
+          color: white;
+          height: 50%;
+          width: 100%;
+          font-size: 32px;
+        }
+      `}
+      {...props}
     >
-      <div className="eventform__top">
-        <div className="eventform__image">
-          <input
-            type="url"
-            name="photo"
-            placeholder="Paste event image url"
-            ref={register({
-              required: true
-            })}
-          />
-          {errors.photo && errors.photo.type === "required" && <span>Field cannot be empty</span>}
-        </div>
+      <button
+        css={css`
+          &:hover {
+            border: 4px solid green;
+            color: green;
+          }
+          &:active {
+            background-color: green;
+            color: white;
+          }
+        `}
+      >
+        SAVE
+      </button>
+      <button
+        css={css`
+          &:hover {
+            border: 4px solid #771f1f;
+            color: #771f1f;
+          }
+          &:active {
+            background-color: #771f1f;
+            color: white;
+          }
+        `}
+      >
+        CANCEL
+      </button>
+    </div>
+  );
 
-        <div className="eventform__content">
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter event title"
-            ref={register({
-              required: true
-            })}
-          />
-          {errors.name && errors.name.type === "required" && <span>Field cannot be empty</span>}
-          <input
-            type="text"
-            name="description"
-            placeholder="Enter event description"
-            ref={register({
-              required: true
-            })}
-          />
-          {errors.description && errors.description.type === "required" && <span>Field cannot be empty</span>}
-        </div>
-      </div>
-
-      <div className="eventform__submit">
-        <input type="submit" />
-      </div>
-
-      <aside className="eventform__time">
-        <input type="datetime-local" name="start_date" ref={register({
-          required: true
-        })} />
-        {errors.start_date && errors.start_date.type === "required" && <span>Please specficy start time</span>}
-        <br />
-        {/* <input type="time" name="time" ref={register} />  */}
-      </aside>
-    </form>
+  return (
+    <GridContainer>
+      <PhotoFrame
+        placeholder="https://?"
+        name="photo"
+        type="url"
+        ref={register({ required: true })}
+      >
+        {errors.photo && errors.photo.type === "required" && (
+          <span>Field cannot be empty</span>
+        )}
+      </PhotoFrame>
+      <TitleForm
+        placeholder="Enter Title. . ."
+        name="name"
+        type="text"
+        ref={register({ required: true, maxLength: 30 })}
+      >
+        {errors.name && errors.name.type === "required" && (
+          <span>Field cannot be empty</span>
+        )}
+      </TitleForm>
+      <Text
+        placeholder="What are you doing??? :3"
+        name="description"
+        type="text"
+        ref={register({ required: true, maxLength: 256 })}
+      >
+        {errors.description && errors.description.type === "required" && (
+          <span>Field cannot be empty</span>
+        )}
+      </Text>
+      <Timing time={start_time}></Timing>
+      <Save></Save>
+    </GridContainer>
   );
 }
