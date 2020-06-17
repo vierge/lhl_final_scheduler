@@ -5,35 +5,6 @@ import "./Index.scss";
 
 // import Axios from 'axios';
 
-const GridContainer = (props) => (
-  <div
-    css={css`
-      width: 100%;
-      height: 100%;
-      display: grid;
-      grid-template-rows: 1fr 2fr 1fr 120px;
-      grid-template-columns: 1fr 3fr;
-      grid-template-areas:
-        "p n t r"
-        "p d t r";
-    `}
-    {...props}
-  />
-);
-
-const PhotoFrame = (props) => (
-  <input
-    css={css`
-      font-size: 48px;
-      grid-area: p;
-      border: 1px solid black;
-      width: 100%;
-      height: 100%;
-    `}
-    {...props}
-  />
-);
-
 export default function EventForm(props) {
   const { name, description, start_time, end_time, photo } = props;
 
@@ -59,6 +30,7 @@ export default function EventForm(props) {
           "photo name time reserve"
           "photo desc time reserve";
         font-family: "Quicksand", sans-serif;
+        background-color: #333;
       `}
       {...props}
     />
@@ -70,13 +42,19 @@ export default function EventForm(props) {
         font-size: 48px;
         text-align: center;
         grid-area: photo;
-        border: 3px solid #333;
+        border-style: none;
         background-color: #333;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+
+        &:focus {
+          background-color: white;
+          color: darkorchid;
+        }
       `}
       {...props}
+      ref={register({ required: true })}
     />
   );
 
@@ -98,6 +76,7 @@ export default function EventForm(props) {
           color: black;
         }
       `}
+      ref={register({ required: true, maxLength: 30 })}
       {...props}
     />
   );
@@ -108,6 +87,7 @@ export default function EventForm(props) {
         font-family: Quicksand, sans-serif;
         font-size: 16px;
         background-color: #333;
+        border-style: none;
         color: #aaa;
         margin: 10px;
         margin-bottom: 0;
@@ -120,6 +100,7 @@ export default function EventForm(props) {
         }
       `}
       {...props}
+      ref={register({ required: true, maxLength: 256 })}
     />
   );
 
@@ -128,24 +109,46 @@ export default function EventForm(props) {
 
     const time = new Date();
 
+    const inputStyle = css`
+      height: 50%;
+      width: 100%;
+      font-size: 18px;
+      border-style: none;
+      background-color: #333;
+      color: #aaa;
+
+      &:focus {
+        background-color: #f0a141;
+        color: black;
+      }
+    `;
+
     return (
       <div
         css={css`
           padding-right: 13px;
           grid-area: time;
-          display: grid;
-          grid-template-rows: 1fr 1fr;
-          grid-template-columns: 1fr 1fr;
-          font-size: 64px;
+          font-size: 16px;
           color: #12006887;
+          border-style: none;
+
+          overflow-wrap: break-word;
 
           & p {
             margin: 0;
           }
+
+          &::placeholder {
+          }
         `}
         {...props}
       >
-        <div>{time.getDate()}</div>
+        <input css={inputStyle} type="date" name="start-date" />
+        <input css={inputStyle} type="time" name="start_time" />
+      </div>
+    );
+    {
+      /* <div>{time.getDate()}</div>
         <div
           css={css`
             font-size: 31px;
@@ -165,9 +168,11 @@ export default function EventForm(props) {
           {time
             .getMinutes()
             .toLocaleString("en-US", { minimumIntegerDigits: 2 })}
-        </div>
-      </div>
-    );
+        </div> */
+    }
+    {
+      /* </div> */
+    }
   };
 
   const Save = (props) => (
@@ -183,7 +188,7 @@ export default function EventForm(props) {
           color: white;
           height: 50%;
           width: 100%;
-          font-size: 32px;
+          font-size: 18px;
         }
       `}
       {...props}
@@ -221,22 +226,12 @@ export default function EventForm(props) {
 
   return (
     <GridContainer>
-      <PhotoFrame
-        placeholder="https://?"
-        name="photo"
-        type="url"
-        ref={register({ required: true })}
-      >
+      <PhotoFrame placeholder="https://?" name="photo" type="url">
         {errors.photo && errors.photo.type === "required" && (
           <span>Field cannot be empty</span>
         )}
       </PhotoFrame>
-      <TitleForm
-        placeholder="Enter Title. . ."
-        name="name"
-        type="text"
-        ref={register({ required: true, maxLength: 30 })}
-      >
+      <TitleForm placeholder="Enter Title. . ." name="name" type="text">
         {errors.name && errors.name.type === "required" && (
           <span>Field cannot be empty</span>
         )}
@@ -245,13 +240,12 @@ export default function EventForm(props) {
         placeholder="What are you doing??? :3"
         name="description"
         type="text"
-        ref={register({ required: true, maxLength: 256 })}
       >
         {errors.description && errors.description.type === "required" && (
           <span>Field cannot be empty</span>
         )}
       </Text>
-      <Timing time={start_time}></Timing>
+      <Timing />
       <Save></Save>
     </GridContainer>
   );
