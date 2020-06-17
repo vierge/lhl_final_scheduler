@@ -60,11 +60,11 @@ export default function Sidebar(props) {
     />
   );
 
-  const groupList = groups && groups.map((element) => {
+  const groupList = groups !== undefined ? groups.map((element) => {
     const { colour, name, id } = element;
 
     return <GroupItem key={id} id={id} colour={colour} name={name} />;
-  });
+  }) : () => (<div><p>you have no groups...</p></div>);
 
   return (
     <Nav>
