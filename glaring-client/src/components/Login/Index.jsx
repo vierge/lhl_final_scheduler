@@ -14,6 +14,7 @@ export default function Login() {
   async function onSubmit(data) {
     console.log(data);
     await callDatabase('LOGIN', data);
+    
   }
 
   return (

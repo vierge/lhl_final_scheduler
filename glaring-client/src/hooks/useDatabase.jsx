@@ -243,7 +243,7 @@ function DatabaseProvider({ children }) {
       user: [],
       group: [],
       event: [],
-      view: "",
+      view: "login",
     },
 
     groups: [],
