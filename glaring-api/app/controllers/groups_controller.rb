@@ -29,11 +29,19 @@ class GroupsController < ApplicationController
   def update
     case request.method_symbol
     when :put
-      newMembership = Membership.create(
-        user_id: params[:user_id],
-        group_id: params[:id]
-      )
-      render json: newMembership.to_json
+      if !Membership.find_by(user_id: params[:user_id],
+        group_id: params[:id])
+
+        Membership.create(
+          user_id: params[:user_id],
+          group_id: params[:id]
+        )
+      else
+        head 500
+      end
+      user_groups = User.includes(:groups).where(id: params[:user_id])
+      p user_groups.as_json(include: :groups)
+      render json: user_groups.as_json(include: :groups)
     when :patch
       newGroup = params[:group]
       newGroup.permit!
