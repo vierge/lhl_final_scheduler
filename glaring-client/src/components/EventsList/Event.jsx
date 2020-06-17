@@ -1,10 +1,25 @@
-import React from "react";
-import "./Index.scss";
-import Button from "../Button";
+/**@jsx jsx */
+
+import { css, jsx } from "@emotion/core";
 import EventForm from "./Form";
 import ShowEvent from "./Show";
 import useVisMode from "../../hooks/useVisMode";
 // import Axios from 'axios';
+
+const Frame = (props) => (
+  <div
+    css={css`
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      height: 150px;
+      background-color: white;
+      border-bottom: 3px solid #333;
+    `}
+    {...props}
+  />
+);
 
 export default function Event(props) {
   const {
@@ -20,7 +35,7 @@ export default function Event(props) {
   const { mode, transition, back } = useVisMode(init);
 
   return (
-    <>
+    <Frame>
       {mode === "CREATE" && (
         <EventForm addEvent={addEvent} transition={transition} />
       )}
@@ -33,6 +48,6 @@ export default function Event(props) {
           photo={photo}
         />
       )}
-    </>
+    </Frame>
   );
 }
