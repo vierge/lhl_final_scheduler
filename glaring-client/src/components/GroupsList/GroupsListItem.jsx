@@ -13,6 +13,8 @@ export default function GroupsListItem(props) {
 
   const { id, name, colour, description, photo } = props;
 
+  console.log(photo);
+
   return (
     <li
       css={css`
