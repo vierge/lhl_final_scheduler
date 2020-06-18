@@ -31,24 +31,24 @@ export default function ShowEvent(props) {
     />
   );
 
-  const PhotoFrame = (props) => {
-    const { photo } = props;
 
-    return (
-      <div
-        css={css`
-          grid-area: photo;
-          border: 3px solid #333;
-          background-color: #333;
-          background-image: url(${photo});
-          background-size: contain;
-          background-position: center;
-          background-repeat: no-repeat;
-        `}
-        {...props}
-      />
-    );
-  };
+  const PhotoFrame = (props) => (
+    <div
+      css={css`
+        grid-area: photo;
+        border: 3px solid #333;
+        background-color: #333;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      `}
+      {...props}
+    />
+  );
+
 
   const TitleBar = (props) => (
     <div
@@ -173,7 +173,7 @@ export default function ShowEvent(props) {
 
   return (
     <GridContainer>
-      <PhotoFrame photo={"http://aws.random.cat/meow"}></PhotoFrame>
+      <PhotoFrame><img css={css`max-height: 100%; max-width: 100%;`} src={photo} /></PhotoFrame>
       <TitleBar>{name}</TitleBar>
       <Text>{description}</Text>
       <Timing time={start_time}></Timing>
