@@ -63,6 +63,7 @@ function useDatabase(initialState) {
           ...state,
           current: { ...state.current, view: "directory" },
           groups: groups,
+          groups: groups,
         };
       }
 
@@ -104,6 +105,21 @@ function useDatabase(initialState) {
         };
       }
 
+      case "RESERVE": {
+        const reservation = action.item.data;
+        console.log(state.current.user);
+        return {
+          ...state,
+          current: {
+            ...state.current,
+            user: {
+              ...state.current.user,
+              reservations: [reservation, ...state.current.user.reservations],
+            },
+          },
+        };
+      }
+
       case "REGISTER": {
         return {
           ...state,
@@ -130,6 +146,7 @@ function useDatabase(initialState) {
               avatar: action.item.avatar,
               email: action.item.email,
               token: action.item.authentication_token,
+              reservations: action.item.reservations,
             },
             view: "groups",
           },
@@ -233,6 +250,32 @@ function useDatabase(initialState) {
           item: await axios.post(`/api/groups/${group_id}/events`, event),
         });
       }
+
+      case "RESERVE": {
+        const user_id = state.current.user.id;
+        console.log("reservation to be sent");
+        console.log(payload.id);
+        console.log("user_id: " + user_id);
+        const reservation = await axios.put(`/api/events/${payload.id}`, {
+          id: payload.id,
+          going: payload.going,
+          user_id: user_id,
+        });
+        return dispatch({
+          type: "RESERVE",
+          item: reservation,
+        });
+      }
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
+      // // EDIT AN EVENT
       // // EDIT AN EVENT
       // case "EDITEVENT": {
       // }

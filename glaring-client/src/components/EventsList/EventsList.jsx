@@ -3,10 +3,12 @@ import { css, jsx } from "@emotion/core";
 import Event from "./Event";
 import EventForm from "./Form";
 import { useState } from "react";
+import { useDataState } from "../../hooks/useDatabase";
 
 export default function EventsList(props) {
   const { group, events } = props;
   console.log(events);
+  const state = useDataState();
 
   const [form, setForm] = useState(false);
 
@@ -55,6 +57,17 @@ export default function EventsList(props) {
     </header>
   );
 
+  const isGoing = (event_id) => {
+    const reservations = state.current.user.reservations;
+    if (reservations) {
+      for (let entry of reservations) {
+        if (entry.id === event_id) {
+          return entry.going;
+        }
+      }
+    }
+  };
+
   const eventsList = events.map((element) => {
     const {
       id,
@@ -65,6 +78,9 @@ export default function EventsList(props) {
       end_time,
       photo,
     } = element;
+    console.log(id);
+    const going = isGoing(id);
+
     return (
       <Event
         key={id}
@@ -75,6 +91,7 @@ export default function EventsList(props) {
         start_time={start_time}
         end_time={end_time}
         photo={photo}
+        going={going}
         init="SHOW"
       />
     );
