@@ -64,6 +64,16 @@ function useDatabase(initialState) {
           groups: groups,
         };
       }
+
+      case "JOINGROUP": {
+        return {
+          ...state,
+          current: {
+            ...state.current,
+          },
+          groups: action.item.groups,
+        };
+      }
       // EVENT ACTIONS
 
       //ADD AN EVENT
@@ -93,6 +103,17 @@ function useDatabase(initialState) {
         };
       }
 
+      case "REGISTER": {
+        return {
+          ...state,
+          current: {
+            ...state.current,
+            user: action.item.data,
+            view: "directory",
+          },
+        };
+      }
+
       case "GETDIRECTORY": {
         return { ...state, current: { ...state.current, view: "directory" } };
       }
@@ -114,14 +135,9 @@ function useDatabase(initialState) {
           groups: action.item.groups,
         };
       }
-      case "JOINGROUP": {
-        return {
-          ...state,
-          current: {
-            ...state.current,
-          },
-          groups: action.item.groups,
-        };
+
+      case "SIGNUPVIEW": {
+        return { ...state, current: { ...state.current, view: "register" } };
       }
       default: {
         alert("INVALID INPUT");
@@ -193,6 +209,17 @@ function useDatabase(initialState) {
         });
       }
 
+      case "JOINGROUP": {
+        const user_id = state.current.user.id;
+        const newData = await axios.put(`api/groups/${payload}`, {
+          user_id: user_id,
+        });
+        return dispatch({
+          type: "JOINGROUP",
+          item: newData.data[0],
+        });
+      }
+
       // EVENT ACTIONS
 
       //ADD AN EVENT
@@ -212,19 +239,13 @@ function useDatabase(initialState) {
       // case "DELEVENT": {
       // }
 
-      case "GETDIRECTORY": {
-        return dispatch({ type: "GETDIRECTORY" });
+      case "REGISTER": {
+        const freshUser = await axios.post("/api/users", payload);
+        return dispatch({ type: "REGISTER", item: freshUser });
       }
 
-      case "JOINGROUP": {
-        const user_id = state.current.user.id;
-        const newData = await axios.put(`api/groups/${payload}`, {
-          user_id: user_id,
-        });
-        return dispatch({
-          type: "JOINGROUP",
-          item: newData.data[0],
-        });
+      case "GETDIRECTORY": {
+        return dispatch({ type: "GETDIRECTORY" });
       }
 
       case "LOGIN": {
@@ -233,6 +254,10 @@ function useDatabase(initialState) {
           type: "LOGIN",
           item: login.data[0],
         });
+      }
+
+      case "SIGNUPVIEW": {
+        return dispatch({ type: "SIGNUPVIEW" });
       }
       default: {
         return alert("INVALID INPUT");
@@ -247,6 +272,7 @@ function useDatabase(initialState) {
   return {
     state,
     callDatabase,
+    stateReducer,
   };
 }
 
