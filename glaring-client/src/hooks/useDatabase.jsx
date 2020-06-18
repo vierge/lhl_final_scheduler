@@ -154,6 +154,15 @@ function useDatabase(initialState) {
         };
       }
 
+      case "LOGOUT": {
+        return {
+          ...state,
+          current: { ...state.current, user: [], view: "login" },
+          users: action.item.users,
+          directory: action.item.groups,
+        };
+      }
+
       case "SIGNUPVIEW": {
         return { ...state, current: { ...state.current, view: "register" } };
       }
@@ -162,7 +171,6 @@ function useDatabase(initialState) {
       }
     }
   };
-
   // to use database: callDatabase(string, object: {data to send})
 
   const [state, dispatch] = useReducer(stateReducer, initialState);
@@ -288,6 +296,13 @@ function useDatabase(initialState) {
         return dispatch({
           type: "LOGIN",
           item: login.data[0],
+        });
+      }
+
+      case "LOGOUT": {
+        await axios.delete(`/api/sessions/${state.current.user.id}`);
+        return dispatch({
+          type: "LOGOUT",
         });
       }
 

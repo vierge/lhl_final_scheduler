@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import React from "react";
 import { css, jsx } from "@emotion/core";
+import { useDataDispatch } from "../hooks/useDatabase";
 
 const Button = (props) => {
   const { colour } = props;
@@ -46,6 +47,7 @@ const Nav = (props) => (
 );
 
 export default function NavBar(props) {
+  const callDatabase = useDataDispatch();
   return (
     <Nav>
       <h1
@@ -61,7 +63,9 @@ export default function NavBar(props) {
           height: 100%;
         `}
       >
-        <Button colour="#5d53d2">logout</Button>
+        <Button colour="#5d53d2" onClick={(event) => callDatabase("LOGOUT")}>
+          logout
+        </Button>
       </div>
     </Nav>
   );

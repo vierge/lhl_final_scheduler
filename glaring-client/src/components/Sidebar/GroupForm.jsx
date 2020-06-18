@@ -13,10 +13,12 @@ const GroupFormButton = (props) => {
       css={css`
         display: inline-block;
         border: none;
+        position: relative;
+        bottom: 0;
         color: white;
         background-color: ${color};
         width: 50%;
-        height: 32px;
+        height: 45px;
 
         &:hover {
           background-color: white;
@@ -48,8 +50,7 @@ export default function GroupForm(props) {
 
   async function onSubmit(data) {
     console.log(data);
-    if (data)
-    await callDatabase("ADDGROUP", { ...data, colour: colour.value });
+    if (data) await callDatabase("ADDGROUP", { ...data, colour: colour.value });
     console.log("WE DID IT");
     action();
     // await addEvent(data);
@@ -61,12 +62,12 @@ export default function GroupForm(props) {
       <div
         css={css`
           z-index: 9;
-          height: calc(100vh - 30px);
+          height: calc(100vh - 85px);
           width: 200px;
           background-color: ${colour.value};
           position: absolute;
           top: 0;
-          left: 200px;
+          left: 0;
         `}
       >
         <label htmlFor="name">NAME</label>
@@ -75,18 +76,20 @@ export default function GroupForm(props) {
           name="name"
           placeholder="Enter group name"
           ref={register({
-            required: "Required"
+            required: "Required",
           })}
         />
-        {errors.name && errors.name.type === "required" && 
-        <span 
-          css={css`
-          background-color: white; 
-          color: red; font-size: 
-          30px;
-          `}
-        >Name field cannot be empty
-        </span>}
+        {errors.name && errors.name.type === "required" && (
+          <span
+            css={css`
+              background-color: white;
+              color: red;
+              font-size: 30px;
+            `}
+          >
+            Name field cannot be empty
+          </span>
+        )}
 
         <label htmlFor="details">DETAILS</label>
         <input
@@ -94,10 +97,12 @@ export default function GroupForm(props) {
           name="description"
           placeholder="Describe your group!"
           ref={register({
-            required: true
+            required: true,
           })}
         />
-        {errors.description && errors.description.type === "required" && <span>Description field cannot be empty</span>}
+        {errors.description && errors.description.type === "required" && (
+          <span>Description field cannot be empty</span>
+        )}
 
         <label htmlFor="photo">UPLOAD PIC</label>
         <input
@@ -107,12 +112,13 @@ export default function GroupForm(props) {
           ref={register({
             required: "Required",
             pattern: {
-
-              message : "Group Photo Required"
-            }
+              message: "Group Photo Required",
+            },
           })}
         />
-        {errors.photo && errors.photo.type === "required" && <span>You must submit a group photo link</span>}
+        {errors.photo && errors.photo.type === "required" && (
+          <span>You must submit a group photo link</span>
+        )}
 
         <label htmlFor="colour">CHOOSE A COLOUR</label>
         <input
@@ -139,7 +145,7 @@ export default function GroupForm(props) {
         <div
           css={css`
             position: absolute;
-            bottom: 10vh;
+            bottom: 0vh;
             right: 0;
             width: 100%;
           `}
