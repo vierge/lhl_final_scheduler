@@ -42,7 +42,7 @@ export default function Sidebar(props) {
   const {
     current: { user, group },
   } = useDataState();
-  console.log(group);
+  console.log(user);
 
   const [display, setDisplay] = useState(false);
 
@@ -84,7 +84,7 @@ export default function Sidebar(props) {
       </Header>
       {isAuthorized && groupList}
       {display && <GroupForm action={(event) => setDisplay(!display)} />}
-      <AddGroup />
+      {user.length !== 0 && <AddGroup />}
       <Options />
     </Nav>
   );

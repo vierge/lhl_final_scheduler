@@ -14,6 +14,7 @@ export default function EventForm(props) {
   const callDatabase = useDataDispatch();
 
   async function onSubmit(data) {
+    console.log(data.start_time, data.start_date);
     const newEvent = await callDatabase("ADDEVENT", data);
     console.log(newEvent);
     setForm(false);
@@ -40,7 +41,7 @@ export default function EventForm(props) {
           "photo name time reserve"
           "photo desc time reserve";
         font-family: "Quicksand", sans-serif;
-        background-color: #333;
+        background-color: #555;
       `}
       {...props}
     />
@@ -53,8 +54,8 @@ export default function EventForm(props) {
         text-align: center;
         grid-area: photo;
         border-style: none;
-        background-color: #333;
-        background-size: contain;
+        background-color: #555;
+        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
 
@@ -74,7 +75,7 @@ export default function EventForm(props) {
         font-family: Quicksand, sans-serif;
         grid-area: name;
         font-size: 24px;
-        background-color: #333;
+        background-color: #555;
         color: #aaa;
         border-style: none;
         margin: 0 10px;
@@ -96,7 +97,7 @@ export default function EventForm(props) {
       css={css`
         font-family: Quicksand, sans-serif;
         font-size: 16px;
-        background-color: #333;
+        background-color: #555;
         border-style: none;
         color: #aaa;
         margin: 10px;
@@ -124,7 +125,7 @@ export default function EventForm(props) {
       width: 100%;
       font-size: 18px;
       border-style: none;
-      background-color: #333;
+      background-color: #555;
       color: #aaa;
 
       &:focus {
@@ -153,7 +154,7 @@ export default function EventForm(props) {
         `}
         {...props}
       >
-        <input css={inputStyle} type="date" name="start-date" />
+        <input css={inputStyle} type="date" name="start_date" />
         <input css={inputStyle} type="time" name="start_time" />
       </div>
     );
@@ -194,7 +195,7 @@ export default function EventForm(props) {
           display: block;
           border-style: none;
           border: none;
-          background-color: #333;
+          background-color: #555;
           color: white;
           height: 50%;
           width: 100%;

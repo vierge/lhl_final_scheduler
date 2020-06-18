@@ -23,12 +23,14 @@ const Frame = (props) => (
 
 export default function Event(props) {
   const {
+    id,
     name,
     description,
     start_time,
     end_time,
     photo,
     init,
+    going,
     addEvent,
   } = props;
 
@@ -41,11 +43,13 @@ export default function Event(props) {
       )}
       {mode === "SHOW" && (
         <ShowEvent
+          id={id}
           name={name}
           description={description}
           start_time={start_time}
           end_time={end_time}
           photo={photo}
+          going={going}
         />
       )}
     </Frame>

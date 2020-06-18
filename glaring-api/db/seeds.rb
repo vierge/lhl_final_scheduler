@@ -11,11 +11,11 @@
 
 # groups
 
-Group.create(name: 'Black Lives Matter', description: "All Cops Are Bastards. De-colonization and dignity.", colour: "black")
-Group.create(name: 'smoko', description: "it's 46 degrees in the queensland heat", colour: "orange")
-Group.create(name: "Rachel's fine cartoons", description: "purveyors of fine animation and animated friendship", colour: "violet")
-Group.create(name: "a box", description: "cardboard feels weird on my skin", colour: "olivegreen")
-Group.create(name: "Molly's Ex Girlfriends", description: "Molly's ex girlfriends gather to drink and commiserate behind their back. Monthly support group. terfs fuck off", colour: "lightpink")
+Group.create(name: 'Black Lives Matter', description: "De-colonization and dignity.", colour: "black")
+Group.create(name: 'breaktime!', description: "it's 46 degrees in the queensland heat", colour: "orange")
+Group.create(name: "Rachel's cartoon night", description: "purveyors of fine animation and animated friendship", colour: "violet")
+Group.create(name: "cardboard box club", description: "cardboard feels weird on my skin", colour: "burlywood")
+Group.create(name: "Molly's Girlfriends", description: "Molly's girlfriends gather to drink and commiserate behind their back. Monthly support group. support trans women of colour", colour: "lightpink")
 Group.create(name: "This is the GOAT", description: "Greatness is what we on the brink of.", colour: "blue")
 Group.create(name: "Never give up on your dreams", description: "Go hard or go home.", colour: "red")
 Group.create(name: "We are Heroes", description: "Saving the day is our mission.", colour: "orange")
@@ -34,9 +34,9 @@ User.create(name: "password", password: "cringelife", email: "user@gmail.com", p
 
 # events
 
-Event.create(name: "smoko", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: '2020-06-19T21:30:00', photo: 'https://www.graphic.com.gh/images/2017/MAY/may26/wsmaoke.png', end_time: nil, group_id: 1, colour: "red")
+Event.create(name: "chill sesh out back", description: "go away. i have ten whole minutes for this and it's hot", location: "out front by the fire hydrant", start_time: '2020-06-19T21:30:00', photo: 'https://www.graphic.com.gh/images/2017/MAY/may26/wsmaoke.png', end_time: nil, group_id: 1, colour: "red")
 Event.create(name: "basketball", description: "lets play some pickup basketabll", location: "at the local gym", start_time: "2020-06-20T10:00:00", photo: 'https://media.newyorker.com/photos/5cd98b4792eb652e91bb6e37/master/pass/Cunningham-Kawhi.jpg', end_time: nil, group_id: 2, colour: "blue")
-Event.create(name: "video games", description: "are you a professional gamer or a decent gamer?", location: "at the local e-sports center", start_time: "2020-06-21T16:45:00", photo: 'https://bsmedia.business-standard.com/_media/bs/img/article/2019-12/28/full/1577547899-9091.jpg', end_time: nil, group_id: 3, colour: "purple")
+Event.create(name: "video games", description: "are you a professional gamer or a decent gamer? no cops, no terfs", location: "at the local e-sports center", start_time: "2020-06-21T16:45:00", photo: 'https://bsmedia.business-standard.com/_media/bs/img/article/2019-12/28/full/1577547899-9091.jpg', end_time: nil, group_id: 3, colour: "purple")
 Event.create(name: "baseball", description: "get ready to swing for the fences", location: "at the baseball diamond", start_time: "2020-06-22T19:15:00", photo: 'https://s7d2.scene7.com/is/image/TWCNews/mlb_baseball_jpeg', end_time: nil, group_id: 4, colour: "yellow")
 Event.create(name: "book reading", description: "make sure to read often, really helps people gain knowledge", location: "at the library", start_time: "2020-06-21T13:00:00", photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Biblioth%C3%A8que_de_l%27Assembl%C3%A9e_Nationale_%28Lunon%29.jpg/1200px-Biblioth%C3%A8que_de_l%27Assembl%C3%A9e_Nationale_%28Lunon%29.jpg', end_time: nil, group_id: 1, colour: "green")
 Event.create(name: "cooking", description: "want to learn how to cook, because if you do then you are in luck", location: "at the local eatery", start_time: "2020-06-27T12:30:00", photo: 'https://cdn.shopify.com/s/files/1/1180/6742/products/cooking-class_1024x1024.jpg?v=1555104805', end_time: nil, group_id: 2, colour: "orange")
@@ -47,6 +47,8 @@ Event.create(name: "painting", description: "painting is a great hobby", locatio
 # memberships and reservations
 
 Membership.create(user_id: 1, group_id: 2)
+Membership.create(user_id: 1, group_id: 6)
+Membership.create(user_id: 1, group_id: 7)
 Membership.create(user_id: 8, group_id: 2, admin: true)
 Membership.create(user_id: 5, group_id: 2)
 Membership.create(user_id: 7, group_id: 2)

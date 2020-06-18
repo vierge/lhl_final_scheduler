@@ -37,17 +37,17 @@ class EventsController < ApplicationController
   end
 
   def update
+    # p request
     case request.method_symbol
     when :put
-      reservation = Reservation.find_by(event_id: params[:id], user_id: params[:user_id]);
-      # if !Event.exists?(id: params[:id]) || !User.exists?(params[:user_id])
-      #   raise "error: invalid!"
-      if !reservation
-        reservation = Reservation.new(event_id: params[:id], user_id: params[:user_id])
-      end
+      reservation = Reservation.find_by(event_id: params[:id], user_id: params[:user_id])
+      if reservation
         reservation.update(going: params[:going])
-        reservation.save!
-      render json: reservation.to_json 
+        render json: reservation.to_json 
+      else
+        newReservation = Reservation.create(event_id: params[:id], user_id: params[:user_id])
+        render json: newReservation.to_json 
+      end
     when :patch
       newEvent = params[:event]
       newEvent.permit!

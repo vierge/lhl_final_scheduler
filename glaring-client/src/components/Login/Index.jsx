@@ -1,5 +1,8 @@
+/**@jsx jsx */
+
 import React, { useState } from "react";
 import "./LoginForm.scss";
+import { css, jsx } from "@emotion/core";
 import Button from "./ButtonLogin";
 import { useForm } from "react-hook-form";
 import { useDataDispatch, useDataState } from "../../hooks/useDatabase";
@@ -16,7 +19,13 @@ export default function Login() {
   }
 
   return (
-    <div className="main">
+    <div
+      className="main"
+      css={css`
+        height: calc(100vh - 40px);
+        width: 500px;
+      `}
+    >
       <form className="login" onSubmit={handleSubmit(onSubmit)}>
         <div className="login__top">
           <div className="login__title">Login Here</div>
@@ -60,7 +69,18 @@ export default function Login() {
           </div>
         </div>
       </form>
-      <button onClick={(event) => callDatabase("SIGNUPVIEW")}>
+      <button
+        onClick={(event) => callDatabase("SIGNUPVIEW")}
+        css={css`
+          background-color: #888;
+          border-style: none;
+          font-size: 14px;
+          position: absolute;
+          right: 65px;
+          height: 75px;
+          top: 40%;
+        `}
+      >
         No account? Sign up :3
       </button>
     </div>

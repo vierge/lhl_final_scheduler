@@ -1,18 +1,16 @@
 /**@jsx jsx */
 import { css, jsx } from "@emotion/core";
 import "./Index.scss";
+import { useDataDispatch } from "../../hooks/useDatabase";
 
 // import Axios from 'axios';
 
 export default function ShowEvent(props) {
-  const { name, description, start_time, end_time, photo } = props;
-  function accepted() {
-    console.log("Accepted invite");
-  }
+  const { id, name, description, start_time, end_time, photo, going } = props;
 
-  function decline() {
-    console.log("Declined invite");
-  }
+  const callDatabase = useDataDispatch();
+
+  console.log(`${id}, ${name}, ${going}`);
 
   const GridContainer = (props) => (
     <div
@@ -31,31 +29,29 @@ export default function ShowEvent(props) {
     />
   );
 
-
   const PhotoFrame = (props) => (
     <div
       css={css`
         grid-area: photo;
-        border: 3px solid #333;
-        background-color: #333;
+        border: 3px solid #555;
         justify-content: center;
         display: flex;
         align-items: center;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        overflow: hidden;
       `}
       {...props}
     />
   );
-
 
   const TitleBar = (props) => (
     <div
       css={css`
         grid-area: name;
         font-size: 24px;
-        border: 3px solid #333;
+        border: 3px solid #555;
         margin: 0 10px;
         padding-left: 7px;
         width: calc(100% - 20px);
@@ -78,8 +74,7 @@ export default function ShowEvent(props) {
 
   const Timing = (props) => {
     // const { time } = props;
-    const time = new Date();
-
+    const time = new Date(props.time);
     return (
       <div
         css={css`
@@ -122,62 +117,93 @@ export default function ShowEvent(props) {
     );
   };
 
-  const Reserve = (props) => (
-    <div
-      css={css`
-        grid-area: reserve;
+  const Reserve = (props) => {
+    const { going } = props;
+    console.log(going);
+    const green = going === true ? `green` : `#555`;
+    const red = going === false ? `#771f1f` : `#555`;
 
-        & button {
-          display: block;
-          border-style: none;
-          border: none;
-          background-color: #333;
-          color: white;
-          height: 50%;
-          width: 100%;
-          font-size: 32px;
-        }
-      `}
-      {...props}
-    >
-      <button
+    return (
+      <div
         css={css`
-          &:hover {
-            border: 4px solid green;
-            color: green;
-          }
-          &:active {
-            background-color: green;
+          grid-area: reserve;
+
+          & button {
+            display: block;
+            border-style: none;
+            border: none;
             color: white;
+            height: 50%;
+            width: 100%;
+            font-size: 32px;
           }
         `}
+        {...props}
       >
-        GO
-      </button>
-      <button
-        css={css`
-          &:hover {
-            border: 4px solid #771f1f;
-            color: #771f1f;
+        <button
+          css={css`
+            background-color: ${green};
+            &:hover {
+              border: 4px solid green;
+              color: green;
+            }
+            &:active {
+              background-color: green;
+              color: white;
+            }
+          `}
+          onClick={
+            going !== true
+              ? (event) => {
+                  callDatabase("RESERVE", { id: id, going: true });
+                }
+              : null
           }
-          &:active {
-            background-color: #771f1f;
-            color: white;
+          {...props}
+        >
+          GO
+        </button>
+        <button
+          css={css`
+            background-color: ${red};
+            &:hover {
+              border: 4px solid #771f1f;
+              color: #771f1f;
+            }
+            &:active {
+              background-color: #771f1f;
+              color: white;
+            }
+          `}
+          onClick={
+            going !== false
+              ? (event) => {
+                  callDatabase("RESERVE", { id: id, going: false });
+                }
+              : null
           }
-        `}
-      >
-        NO
-      </button>
-    </div>
-  );
+          {...props}
+        >
+          NO
+        </button>
+      </div>
+    );
+  };
 
   return (
     <GridContainer>
-      <PhotoFrame><img css={css`max-height: 100%; max-width: 100%;`} src={photo} /></PhotoFrame>
+      <PhotoFrame>
+        <img
+          css={css`
+            max-width: 100%;
+          `}
+          src={photo}
+        />
+      </PhotoFrame>
       <TitleBar>{name}</TitleBar>
       <Text>{description}</Text>
       <Timing time={start_time}></Timing>
-      <Reserve></Reserve>
+      <Reserve going={going} />
     </GridContainer>
   );
 }
