@@ -72,6 +72,11 @@ export default function GroupForm(props) {
           flex-direction: column;
           align-items: left;
           justify-content: top;
+
+          & input {
+            border-style: none;
+            background-color: #888;
+          }
         `}
       >
         <div
@@ -83,7 +88,7 @@ export default function GroupForm(props) {
           `}
         >
           <div>
-            <label htmlFor="name">NAME</label>
+            <label htmlFor="name">NAME: </label>
             <input
               type="text"
               name="name"
@@ -107,7 +112,7 @@ export default function GroupForm(props) {
           </div>
 
           <div>
-            <label htmlFor="details">DETAILS</label>
+            <label htmlFor="details">DETAILS: </label>
             <input
               type="text"
               name="description"
@@ -121,7 +126,7 @@ export default function GroupForm(props) {
             )}
           </div>
           <div>
-            <label htmlFor="photo">UPLOAD PIC</label>
+            <label htmlFor="photo">UPLOAD PIC: </label>
             <input
               type="url"
               name="photo"
@@ -138,7 +143,7 @@ export default function GroupForm(props) {
             )}
           </div>
           <div>
-            <label htmlFor="colour">CHOOSE A COLOUR</label>
+            <label htmlFor="colour">CHOOSE A COLOUR: </label>
             <input
               type="button"
               name="colour"

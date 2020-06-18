@@ -22,7 +22,7 @@ export default function Login() {
     <div
       className="main"
       css={css`
-        height: 100vh;
+        height: calc(100vh - 40px);
         width: 500px;
       `}
     >

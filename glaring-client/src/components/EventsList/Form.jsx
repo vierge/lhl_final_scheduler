@@ -14,6 +14,7 @@ export default function EventForm(props) {
   const callDatabase = useDataDispatch();
 
   async function onSubmit(data) {
+    console.log(data.start_time, data.start_date);
     const newEvent = await callDatabase("ADDEVENT", data);
     console.log(newEvent);
     setForm(false);
@@ -153,7 +154,7 @@ export default function EventForm(props) {
         `}
         {...props}
       >
-        <input css={inputStyle} type="date" name="start-date" />
+        <input css={inputStyle} type="date" name="start_date" />
         <input css={inputStyle} type="time" name="start_time" />
       </div>
     );
