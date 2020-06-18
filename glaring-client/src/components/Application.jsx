@@ -45,6 +45,7 @@ export default function Application() {
         {/* {<Registration/>} */}
 
         {state.current.view === "login" && <Login />}
+        {state.current.view === "register" && <Registration />}
         {state.current.view === "directory" && (
           <GroupsList groups={state.directory} />
         )}
