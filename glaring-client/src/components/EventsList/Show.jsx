@@ -33,14 +33,14 @@ export default function ShowEvent(props) {
     <div
       css={css`
         grid-area: photo;
-        border: 3px solid #333;
-        background-color: #333;
+        border: 3px solid #555;
         justify-content: center;
         display: flex;
         align-items: center;
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
+        overflow: hidden;
       `}
       {...props}
     />
@@ -51,7 +51,7 @@ export default function ShowEvent(props) {
       css={css`
         grid-area: name;
         font-size: 24px;
-        border: 3px solid #333;
+        border: 3px solid #555;
         margin: 0 10px;
         padding-left: 7px;
         width: calc(100% - 20px);
@@ -120,8 +120,8 @@ export default function ShowEvent(props) {
   const Reserve = (props) => {
     const { going } = props;
     console.log(going);
-    const green = going === true ? `green` : `#333`;
-    const red = going === false ? `#771f1f` : `#333`;
+    const green = going === true ? `green` : `#555`;
+    const red = going === false ? `#771f1f` : `#555`;
 
     return (
       <div
@@ -195,7 +195,6 @@ export default function ShowEvent(props) {
       <PhotoFrame>
         <img
           css={css`
-            max-height: 100%;
             max-width: 100%;
           `}
           src={photo}

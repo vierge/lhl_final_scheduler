@@ -14,7 +14,7 @@
 Group.create(name: 'Black Lives Matter', description: "All Cops Are Bastards. De-colonization and dignity.", colour: "black")
 Group.create(name: 'smoko', description: "it's 46 degrees in the queensland heat", colour: "orange")
 Group.create(name: "Rachel's fine cartoons", description: "purveyors of fine animation and animated friendship", colour: "violet")
-Group.create(name: "a box", description: "cardboard feels weird on my skin", colour: "olivegreen")
+Group.create(name: "a box", description: "cardboard feels weird on my skin", colour: "burlywood")
 Group.create(name: "Molly's Ex Girlfriends", description: "Molly's ex girlfriends gather to drink and commiserate behind their back. Monthly support group. terfs fuck off", colour: "lightpink")
 Group.create(name: "This is the GOAT", description: "Greatness is what we on the brink of.", colour: "blue")
 Group.create(name: "Never give up on your dreams", description: "Go hard or go home.", colour: "red")
