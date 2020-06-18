@@ -1,17 +1,24 @@
 import React from "react";
 import "./RegistrationForm.scss";
 import Button from "./ButtonRegistration";
-import { useDataDispatch } from "react-hook-forms";
+import { useDataDispatch } from "../../hooks/useDatabase";
+import { useForm } from "react-hook-form";
 
 export default function Registration() {
   const callDatabase = useDataDispatch();
+  const { handleSubmit, register, errors } = useForm();
 
-  function registerNow() {
-    console.log("Register Now");
+  async function onSubmit(data) {
+    console.log(data);
+    await callDatabase("REGISTER", data);
   }
 
   return (
-    <div className="main">
+    <form
+      name="registration"
+      onSubmit={handleSubmit(onSubmit)}
+      className="main"
+    >
       <main className="register">
         <div className="register__top">
           <div className="register__title">Register Here</div>
@@ -32,6 +39,7 @@ export default function Registration() {
             name="name"
             type="text"
             placeholder="Enter Name"
+            ref={register}
           />
 
           <br />
@@ -43,6 +51,7 @@ export default function Registration() {
             name="email"
             type="text"
             placeholder="Enter Email"
+            ref={register}
           />
 
           <br />
@@ -55,17 +64,16 @@ export default function Registration() {
             name="description"
             type="text"
             placeholder="Enter Password"
+            ref={register}
           />
         </div>
 
         <div className="register__bottom">
           <div className="register__bottom--button">
-            <Button confirm onClick={registerNow}>
-              Register
-            </Button>
+            <Button type="submit">Register</Button>
           </div>
         </div>
       </main>
-    </div>
+    </form>
   );
 }
