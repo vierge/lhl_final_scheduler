@@ -60,8 +60,11 @@ export default function EventsList(props) {
   const isGoing = (event_id) => {
     const reservations = state.current.user.reservations;
     if (reservations) {
+      console.log("fire! +++ " + event_id);
+      console.log(reservations);
       for (let entry of reservations) {
-        if (entry.id === event_id) {
+        if (entry.event_id === event_id) {
+          console.log("isGoing?" + entry.going);
           return entry.going;
         }
       }
@@ -79,7 +82,6 @@ export default function EventsList(props) {
       photo,
     } = element;
     console.log(id);
-    const going = isGoing(id);
 
     return (
       <Event
@@ -91,7 +93,7 @@ export default function EventsList(props) {
         start_time={start_time}
         end_time={end_time}
         photo={photo}
-        going={going}
+        going={isGoing(id)}
         init="SHOW"
       />
     );

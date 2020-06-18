@@ -261,21 +261,12 @@ function useDatabase(initialState) {
           going: payload.going,
           user_id: user_id,
         });
+
         return dispatch({
           type: "RESERVE",
           item: reservation,
         });
       }
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
-      // // EDIT AN EVENT
       // // EDIT AN EVENT
       // case "EDITEVENT": {
       // }
