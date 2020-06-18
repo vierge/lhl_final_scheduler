@@ -11,7 +11,7 @@ function useDatabase(initialState) {
         return {
           ...state,
           users: action.item.users,
-          groups: action.item.groups,
+          directory: action.item.groups,
         };
       }
       case "SETGROUP": {
@@ -94,14 +94,10 @@ function useDatabase(initialState) {
       }
 
       case "GETDIRECTORY": {
-        return { ...state, current: { ...state.current, view: "groups" } };
+        return { ...state, current: { ...state.current, view: "directory" } };
       }
 
       case "LOGIN": {
-        console.log("LOGIN RETURN")
-        console.log(action.item);
-        console.log("LOGIN RETURN GROUPS")
-        console.log(action.item.groups);
         return {
           ...state,
           current: {
@@ -114,6 +110,15 @@ function useDatabase(initialState) {
               token: action.item.authentication_token,
             },
             view: "groups",
+          },
+          groups: action.item.groups,
+        };
+      }
+      case "JOINGROUP": {
+        return {
+          ...state,
+          current: {
+            ...state.current,
           },
           groups: action.item.groups,
         };
@@ -209,6 +214,17 @@ function useDatabase(initialState) {
 
       case "GETDIRECTORY": {
         return dispatch({ type: "GETDIRECTORY" });
+      }
+
+      case "JOINGROUP": {
+        const user_id = state.current.user.id;
+        const newData = await axios.put(`api/groups/${payload}`, {
+          user_id: user_id,
+        });
+        return dispatch({
+          type: "JOINGROUP",
+          item: newData.data[0],
+        });
       }
 
       case "LOGIN": {
