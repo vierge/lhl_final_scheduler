@@ -15,19 +15,17 @@ export default function Button(props) {
 
   return (
     <button //uses props.children value as the button text
-    //   css={css`
-    //   margin: 0 0px;
-    //   height: 3rem;
-    //   width:  8rem;
-    //   border-radius: 1rem;
-    // `}
+      //   css={css`
+      //   margin: 0 0px;
+      //   height: 3rem;
+      //   width:  8rem;
+      //   border-radius: 1rem;
+      // `}
       className={buttonClass} //button element is wrapped in Button component
-      onClick={props.onClick}
+      // onClick={props.onClick}
       disabled={props.disabled}
     >
       {props.children}
     </button>
   );
-
-
 }

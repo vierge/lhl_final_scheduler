@@ -8,7 +8,11 @@ class UsersController < ApplicationController
   
   def create
     params.permit!
-    newUser = User.create!(params[:user])
+    newUser = User.create(
+      name: params[:name],
+      email: params[:email],
+      password: params[:password]
+      )
     render json: newUser.to_json
   end
 

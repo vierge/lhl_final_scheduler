@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./LoginForm.scss";
 import Button from "./ButtonLogin";
 import { useForm } from "react-hook-form";
@@ -58,13 +58,11 @@ export default function Login() {
           <div className="login__bottom--button">
             <Button type="submit">Login</Button>
           </div>
-          <Button
-            onClick={(prev) => (state.current.view = [...prev, "register"])}
-          >
-            No account? Sign up :3
-          </Button>
         </div>
       </form>
+      <button onClick={(event) => callDatabase("SIGNUPVIEW")}>
+        No account? Sign up :3
+      </button>
     </div>
   );
 }

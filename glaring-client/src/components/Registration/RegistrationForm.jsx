@@ -32,7 +32,7 @@ export default function Registration() {
 
           <br />
 
-          <label for="groupName">Name: </label>
+          <label for="userName">Name: </label>
           <input
             id="groupName"
             className="creation__create-input text--semi-bold"
@@ -45,11 +45,11 @@ export default function Registration() {
           <br />
           <br />
 
-          <label for="groupEmail">Email: </label>
+          <label for="userEmail">Email: </label>
           <input
             className="creation__create-input text--semi-bold"
             name="email"
-            type="text"
+            type="email"
             placeholder="Enter Email"
             ref={register}
           />
@@ -57,12 +57,12 @@ export default function Registration() {
           <br />
           <br />
 
-          <label for="groupDescription">Password:</label>
+          <label for="userPassword">Password:</label>
           <input
             id="groupDescription"
             className="creation__create-input text--semi-bold"
-            name="description"
-            type="text"
+            name="password"
+            type="password"
             placeholder="Enter Password"
             ref={register}
           />

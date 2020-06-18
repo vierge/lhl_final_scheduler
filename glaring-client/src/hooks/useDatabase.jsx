@@ -136,6 +136,9 @@ function useDatabase(initialState) {
         };
       }
 
+      case "SIGNUPVIEW": {
+        return { ...state, current: { ...state.current, view: "register" } };
+      }
       default: {
         alert("INVALID INPUT");
       }
@@ -252,6 +255,10 @@ function useDatabase(initialState) {
           item: login.data[0],
         });
       }
+
+      case "SIGNUPVIEW": {
+        return dispatch({ type: "SIGNUPVIEW" });
+      }
       default: {
         return alert("INVALID INPUT");
       }
@@ -265,6 +272,7 @@ function useDatabase(initialState) {
   return {
     state,
     callDatabase,
+    stateReducer,
   };
 }
 
