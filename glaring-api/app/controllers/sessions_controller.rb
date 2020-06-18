@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
     p user
     if user&.valid_password?(params[:password]) 
       token = user[:authentication_token]
-      @user_groups = User.includes(:groups).where(id: user[:id])
+      @user_groups = User.includes(:groups, :reservations).where(id: user[:id])
       @current_user = user
-      render json: @user_groups.as_json(include: :groups)
+      render json: @user_groups.as_json(include: [:groups, :reservations])
     else
       head 401
     end

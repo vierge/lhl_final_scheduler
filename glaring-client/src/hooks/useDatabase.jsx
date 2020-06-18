@@ -61,6 +61,7 @@ function useDatabase(initialState) {
         const groups = state.groups.filter((group) => group.id !== event_id);
         return {
           ...state,
+          current: { ...state.current, view: "directory" },
           groups: groups,
         };
       }
