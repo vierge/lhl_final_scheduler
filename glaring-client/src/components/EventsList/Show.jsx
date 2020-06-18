@@ -10,7 +10,7 @@ export default function ShowEvent(props) {
 
   const callDatabase = useDataDispatch();
 
-  console.log(`${id}, ${name}`);
+  console.log(`${id}, ${name}, ${going}`);
 
   const GridContainer = (props) => (
     <div
@@ -119,6 +119,9 @@ export default function ShowEvent(props) {
 
   const Reserve = (props) => {
     const { going } = props;
+    console.log(going);
+    const green = going === true ? `green` : `#333`;
+    const red = going === false ? `#771f1f` : `#333`;
 
     return (
       <div
@@ -129,7 +132,6 @@ export default function ShowEvent(props) {
             display: block;
             border-style: none;
             border: none;
-            background-color: #333;
             color: white;
             height: 50%;
             width: 100%;
@@ -140,7 +142,7 @@ export default function ShowEvent(props) {
       >
         <button
           css={css`
-            background-color: ${going === true ? `green` : `#333`};
+            background-color: ${green};
             &:hover {
               border: 4px solid green;
               color: green;
@@ -157,12 +159,13 @@ export default function ShowEvent(props) {
                 }
               : null
           }
+          {...props}
         >
           GO
         </button>
         <button
           css={css`
-            background-color: ${going === false ? `#771f1f` : `#333`};
+            background-color: ${red};
             &:hover {
               border: 4px solid #771f1f;
               color: #771f1f;
@@ -179,6 +182,7 @@ export default function ShowEvent(props) {
                 }
               : null
           }
+          {...props}
         >
           NO
         </button>
